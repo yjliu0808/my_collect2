@@ -1,0 +1,288 @@
+
+<!-- saved from url=(0082)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY02_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY02_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY02_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST QTP-BASIC DAY02_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST QTP-BASIC DAY02_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST QTP-BASIC DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY02/CASE/01/index.html#case1">自动启动Mtours登录退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY02/CASE/01/index.html#case2">Flight订票增加Tickets输入</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY02/CASE/01/index.html#case3">查看记录InsertDone的属性名</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 自动启动Mtours登录退出</h2>
+      <h3>1.1 问题</h3>
+      <p>使用自动启动方式，录制Mtours登录、退出过程脚本，运行脚本通过。</p>
+      <h3>1.2 方案</h3>
+      <p>使用自动启动的方式，启动Mtours，点击工具栏按钮“Record”进行录制，录制结束后点击“Stop”结束录制，点击工具栏按钮“Run”进行回放。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：注册用户</p>
+      <p>1、在Mtours首页点击“REGISTER”按钮，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、输入用户名（User Name：jack）、密码（Password：123）、确认密码（Confirm Password：123），点击“SUBMIT”注册用户，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p>3、用户jack注册成功，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>4、按照同样的方法，再注册2个用户，分别为：</p>
+      <p>User Name：rose；Password：456</p>
+      <p>User Name：peter；Password：789</p>
+      <p class="number">步骤二：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Mtours-登录退出-自动启动-演示，点击“Save”按钮：如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p class="number">步骤三：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>2、在“Windows Applications”选项卡中点击第一个单选钮，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p>3、在“Web”选项卡中点击第二个单选钮，在第一个下拉列表中输入访问地址：http://localhost:8080/mtours，点击“确定”按钮，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p class="number">步骤四：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>2、录制脚本，步骤如下：使用用户名“User Name“：jack，密码“Password”：123，点击“Sign-In“登录Mtours，登录成功后，点击“Sign-Off”按钮退出登录账号，再关闭浏览器；录制结束后，点击工具栏按钮“Stop”：如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p>3、录制后的代码，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 Flight订票增加Tickets输入</h2>
+      <h3>2.1 问题</h3>
+      <p>录制Flight订票脚本，录制过程中不要操作Tickets，录制完成后，将Tickets对象添加到对象仓库。</p>
+      <h3>2.2 方案</h3>
+      <p>录制Flight订票脚本，录制过程中不要操作Tickets，录制完成后，打开对象仓库，点击“Add Objects to Local”按钮，将Tickets对象添加到对象仓库，在脚本中生成代码，填写输入的值。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;Save As”：如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-订票-添加对象-演示，点击“Save”按钮：如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入用户名“Agent Name”：jack，密码“Passwrod”：mercury，点击“OK”按钮；登录成功后，输入订票信息（注意：不要操作Tickets对象），点击“Insert Order”按钮进行订票，订票成功后，点击菜单“File-&gt;Exit”退出被测系统，如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p>3、录制后的代码如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p class="number">步骤四：添加Tickets对象</p>
+      <p>1、将被测系统Flight系统准备到订票界面，将“Tickets”对象显示出来，如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p>2、点击菜单“Resources-&gt;Object Repository”，打开对象仓库，如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p>3、在“Object Repository”窗口中，点击工具栏按钮“Add Objects to Local”，如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <p>4、使用小手图标/，抓取“Tickets”文本框对象（注意：如果对象被遮挡，长按Ctrl，将对象显示出来，松开Ctrl，继续抓取对象即可），如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>5、确认抓取的对象，点击“OK”按钮，如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+      <p>6、“Tickets”对象被添加到对象仓库中，如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image029.png">
+        <p>图-29</p>
+      </div>
+      <p class="number">步骤五：编写代码</p>
+      <p>1、找到点击“Insert Order”按钮代码的上一行代码（原因：只能在点击“Insert Order”按钮之前，修改订票的张数），点击鼠标右键，在右键菜单中点击“Insert New Step”，如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image030.png">
+        <p>图-30</p>
+      </div>
+      <p>2、添加一行空白代码行，如下图-31所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image031.png">
+        <p>图-31</p>
+      </div>
+      <p>3、在“Item”列选择“Tickets”对象，如下图-32所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image032.png">
+        <p>图-32</p>
+      </div>
+      <p>4、如果在列表中没有“Tickets”对象，可以点击“Object from repository”，，如下图-33所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image033.png">
+        <p>图-33</p>
+      </div>
+      <p>5、在“Select Object for Step”窗口中点击“Tickets”对象，点击“OK”按钮，如下图-34所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image034.png">
+        <p>图-34</p>
+      </div>
+      <p>6、生成的代码，如下图-35所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image035.png">
+        <p>图-35</p>
+      </div>
+      <p>7、在“Value”列输入值（如：3），填写之后，代码如下图-36所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image036.png">
+        <p>图-36</p>
+      </div>
+      <p class="number">步骤六：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-37所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image037.png">
+        <p>图-37</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，并且票的张数为3，如下图-38所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image038.png">
+        <p>图-38</p>
+      </div>
+      <a name="case3">
+      </a>
+      <h2>3 查看记录InsertDone的属性名</h2>
+      <h3>3.1 问题</h3>
+      <p>Flight订票成功后，查看进度条中是哪个属性保存的“Insert Done…”。</p>
+      <h3>3.2 方案</h3>
+      <p>Flight订票成功后，用Object Spy工具抓取进度条对象，查看保存“Insert Done…”属性的属性名。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：准备被测系统</p>
+      <p>1、将Flight准备到订票成功窗口，如下图-39所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image039.png">
+        <p>图-39</p>
+      </div>
+      <p class="number">步骤二：使用Object SPY抓取对象</p>
+      <p>1、打开QTP，点击菜单“Tools-&gt;Object Spy”：如下图-40所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image040.png">
+        <p>图-40</p>
+      </div>
+      <p>2、在“Object Spy”窗口中点击“小手”按钮，如下图-41所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image041.png">
+        <p>图-41</p>
+      </div>
+      <p>3、用小手图标/，抓取进度条对象（注意：如果对象被遮挡住了，可以长按Ctrl，将对象显示出来，再松开Ctrl键，继续抓取对象即可），如下图-42所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image042.png">
+        <p>图-42</p>
+      </div>
+      <p>4、确认抓取的对象，然后在“Properties”选项卡中找到保存“Insert Done…”属性值的属性为：text，如下图-43所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY02_w_files/image043.png">
+        <p>图-43</p>
+      </div>
+    </div>
+  
+</body></html>

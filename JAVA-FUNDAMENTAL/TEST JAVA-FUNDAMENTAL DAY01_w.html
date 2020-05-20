@@ -1,0 +1,270 @@
+
+<!-- saved from url=(0089)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST JAVA-FUNDAMENTAL DAY01_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST JAVA-FUNDAMENTAL DAY01_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST JAVA-FUNDAMENTAL DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#case1">控制台版的JAVA HelloWorld</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#case2">使用Eclipse开发Java应用程序</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#case3">定义变量初始化，并输出变量值</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 控制台版的JAVA HelloWorld</h2>
+      <h3>1.1 问题</h3>
+      <p>StringBuffer的常用方法，toString方法和append方法的使用。</p>
+      <p>使用记事本编写HelloWorld.java程序，在控制台输出“Hello World”。运行界面如图-1所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p class="number">1．在D:\盘下新建一个HelloWorld.java文本文件</p>
+      <ul class="list">
+        <li>HelloWorld是文件名，需要注意大小写
+</li>
+        <li>.java是后缀，或者称为扩展名
+</li>
+        <li>Windows系统通过后缀来区分不同的文件
+</li>
+      </ul>
+      <p class="number">2．编辑源程序</p>
+      <p class="number">3．编译javac  Java源文件的名称</p>
+      <ul class="list">
+        <li>javac  HelloWorld.java
+</li>
+        <li>在控制台中进入D:\盘，输入javac  HelloWorld.java
+</li>
+      </ul>
+      <p class="number">4．运行控制台：java  类的名称</p>
+      <ul class="list">
+        <li>java HelloWorld
+</li>
+      </ul>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：</p>
+      <p>在D：\盘下创建HelloWorld.java文件，如下图-2所示:</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：</p>
+      <p class="number">使用纯文本编辑器记事本直接打开，编辑如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> HelloWorld <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello World"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+</pre></div></div>
+      <p>在记事本中如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p class="number">步骤三：</p>
+      <p>由于源文件在D:\目录下，所以在控制台输入d: 让盘符显示为D:\</p>
+      <p>接着使用javac命令编译，javac空格后添加源文件的名称，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p class="emphasiz">注意：如果编译通过，则不会提示错误信息，并且会在相应目录下生成HelloWorld.class字节码文件，表示一个Java类。</p>
+      <p>如果编译有错误， String写成string，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>则在编译时会提示以下信息，如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>如上图-6所示，提示出HelloWorld.java源文件中的第2行，出现了编译错误，错误的原因是找不到符号。string类的名称找不到，而且给出了具体出错的位置。此时需要重新打开源文件进行编辑，直到更正后编译通过为止。</p>
+      <p class="number">步骤四：</p>
+      <p>运行，在控制台中执行java命令，后添加类名HelloWorld，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p>运行成功后，会在控制台出现Hello World！内容。</p>
+      <h3>1.4 完整代码</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> HelloWorld <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello World"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 使用Eclipse开发Java应用程序</h2>
+      <h3>2.1 问题</h3>
+      <p>使用Eclipse编写Demo1.java程序，输出“努力学习，java”。</p>
+      <h3>2.2 方案</h3>
+      <p>首先创建一个工程Project，名称day01，然后在src下创建一个包com.tarena.demo,在该包下创建Demo1.java文件，最后Demo1中编写程序并执行。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：</p>
+      <p>首先指定工作区的目录：以后开发的项目代码的位置D:\Workspaces;</p>
+      <p>先创建一个项目Project，名称：javase;</p>
+      <p>创建方式：File -&gt;  new  -&gt; Java Project–&gt;Project name:  javase，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>在Project name中填写项目的名称javase,其它设置选择默认，单击”Finish”即可创建好新的工程，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>弹出以下窗口，是选择MyEclipse视图的含义，我们可以单击”No”选择默认的视图即可，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p>工程创建好后，可见左边Package Explorer窗口中体现出项目的名称和资源，其中主要的目录是src目录，用于创建新的Java包和源程序，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p>可以打开工作区目录查看，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>在新建立的Java项目中有src和bin两个子目录：</p>
+      <ul class="list">
+        <li>javase
+</li>
+        <li>src    代表源代码的存放目录
+</li>
+        <li>bin    编译后.class文件的存放目录
+</li>
+      </ul>
+      <p class="number">步骤二：</p>
+      <p>创建包和类</p>
+      <p>如何在src下创建一个新的类：</p>
+      <p>鼠标右击src -&gt;  New -&gt; Class，如图-13所示:</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <p>需要在Package位置填写包的名称：com.tarena.demo,在Name位置填写类的名称Demo1,其它保持默认。单击”Finish”即可完成，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p>此时在Package Explorer窗口的src中就会生成com.tarena.demo目录以及Demo1.java源文件，主窗口中就会显示此源文件的代码，其中已经定义好包和类体了结构了，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p>接着可以进行编辑环境的修改，首先修改字体。默认的字体较小，所以为了在编辑时看得更清楚，建议将字体进行修改。</p>
+      <p>单击：Window –&gt; Preferences</p>
+      <p>在弹出的窗口中单击General -&gt; Appearance -&gt; Colors and Fonts -&gt; Basic -&gt; Text Font ，选中Text Font之后，单击“Edit”按钮，进行修改，如下图-16、图-17所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>字体可以选择默认“Courier New”或者“Comic Sans MS”，字形使用“粗体”，字号使用14或者16都比较适中，如上图-17和下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>修改之后字体明显发生改变，如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p class="number">步骤三：</p>
+      <p>在Demo1中编写程序，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"努力学习，java"</span><span class="sh_symbol">);</span></li><li>  <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo1 {
+	public static void main(String[] args) {
+		System.out.println("努力学习，java");
+  }
+}
+</pre></div></div>
+      <p>在myeclipse中显示如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST JAVA-FUNDAMENTAL DAY01_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p class="number">步骤四：</p>
+      <p>运行Demo1程序，源代码中的任何位置右击-&gt;Run As-&gt;Java Application.即可运行。</p>
+      <h3>2.4 完整代码</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"努力学习，java"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo1 {
+	public static void main(String[] args) {
+		System.out.println("努力学习，java");
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 定义变量初始化，并输出变量值</h2>
+      <h3>3.1 问题</h3>
+      <p>定义三个变量num1，num2，num3，分别赋值10,20,30，并在控制台输出。</p>
+      <h3>3.2 方案</h3>
+      <p>首先创建main方法，然后在main方法中定义3个num变量，之后在定义的时候初始化，最后在控制台显示变量的名字和变量的值。</p>
+      <p>需要使用到变量的初始化，以及输出语句的使用。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：定义类及 main方法</p>
+      <p>首先定义一个名为Demo2的类，并在类中定义Java应用程序的入口方法main，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){		
+	} 
+}
+</pre></div></div>
+      <p class="number">步骤二：定义变量</p>
+      <p>定义三个变量num1，num2，num3，分别赋值10,20,30,代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int num1<span class="sh_symbol">=</span><span class="sh_number">10</span><span class="sh_symbol">,</span>num2<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">,</span>num3<span class="sh_symbol">=</span><span class="sh_number">30</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){
+		int num1=10,num2=20,num3=30;
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：输出变量值</p>
+      <p>在控制台输出变量名和对应变量的值，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int num1<span class="sh_symbol">=</span><span class="sh_number">10</span><span class="sh_symbol">,</span>num2<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">,</span>num3<span class="sh_symbol">=</span><span class="sh_number">30</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num1="</span><span class="sh_symbol">+</span>num1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num2="</span><span class="sh_symbol">+</span>num2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num3="</span><span class="sh_symbol">+</span>num3<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){
+		int num1=10,num2=20,num3=30;
+		System.out.println("num1="+num1);
+		System.out.println("num2="+num2);
+		System.out.println("num3="+num3);		
+	}
+}
+</pre></div></div>
+      <h3>3.4 完整代码</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int num1<span class="sh_symbol">=</span><span class="sh_number">10</span><span class="sh_symbol">,</span>num2<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">,</span>num3<span class="sh_symbol">=</span><span class="sh_number">30</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num1="</span><span class="sh_symbol">+</span>num1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num2="</span><span class="sh_symbol">+</span>num2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"num3="</span><span class="sh_symbol">+</span>num3<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){
+		int num1=10,num2=20,num3=30;
+		System.out.println("num1="+num1);
+		System.out.println("num2="+num2);
+		System.out.println("num3="+num3);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

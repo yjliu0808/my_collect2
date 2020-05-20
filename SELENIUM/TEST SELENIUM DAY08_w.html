@@ -1,0 +1,798 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST SELENIUM DAY08_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY08_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY08_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST SELENIUM DAY08_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST SELENIUM DAY08_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST SELENIUM DAY08</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#case1">ECShop前台登录后退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#case2">ECShop前台购买商品</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 ECShop前台登录后退出</h2>
+      <h3>1.1 问题</h3>
+      <p>ECShop前台都使用xpath定位完成以下步骤：</p>
+      <p>（1）打开ECShop首页；</p>
+      <p>（2）点击”登录“；</p>
+      <p>（3）输入正确的用户名、密码；</p>
+      <p>（4）点击“立即登陆”；</p>
+      <p>（5）点击”退出“；</p>
+      <p>（6）关闭浏览器。</p>
+      <h3>1.2 方案</h3>
+      <p>本案例针对ECShop被测系统前台首页，书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开ECShop前台首页。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中打开ECShop前台首页，对关心的页面元素“用户名”文本框、“密码”文本框、“验证码”文本框、“立即登陆”，以及登录后的“退出”链接，书写XPath表达式。</p>
+      <p>在测试方法中书写代码：</p>
+      <p>（1）打开ECShop前台首页；</p>
+      <p>（2）使用xpath定位的方法定位“登录”，点击它；</p>
+      <p>（3）使用xpath定位的方法定位“用户名”文本框，输入正确的用户名“jack”；</p>
+      <p>（4）使用xpath定位的方法定位“密码”文本框，输入正确的密码“123456”；</p>
+      <p>（5）使用xpath定位的方法定位“立即登陆”，点击它；</p>
+      <p>（6）使用xpath定位的方法定位“退出”链接，点击该链接；</p>
+      <p>再次，在tearDown方法中调用quit方法来退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，新建day08的package，在day08的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <p>输入类名Name为TestECShopLoginXPath，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image002.png">
+        <p>图 - 2</p>
+      </div>
+      <p>TestECShopLoginXPath.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestECShopLoginXPath{
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开ECShop前台首页的地址的步骤。</p>
+      <p>其中，首页页面的url如下：http://localhost/ws/ecshop/upload/index.php</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestECShopLoginXPath.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code"><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开ECShop前台首页
+#cold_bold		driver.get("http://localhost/ws/ecshop/upload/index.php");
+#cold_bold	}
+#cold_bold}
+</pre></div></div>
+      <p class="number">步骤三：借助FirePath插件获取“登录”的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，使用F12打开Firebug，切换到FirePath选项卡，点击第二个功能按钮“点击查看页面中的元素”，再点击页面中“登录”，在FirePath选项卡中生成了该元素的XPath表达式，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image003.png">
+        <p>图 - 3</p>
+      </div>
+      <p>（2）复制该XPath表达式到剪切板。</p>
+      <p class="number">步骤四：实现点击“登录”操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位的方法定位“登录”，TestECShopLoginXPath.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+#cold_bold		//点击“登录”
+#cold_bold		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();	}
+}
+</pre></div></div>
+      <p class="number">步骤五：借助FirePath插件获取“用户名”文本框的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，点击“登录”后，使用F12打开Firebug，切换到FirePath选项卡，再点击“用户名”文本框，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image004.png">
+        <p>图 - 4</p>
+      </div>
+      <p>（2）我们发现自动生成的XPath表达式为绝对路径的XPath表达式，考虑到代码可维护性，我们试图修改为相对路径的XPath表达式，我们查看Firebug源码，发现用户名文本框有一个name属性等于“username”，所以自己在XPath的文本框中书写XPath表达式如下“//input[@name='username']”,点击回车，查看下方匹配结果，可以匹配到一个节点，从而验证该相对路径的xpath表达式可以定位“用户名”文本框，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image005.png">
+        <p>图 - 5</p>
+      </div>
+      <p class="number">步骤六：实现输入正确的用户名的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写向“用户名”文本框中输入正确的用户名数据“jack”的操作步骤，TestECShopLoginXPath.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名jack</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='username']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"jack"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//点击“登录”
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();
+#cold_bold		//输入用户名jack
+#cold_bold		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("jack");
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：借助FirePath插件获取“密码”文本框的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，点击“登录”后，使用F12打开Firebug，切换到FirePath选项卡，再点击“密码”文本框，如下图-6所示：/</p><p>图 - 6</p><p></p>
+      <p>（2）我们发现自动生成的XPath表达式为绝对路径的XPath表达式，考虑到代码可维护性，我们试图修改为相对路径的XPath表达式，我们查看Firebug源码，发现密码文本框有一个name属性等于“password”，所以自己在XPath的文本框中书写XPath表达式如下“//input[@name='password']”,点击回车，查看下方匹配结果，可以匹配到一个节点，从而验证该相对路径的xpath表达式可以定位“密码”文本框，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image006.png">
+        <p>图 - 7</p>
+      </div>
+      <p class="number">步骤八：实现输入正确的密码的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写向“密码”文本框中输入正确的密码数据“123456”的操作步骤，TestECShopLoginXPath.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名jack</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='username']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"jack"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码123456</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='password']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"123456"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//点击“登录”
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();
+		//输入用户名jack
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("jack");
+#cold_bold		//输入密码123456
+#cold_bold		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123456");
+	}
+}
+</pre></div></div>
+      <p class="number">步骤九：借助FirePath插件获取“立即登陆”的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，点击“登录”后，使用F12打开Firebug，切换到FirePath选项卡，再点击“立即登陆”，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image007.png">
+      </div>
+      <p>（2）我们发现自动生成的XPath表达式为绝对路径的XPath表达式，考虑到代码可维护性，我们试图修改为相对路径的XPath表达式，我们查看Firebug源码，发现“立即登陆”有一个name属性等于“submit”，所以自己在XPath的文本框中书写XPath表达式如下“//input[@name='submit']”,点击回车，查看下方匹配结果，可以匹配到一个节点，从而验证该相对路径的xpath表达式可以定位“立即登陆”，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image008.png">
+        <p>图 - 9</p>
+      </div>
+      <p class="number">步骤十：实现点击“立即登陆”的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写点击“立即登陆”的操作步骤，TestECShopLoginXPath.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名jack</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='username']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"jack"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码123456</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='password']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"123456"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“立即登陆”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='submit']"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//点击“登录”
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();
+		//输入用户名jack
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("jack");
+		//输入密码123456
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123456");
+#cold_bold		//点击“立即登陆”
+#cold_bold		driver.findElement(By.xpath("//input[@name='submit']")).click();
+#cold_bold	
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十一：借助FirePath插件获取“退出”链接的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，点击“登录”，输入正确的用户名和密码，点击“立即登陆”后，使用F12打开Firebug，切换到FirePath选项卡，点击第二个功能按钮“点击查看页面中的元素”，再点击页面中“退出”，在FirePath选项卡中生成了该元素的XPath表达式，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image009.png">
+        <p>图 - 10</p>
+      </div>
+      <p>（2）复制该XPath表达式到剪切板。</p>
+      <p class="number">步骤十二：实现点击“退出”链接的代码</p>
+      <p>在测试方法中，使用xpath定位的方式书写代码点击“退出”链接，TestECShopLoginXPath.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名jack</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='username']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"jack"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码123456</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='password']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"123456"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“立即登陆”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='submit']"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”链接</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/font/a[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//点击“登录”
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();
+		//输入用户名jack
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("jack");
+		//输入密码123456
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123456");
+		//点击“立即登陆”
+		driver.findElement(By.xpath("//input[@name='submit']")).click();
+#cold_bold		//点击“退出”链接
+#cold_bold		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/font/a[2]")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十三：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中，TestECShopLoginXPath类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopLoginXPath<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“登录”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名jack</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='username']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"jack"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码123456</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='password']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"123456"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“立即登陆”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">"//input[@name='submit']"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”链接</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_MEMBERZONE']/font/a[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopLoginXPath{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//点击“登录”
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/a[1]/img")).click();
+		//输入用户名jack
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("jack");
+		//输入密码123456
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("123456");
+		//点击“立即登陆”
+		driver.findElement(By.xpath("//input[@name='submit']")).click();
+		//点击“退出”链接
+		driver.findElement(By.xpath(".//*[@id='ECS_MEMBERZONE']/font/a[2]")).click();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 ECShop前台购买商品</h2>
+      <h3>2.1 问题</h3>
+      <p>ECShop前台都使用xpath定位完成以下步骤：</p>
+      <p>（1）打开ECShop前台首页；</p>
+      <p>（2）输入搜索关键字‘a’；</p>
+      <p>（3）点击“搜索”；</p>
+      <p>（4）点击最后一个商品的图片；</p>
+      <p>（5）点击”加入购物车“；</p>
+      <p>（6）修改购物车中购买商品的数量为3；</p>
+      <p>（7）关闭浏览器。</p>
+      <h3>2.2 方案</h3>
+      <p>本案例针对ECShop被测系统前台首页，书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开ECShop前台首页。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中打开ECShop前台首页，对关心的页面元素“关键字”文本框、“搜索”按钮、最后一个商品的图片、“加入购物车”、“购买数量”文本框，书写XPath表达式。</p>
+      <p>在测试方法中书写代码：</p>
+      <p>（1）打开ECShop前台首页；</p>
+      <p>（2）使用xpath定位的方法定位“关键字”文本框，输入“a”；</p>
+      <p>（3）使用xpath定位的方法定位“搜索”按钮，点击它；</p>
+      <p>（4）使用xpath定位的方法定位最后一个商品图片，点击它；</p>
+      <p>（5）使用xpath定位的方法定位“加入购物车”，点击它；</p>
+      <p>（6）使用xpath定位的方法定位“商品数量”文本框，清空后输入“3”；</p>
+      <p>再次，在tearDown方法中调用quit方法来退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，在day08的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image010.png">
+        <p>图 - 11</p>
+      </div>
+      <p>输入类名Name为TestECShopBuyGoods，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image011.png">
+        <p>图 - 12</p>
+      </div>
+      <p>TestECShopBuyGoods.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestECShopBuyGoods{
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开ECShop前台首页的地址的步骤。</p>
+      <p>其中，首页页面的url如下：http://localhost/ws/ecshop/upload/index.php</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestECShopBuyGoods.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code"><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开ECShop前台首页
+#cold_bold		driver.get("http://localhost/ws/ecshop/upload/index.php");
+#cold_bold	}
+#cold_bold}
+</pre></div></div>
+      <p class="number">步骤三：借助FirePath插件获取“关键字”文本框的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，使用F12打开Firebug，切换到FirePath选项卡，点击第二个功能按钮“点击查看页面中的元素”，再点击页面中“关键字”文本框，在FirePath选项卡中生成了该元素的XPath表达式，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image012.png">
+        <p>图 - 13</p>
+      </div>
+      <p>（2）复制该XPath表达式到剪切板。</p>
+      <p class="number">步骤四：实现输入“关键字”操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位的方法书写向“登录”文本框输入“a”的操作步骤，TestECShopBuyGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+#cold_bold		//输入关键字“a”
+#cold_bold		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤五：借助FirePath插件获取“搜索”按钮的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页后，使用F12打开Firebug，切换到FirePath选项卡，再点击“搜索”按钮，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image013.png">
+        <p>图 - 14</p>
+      </div>
+      <p>（2）复制自动生成的XPath表达式到剪切板。</p>
+      <p>说明：如果使用这样的写法“.//*[@name='imageField']”也可以定位到该元素。</p>
+      <p class="number">步骤六：实现输入点击“搜索”的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写点击“搜索”按钮的操作步骤，TestECShopBuyGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='searchForm']/input[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//输入关键字“a”
+		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+#cold_bold		//点击“搜索”按钮
+#cold_bold		driver.findElement(By.xpath(".//*[@id='searchForm']/input[2]")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：借助FirePath插件获取最后一个商品图片的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，输入关键字“a”，点击“搜索”后，使用F12打开Firebug，切换到FirePath选项卡，再点击最后一张图片，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image014.png">
+      </div>
+      <p>该自动生成的Xpath表达式是相对路径的XPath表达式，但是长度较长，不好维护，而且一旦搜索结果个数发生变化，该表达式中4都需要修改，所以考虑将4修改为使用last函数完成最后一个商品的查找，另外，查看页面源码发现发现每个商品的div元素都有一个class属性值为“goodsItem”，所以该元素自己书写XPath表达式如下“.//img[contains(@src,'bnt_cat')]”，回车确认后可以定位该元素，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image015.png">
+        <p>图 - 16</p>
+      </div>
+      <p class="number">步骤八：实现点击最后一个商品图片的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写点击最后一个商品名称的操作步骤，TestECShopBuyGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='searchForm']/input[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击最后一个商品图片</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//div[@class='goodsItem'][last()]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//输入关键字“a”
+		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+		//点击“搜索”按钮
+		driver.findElement(By.xpath(".//*[@id='searchForm']/input[2]")).click();
+#cold_bold		//点击最后一个商品图片
+#cold_bold		driver.findElement(By.xpath(".//div[@class='goodsItem'][last()]/a[1]/img")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤九：借助FirePath插件获取“加入购物车”的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，输入关键字“a”,点击“搜索”，再点击最后一个商品的图片后，使用F12打开Firebug，切换到FirePath选项卡，再点击“加入购物车”，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image016.png">
+      </div>
+      <p>（2）该自动生成的Xpath表达式是相对路径的XPath表达式，但是长度较长，不好维护，查看页面源码发现该元素是一个标签名称为“img”并且属性“src”中包含“bnt_cat”的节点，所以自己书写XPath表达式如下“.//img[contains(@src,'bnt_cat')]”，回车确认后可以定位该元素，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image017.png">
+        <p>图 - 18</p>
+      </div>
+      <p class="number">步骤十：实现点击“加入购物车”的操作步骤代码</p>
+      <p>在测试方法中，使用xpath定位书写点击“加入购物车”的操作步骤，因为这个步骤耗时较多，再等待5000毫秒，TestECShopBuyGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='searchForm']/input[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击最后一个商品图片</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//div[@class='goodsItem'][last()]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“加入购物车”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//img[contains(@src,'bnt_cat')]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5000毫秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//输入关键字“a”
+		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+		//点击“搜索”按钮
+		driver.findElement(By.xpath(".//*[@id='searchForm']/input[2]")).click();
+		//点击最后一个商品图片
+		driver.findElement(By.xpath(".//div[@class='goodsItem'][last()]/a[1]/img")).click();
+#cold_bold		//点击“加入购物车”
+#cold_bold		driver.findElement(By.xpath(".//img[contains(@src,'bnt_cat')]")).click();
+#cold_bold		//等待5000毫秒
+#cold_bold		Thread.sleep(5000);	
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十一：借助FirePath插件获取“商品数量”文本框的XPath表达式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop前台首页的网址“http://localhost/ws/ecshop/upload/index.php”来打开ECShop前台首页，输入关键字“a”,点击“搜索”，点击最后一个商品图片，再点击“加入购物车”后，使用F12打开Firebug，切换到FirePath选项卡，点击第二个功能按钮“点击查看页面中的元素”，再点击页面中“商品数量”文本框，在FirePath选项卡中生成了该元素的XPath表达式，如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image018.png">
+        <p>图 - 19</p>
+      </div>
+      <p>（2）再次按照步骤（1）操作，重新生成新的XPath表达式后，发现该元素的id属性是动态生成的，如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image019.png">
+        <p>图 - 20</p>
+      </div>
+      <p class="number">所以不能使用该id属性值的全部内容作为该XPath表达式定位条件，考虑到该id属性值中始终包含一部分“goods_number_”,只是其后的数字不断变化，所以利用contains函数自己书写XPath表达式：.//input[contains(@id,'goods_number_')]，在FirePath选项卡中输入后回车，结果显示如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY08_w_files/image020.png">
+        <p>图 - 21</p>
+      </div>
+      <p class="number">步骤十二：实现清空后重新输入新的“购买数量”的代码</p>
+      <p>在测试方法中，使用xpath定位的方式书写代码清空“商品数量”的文本框后，向其中输入新值“3”，TestECShopBuyGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='searchForm']/input[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击最后一个商品图片</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//div[@class='goodsItem'][last()]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“加入购物车”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//img[contains(@src,'bnt_cat')]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5000毫秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//清空原有购买数量</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//input[contains(@id,'goods_number_')]"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入新的购买数量“3”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//input[contains(@id,'goods_number_')]"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"3"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//输入关键字“a”
+		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+		//点击“搜索”按钮
+		driver.findElement(By.xpath(".//*[@id='searchForm']/input[2]")).click();
+		//点击最后一个商品图片
+		driver.findElement(By.xpath(".//div[@class='goodsItem'][last()]/a[1]/img")).click();
+		//点击“加入购物车”
+		driver.findElement(By.xpath(".//img[contains(@src,'bnt_cat')]")).click();
+		//等待5000毫秒
+		Thread.sleep(5000);
+#cold_bold		//清空原有购买数量
+#cold_bold		driver.findElement(By.xpath(".//input[contains(@id,'goods_number_')]")).clear();
+#cold_bold		//输入新的购买数量“3”
+#cold_bold		driver.findElement(By.xpath(".//input[contains(@id,'goods_number_')]")).sendKeys("3");	
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十三：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，TestECShopBuyGoods类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day08<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBuyGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop前台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“a”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='keyword']"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='searchForm']/input[2]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击最后一个商品图片</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//div[@class='goodsItem'][last()]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“加入购物车”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//img[contains(@src,'bnt_cat')]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5000毫秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//清空原有购买数量</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//input[contains(@id,'goods_number_')]"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入新的购买数量“3”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//input[contains(@id,'goods_number_')]"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"3"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day08;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBuyGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop前台首页
+		driver.get("http://localhost/ws/ecshop/upload/index.php");
+		//输入关键字“a”
+		driver.findElement(By.xpath(".//*[@id='keyword']")).sendKeys("a");
+		//点击“搜索”按钮
+		driver.findElement(By.xpath(".//*[@id='searchForm']/input[2]")).click();
+		//点击最后一个商品图片
+		driver.findElement(By.xpath(".//div[@class='goodsItem'][last()]/a[1]/img")).click();
+		//点击“加入购物车”
+		driver.findElement(By.xpath(".//img[contains(@src,'bnt_cat')]")).click();
+		//等待5000毫秒
+		Thread.sleep(5000);
+		//清空原有购买数量
+		driver.findElement(By.xpath(".//input[contains(@id,'goods_number_')]")).clear();
+		//输入新的购买数量“3”
+		driver.findElement(By.xpath(".//input[contains(@id,'goods_number_')]")).sendKeys("3");
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY08/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

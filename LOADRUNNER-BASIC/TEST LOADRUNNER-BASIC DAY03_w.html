@@ -1,0 +1,296 @@
+
+<!-- saved from url=(0089)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LOADRUNNER-BASIC/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST LOADRUNNER-BASIC DAY03_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST LOADRUNNER-BASIC DAY03_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST LOADRUNNER-BASIC DAY03_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST LOADRUNNER-BASIC DAY03_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST LOADRUNNER-BASIC DAY03_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LOADRUNNER-BASIC/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST LOADRUNNER-BASIC DAY03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LOADRUNNER-BASIC/DAY03/CASE/01/index.html#case1">练习5个VU的并发购票</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LOADRUNNER-BASIC/DAY03/CASE/01/index.html#case2">练习购票登录时参数化</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 练习5个VU的并发购票</h2>
+      <h3>1.1 问题</h3>
+      <p>练习并发测试。</p>
+      <h3>1.2 方案</h3>
+      <p>使用Loadrunner Virtual User Generator 录制Loadrunner自带系统的购票业务，并插入事务点和集合点，把录制好的脚本添加到控制台中，并设置集合点的策略。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要执行以下步骤：</p>
+      <p class="number">步骤一：</p>
+      <p>1、在Virtual User Genertor中新建一个脚本，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、选择HTTP/HTML协议，点击“create”按钮，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p>3、在录制对话框中输入URL地址，把代码块切换到初始化代码块点击“确认”按钮，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>4、在打开的被测系统首页面中输入用户名：jojo,密码：bean，点击“login”按钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>5、登录完成后把代码块切换到Action中，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>6、点击“Flights”按钮，如系统-6所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>7、选择出发城市和到达城市，点击“continue”按钮，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p>8、选择航班，点击“continue”按钮，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>9、点击“continue”按钮，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>10、把代码块切换到结束代码块中，如下图-10所示:</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p>11、点击“stop”停止按钮，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p>12、录制完成的代码如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p class="number">步骤二：</p>
+      <p>1、点击“File”--&gt; “save”按钮，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <p>2、保存脚本名称为buy,如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p class="number">步骤三：</p>
+      <p>1、在脚本中添加事务点，在请求之前添加开始事务，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p>2、输入事务名为buy,点击“确认”按钮，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p>3、在请求之后添加结束事务，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>4、结束事务对话框如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>5、添加的事务代码如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p>6、在开始事务之前添加集合点，如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p>7、输入集合点名称为buy,如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p>8、编译脚本，如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p class="number">步骤四：</p>
+      <p>1、把录制好的代码添加到控制台中，如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p>2、选择要添加的脚本，如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p>3、设置集合点策略，如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p>4、点击“policy”按钮，如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <p>5、选择策略的第一项，如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>6、开始执行场景，如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+      <p class="number">步骤五：</p>
+      <p>1、打开结果分析器，如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image029.png">
+        <p>图-29</p>
+      </div>
+      <p>2、查看事务的响应时间，如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image030.png">
+        <p>图-30</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 练习购票登录时参数化</h2>
+      <h3>2.1 问题</h3>
+      <p>练习参数化的使用。</p>
+      <h3>2.2 方案</h3>
+      <p>把脚本中的常量替换成一个参数。</p>
+      <h3>2.3 步骤</h3>
+      <p>要实现本案例需要完成以下步骤：</p>
+      <p class="number">步骤一：</p>
+      <p>1、在Virtual User Genertor中新建一个脚本，如下图-31所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image031.png">
+        <p>图-31</p>
+      </div>
+      <p>2、选择HTTP/HTML协议，点击“create”按钮，如下图-32所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image032.png">
+        <p>图-32</p>
+      </div>
+      <p>3、在录制对话框中输入URL地址，把代码块切换到初始化代码块点击“确认”按钮，如下图-33所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image033.png">
+        <p>图-33</p>
+      </div>
+      <p>4、在打开的被测系统首页面中输入用户名：jojo,密码：bean，点击“login”按钮，如下图-34所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image034.png">
+        <p>图-34</p>
+      </div>
+      <p>5、登录完成后把代码块切换到Action中，如下图-35所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image035.png">
+        <p>图-35</p>
+      </div>
+      <p>6、点击“Flights”按钮，如系统-36所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image036.png">
+        <p>图-36</p>
+      </div>
+      <p>7、选择出发城市和到达城市，点击“continue”按钮，如下图-37所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image037.png">
+        <p>图-37</p>
+      </div>
+      <p>8、选择航班，点击“continue”按钮，如下图-38所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image038.png">
+        <p>图-38</p>
+      </div>
+      <p>9、点击“continue”按钮，如下图-39所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image039.png">
+        <p>图-39</p>
+      </div>
+      <p>10、把代码块切换到结束代码块中，如下图-40所示:</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image040.png">
+        <p>图-40</p>
+      </div>
+      <p>11、点击“stop”停止按钮，如下图-41所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image041.png">
+        <p>图-41</p>
+      </div>
+      <p class="number">步骤二：</p>
+      <p>1、点击“File”--&gt; “save”按钮，如下图-42所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image042.png">
+        <p>图-42</p>
+      </div>
+      <p>2、保存脚本名称为buy_param,如下图-43所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image043.png">
+        <p>图-43</p>
+      </div>
+      <p class="number">步骤三：</p>
+      <p>1、把需要参数化的用户名选中，右击鼠标，选中replace with a parameter，如下图-44所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image044.png">
+        <p>图-44</p>
+      </div>
+      <p>2、把参数名称改为username,如下图-45所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image045.png">
+        <p>图-45</p>
+      </div>
+      <p>3、选中要参数化的密码，右击鼠标，选中replace with a parameter，如下图-46所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image046.png">
+        <p>图-46</p>
+      </div>
+      <p>4、把参数名称改为passwd,如下图-47所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image047.png">
+        <p>图-47</p>
+      </div>
+      <p>5、参数化的代码为下图-48所示：</p>
+      <div class="image">
+        <img src="./TEST LOADRUNNER-BASIC DAY03_w_files/image048.png">
+        <p>图-48</p>
+      </div>
+    </div>
+  
+</body></html>

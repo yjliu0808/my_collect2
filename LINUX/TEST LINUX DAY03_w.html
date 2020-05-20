@@ -1,0 +1,66 @@
+
+<!-- saved from url=(0078)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LINUX/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST LINUX DAY03_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST LINUX DAY03_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST LINUX DAY03_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST LINUX DAY03_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST LINUX DAY03_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LINUX/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST LINUX DAY03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LINUX/DAY03/CASE/01/index.html#case1">键入“cd”命令按Enter键后有什么结果</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LINUX/DAY03/CASE/01/index.html#case2">vi的三种模式之间不能直接转换的是以下哪种情况</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/LINUX/DAY03/CASE/01/index.html#case3">以下说法中错误的是哪个</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 键入“cd”命令按Enter键后有什么结果</h2>
+      <h3>1.1 问题</h3>
+      <p>键入“cd”命令按Enter键后有什么结果？</p>
+      <p>A.&nbsp;从当前目录切换到根目录	&nbsp;	B.屏幕显示当前目录</p>
+      <p>C.&nbsp;从当前目录切换到用户主目录&nbsp;	D.从当前目录切换为上一级目录</p>
+      <h3>1.2 方案</h3>
+      <p>cd命令用于切换目录，常用的有以下几种形式：&nbsp;cd&nbsp;：切换到当前用户的主目录。&nbsp;cd&nbsp;~：切换到当前用户的主目录。</p>
+      <p>cd&nbsp;~用户名：切换到指定用户的主目录。&nbsp;cd&nbsp;目录名：切换到指定目录。</p>
+      <p>默认情况下，超级用户的主目录是/root，而普通用户的主目录是/home下与该用户同名的子目录，所有本题应该选择C选项。</p>
+      <a name="case2">
+      </a>
+      <h2>2 vi的三种模式之间不能直接转换的是以下哪种情况</h2>
+      <h3>2.1 问题</h3>
+      <p>vi的三种模式之间不能直接转换的是以下哪种情况？</p>
+      <p>A.命令模式―文本编辑模式&nbsp;		B.命令模式―最后行模式</p>
+      <p>C.文本编辑模式―最后行模式&nbsp;		D.任何模式之间都能直接转换</p>
+      <h3>2.2 方案</h3>
+      <p>vi有三种工作模式：命令模式、文本编辑模式和最后行模式。</p>
+      <p>命令模式是启动vi&nbsp;后进入的工作模式。在命令模式下，从键盘上输入的任何字符都被当作编辑命令来解释，而不会在屏幕上显示。如果输入的字符是合法的vi命令，则vi完成相应的动作，否则vi会响铃警告。</p>
+      <p>文本编辑模式用于字符编辑。在命令模式下输入i（插入命令），a（附加命令）等命令后进入文本编辑模式。此时，输入的任何字符都被vi当作文件内容显示在屏幕上。按Esc键就可以从文本编辑模式返回到命令模式。</p>
+      <p>最后行模式：屏幕的底部显示“:”符号作为最后行模式的提示符，等待用户输入相关命令。命令执行完毕后，vi自动回到命令模式。</p>
+      <p>vi的三种工作模式之间的相互转换的关系如图4-1所示。参照图4-1可知，文本编辑模式与最后行模式之间不能直接转换，本题应选择C。</p>
+      <a name="case3">
+      </a>
+      <h2>3 以下说法中错误的是哪个</h2>
+      <h3>3.1 问题</h3>
+      <p>以下说法中错误的是哪个？</p>
+      <p>A.一个进程可以是一个作业&nbsp;		B.一个作业可以是一个进程</p>
+      <p>C.多个进程可以是一个作业&nbsp;		D.多个作业可以是一个进程</p>
+      <h3>3.2 方案</h3>
+      <p>作业和进程既有不同，又相互联系。进程是具有独立功能的程序的一次运行过程，每执行一个Shell命令都将启动一个进程。此时一个进程就是一个作业。而使用管道命令和重定向符时，每执行一条命令，将启动多个进行，这多个进程合并成为一个作业，因此本题答案应该选择D选项。</p>
+    </div>
+  
+</body></html>

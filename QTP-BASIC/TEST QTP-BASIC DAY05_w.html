@@ -1,0 +1,1023 @@
+
+<!-- saved from url=(0082)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY05_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY05_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY05_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST QTP-BASIC DAY05_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST QTP-BASIC DAY05_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST QTP-ADVANCED DAY05</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case1">Flight两个可复用Action登录-退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case2">Flight两个不可复用Action登录-退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case3">Flight三个Action（登录、订票、退出），复制登录和退出Action</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case4">Flight三个Action（登录、打开订单、退出），调用登录和退出Action</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case5">Flight切割三个Action（登录、订票、退出）</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case6">Flight登录-打开多次订单-退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY05/CASE/01/index.html#case7">Flight登录-订多次票-退出</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Flight两个可复用Action登录-退出</h2>
+      <h3>1.1 问题</h3>
+      <p>首先创建两个不可复用的Action，分别保存登录和退出的脚本，回放通过。</p>
+      <h3>1.2 方案</h3>
+      <p>将原先的Action1修改为不可复用的“登录”action，使用菜单“Insert-&gt;Call to New Action”在“登录”action后创建一个不可复用的“退出”action。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-登录退出-不可复用Action-演示，点击“Save”按钮：如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p class="number">步骤三：将可复用的Action1修改为不可复用的“登录“action</p>
+      <p>1、在关键字视图中，选中“Action1”，点击鼠标右键，在右键菜单中点击“Action Properties”：如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>2、将Action1的名字修改为“登录”，将“Reusable action”前的复选框取消勾选（注意：弹出的提示信息，点击“确定”即可）：如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>3、设置完成后，点击“确定“按钮即可，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p>4、在关键字视图中，原先的可复用的“Action1“被修改为不可复用的“登录“action，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p class="number">步骤四：添加一个新的不可复用action“退出“</p>
+      <p>1、选中“登录“action，点击菜单“Insert-&gt;Call to New Action“，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>2、名称（Name）中填写：退出；“Reusable Action”前的复选框取消勾选；Location处选择第一个单选钮，点击“OK”按钮，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <p>3、添加后的两个不可复用的action，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p class="number">步骤五：录制脚本</p>
+      <p>1、选中“登录”action，点击工具栏按钮“Record”，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入Agent Name：jack；输入Password：mercury；点击“OK”按钮。登录成功后，切换到“退出”action，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p>3、在“退出”action接着录制代码，步骤如下：点击菜单“File-&gt;Exit”，录制结束后，点击工具栏按钮“Stop”，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p class="number">步骤六：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>2、查看结果报告，脚本中两个action运行通过，如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 Flight两个不可复用Action登录-退出</h2>
+      <h3>2.1 问题</h3>
+      <p>在录制的过程中分别创建两个可复用的Action，分别保存登录和退出的脚本，回放通过。</p>
+      <h3>2.2 方案</h3>
+      <p>将原先的Action1修改为“登录”action，在“登录”action中录制登录脚本，登录成功之后，使用菜单“Insert-&gt;Call to New Action”在“登录”action后创建一个可复用的“退出”action，在“退出”action中接着录制退出的脚本。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-登录退出-可复用Action-演示，点击“Save”按钮：如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <p class="number">步骤三：将可复用的Action1修改为 “登录“action</p>
+      <p>1、在关键字视图中，选中“Action1”，点击鼠标右键，在右键菜单中点击“Action Properties”：如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>2、将Action1的名字修改为“登录”，点击“确定“按钮，在弹出的提示框上点击“是”即可：如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+      <p>3、在关键字视图中，原先的可复用的“Action1“被修改为可复用的“登录“action，如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image029.png">
+        <p>图-29</p>
+      </div>
+      <p class="number">步骤四：录制脚本过程中，添加可复用的action“退出”</p>
+      <p>1、选中“登录“action，点击工具栏按钮“Record”，如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image030.png">
+        <p>图-30</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入Agent Name：jack；输入Password：mercury；点击“OK”按钮；登录成功之后，点击菜单“Insert-&gt;Call to New Action”，如下图-31所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image031.png">
+        <p>图-31</p>
+      </div>
+      <p>3、在“Insert Call to New Action”窗口中将Action名称修改为“退出”，勾选“Reusable Action”复选框（默认），“Location”处选择第一个单选钮，点击“OK”按钮，如下图-32所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image032.png">
+        <p>图-32</p>
+      </div>
+      <p>4、创建好“退出”action之后，在“退出”anction中接着录制退出的脚本，步骤如下：点击菜单“File-&gt;Exit”，录制结束后，点击工具栏按钮“Stop”，如下图-33所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image033.png">
+        <p>图-33</p>
+      </div>
+      <p>5、录制结束后，在关键字视图中，创建好两个可复用的action，分别为：登录和退出，如下图-34所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image034.png">
+        <p>图-34</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-35所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image035.png">
+        <p>图-35</p>
+      </div>
+      <p>2、查看结果报告，脚本中两个action运行通过，如下图-36所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image036.png">
+        <p>图-36</p>
+      </div>
+      <a name="case3">
+      </a>
+      <h2>3 Flight三个Action（登录、订票、退出），复制登录和退出Action</h2>
+      <h3>3.1 问题</h3>
+      <p>在“订票”action中录制订票的脚本，复制问题1中“登录”和“退出”的action，回放通过。</p>
+      <h3>3.2 方案</h3>
+      <p>将原先的Action1修改为“订票”action，之后复制问题1中的“登录”action放在“订票”action前，再复制“退出”action放在“订票”action后。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-37所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image037.png">
+        <p>图-37</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-订票-复制Action-演示，点击“Save”按钮：如下图-38所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image038.png">
+        <p>图-38</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-39所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image039.png">
+        <p>图-39</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-40所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image040.png">
+        <p>图-40</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第一个单选钮，再点击“确定”按钮：如下图-41所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image041.png">
+        <p>图-41</p>
+      </div>
+      <p class="number">步骤三：将可复用的Action1修改为 “登录“action</p>
+      <p>1、在关键字视图中，选中“Action1”，点击鼠标右键，在右键菜单中点击“Action Properties”：如下图-42所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image042.png">
+        <p>图-42</p>
+      </div>
+      <p>2、将Action1的名字修改为“订票”，点击“确定“按钮，在弹出的提示框上点击“是”即可：如下图-43所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image043.png">
+        <p>图-43</p>
+      </div>
+      <p>3、在关键字视图中，原先的可复用的“Action1“被修改为可复用的“订票“action，如下图-44所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image044.png">
+        <p>图-44</p>
+      </div>
+      <p class="number">步骤四：在“订票”action中录制订票的脚本</p>
+      <p>1、准备被测系统：登录Flight，准备到订票界面，如下图-45所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image045.png">
+        <p>图-45</p>
+      </div>
+      <p>2、选中“登录”action，点击工具栏按钮“Record”，如下图-46所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image046.png">
+        <p>图-46</p>
+      </div>
+      <p>3、录制脚本，点击“Insrt Order”按钮订票成功后，点击工具栏按钮“Stop”，如下图-47所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image047.png">
+        <p>图-47</p>
+      </div>
+      <p class="number">步骤五：复制“登录”和“退出”action</p>
+      <p>1、选中“订票”action，点击菜单“Insert-&gt;Call to Copy of Action”，如下图-48所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image048.png">
+        <p>图-48</p>
+      </div>
+      <p>2、在“Select Action”窗口中点击“From test”后的浏览按钮“…”,在弹出的对话框中，选择问题1的脚本“Flight-登录退出-不可复用Action-演示”，点击“Open”按钮，如下图-49所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image049.png">
+        <p>图-49</p>
+      </div>
+      <p>3、在“Action”下拉列表中选择“登录”action，如下图-50所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image050.png">
+        <p>图-50</p>
+      </div>
+      <p>4、在“Location”位置处选择第一个单选钮：将“登录”action放在整个test最后，点击“OK”按钮，如下图-51所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image051.png">
+        <p>图-51</p>
+      </div>
+      <p>5、复制成功之后，关键字视图中的action，如下图-52所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image052.png">
+        <p>图-52</p>
+      </div>
+      <p>6、因为“登录”action中的脚本要在“订票”action之前执行，所以用鼠标拖拽“Copy of 登录”，将其拖拽到“订票”action前面，如下图-53所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image053.png">
+        <p>图-53</p>
+      </div>
+      <p>7、选中“订票”action，点击菜单“Insert-&gt;Call to Copy of Action”，如下图-54所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image054.png">
+        <p>图-54</p>
+      </div>
+      <p>8、在“Select Action”窗口中点击“From test”后的浏览按钮“…”,在弹出的对话框中，选择问题1的脚本“Flight-登录退出-不可复用Action-演示”，点击“Open”按钮，如下图-55所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image055.png">
+        <p>图-55</p>
+      </div>
+      <p>9、在“Action”下拉列表中选择“退出”action，如下图-56所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image056.png">
+        <p>图-56</p>
+      </div>
+      <p>10、在“Location”位置处选择第一个单选钮：将“退出”action放在整个test最后，点击“OK”按钮，如下图-57所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image057.png">
+        <p>图-57</p>
+      </div>
+      <p>11、复制成功之后，关键字视图中的action，如下图-58所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image058.png">
+        <p>图-58</p>
+      </div>
+      <p class="number">步骤六：运行脚本</p>
+      <p>1、因为设置的被测系统录制模式为手动录制，所以回放之前，把Flight被测试系统准备到登录界面，如下图-59所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image059.png">
+        <p>图-59</p>
+      </div>
+      <p>2、点击工具栏按钮“Run”，如下图-60所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image060.png">
+        <p>图-60</p>
+      </div>
+      <p>3、查看结果报告，脚本回放通过，如下图-61所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image061.png">
+        <p>图-61</p>
+      </div>
+      <a name="case4">
+      </a>
+      <h2>4 Flight三个Action（登录、打开订单、退出），调用登录和退出Action</h2>
+      <h3>4.1 问题</h3>
+      <p>在“打开订单”action中录制订票的脚本，调用问题2中“登录”和“退出”的action，回放通过。</p>
+      <h3>4.2 方案</h3>
+      <p>将原先的Action1修改为“打开订单”action，之后调用问题2中的“登录”action放在“打开订单”action前，再调用“退出”action放在“打开订单”action后。</p>
+      <h3>4.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-62所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image062.png">
+        <p>图-62</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-打开订单-调用Action-演示，点击“Save”按钮：如下图-63所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image063.png">
+        <p>图-63</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-64所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image064.png">
+        <p>图-64</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-65所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image065.png">
+        <p>图-65</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第一个单选钮，再点击“确定”按钮：如下图-66所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image066.png">
+        <p>图-66</p>
+      </div>
+      <p class="number">步骤三：将可复用的Action1修改为 “打开订单“action</p>
+      <p>1、在关键字视图中，选中“Action1”，点击鼠标右键，在右键菜单中点击“Action Properties”：如下图-67所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image067.png">
+        <p>图-67</p>
+      </div>
+      <p>2、将Action1的名字修改为“打开订单”，点击“确定“按钮，在弹出的提示框上点击“是”即可：如下图-68所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image068.png">
+        <p>图-68</p>
+      </div>
+      <p>3、在关键字视图中，原先的可复用的“Action1“被修改为可复用的“打开订单“action，如下图-69所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image069.png">
+        <p>图-69</p>
+      </div>
+      <p class="number">步骤四：在“打开订单”action中录制订票的脚本</p>
+      <p>1、准备被测系统：登录Flight，准备到订票界面，如下图-70所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image070.png">
+        <p>图-70</p>
+      </div>
+      <p>2、选中“打开订单”action，点击工具栏按钮“Record”，如下图-71所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image071.png">
+        <p>图-71</p>
+      </div>
+      <p>3、录制脚本，打开订单之后，点击工具栏按钮“Stop”，如下图-72所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image072.png">
+        <p>图-72</p>
+      </div>
+      <p class="number">步骤五：调用“登录”和“退出”action</p>
+      <p>1、选中“打开订单”action，点击菜单“Insert-&gt;Call to Existing Action”，如下图-73所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image073.png">
+        <p>图-73</p>
+      </div>
+      <p>2、在“Select Action”窗口中点击“From test”后的浏览按钮“…”,在弹出的对话框中，选择问题2的脚本“Flight-登录退出-可复用Action-演示”，点击“Open”按钮，如下图-74所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image074.png">
+        <p>图-74</p>
+      </div>
+      <p>3、在“Action”下拉列表中选择“登录”action，如下图-75所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image075.png">
+        <p>图-75</p>
+      </div>
+      <p>4、在“Location”位置处选择第一个单选钮：将“登录”action放在整个test最后，点击“OK”按钮，如下图-76所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image076.png">
+        <p>图-76</p>
+      </div>
+      <p>5、调用成功之后，关键字视图中的action，如下图-77所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image077.png">
+        <p>图-77</p>
+      </div>
+      <p>6、因为“登录”action中的脚本要在“打开订单”action之前执行，所以用鼠标拖拽“登录”，将其拖拽到“打开订单”action前面，如下图-78所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image078.png">
+        <p>图-78</p>
+      </div>
+      <p>7、选中“打开订单”action，点击菜单“Insert-&gt;Call to Existing Action”，如下图-79所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image079.png">
+        <p>图-79</p>
+      </div>
+      <p>8、在“Select Action”窗口中点击“From test”后的浏览按钮“…”,在弹出的对话框中，选择问题2的脚本“Flight-登录退出-可复用Action-演示”，点击“Open”按钮，如下图-80所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image080.png">
+        <p>图-80</p>
+      </div>
+      <p>9、在“Action”下拉列表中选择“退出”action，如下图-81所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image081.png">
+        <p>图-81</p>
+      </div>
+      <p>10、在“Location”位置处选择第一个单选钮：将“退出”action放在整个test最后，点击“OK”按钮，如下图-82所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image082.png">
+        <p>图-82</p>
+      </div>
+      <p>11、调用成功之后，关键字视图中的action，如下图-83所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image083.png">
+        <p>图-83</p>
+      </div>
+      <p class="number">步骤六：运行脚本</p>
+      <p>1、因为设置的被测系统录制模式为手动录制，所以回放之前，把Flight被测试系统准备到登录界面，如下图-84所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image084.png">
+        <p>图-84</p>
+      </div>
+      <p>2、点击工具栏按钮“Run”，如下图-85所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image085.png">
+        <p>图-85</p>
+      </div>
+      <p>3、查看结果报告，脚本回放通过，如下图-86所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image086.png">
+        <p>图-86</p>
+      </div>
+      <a name="case5">
+      </a>
+      <h2>5 Flight切割三个Action（登录、订票、退出）</h2>
+      <h3>5.1 问题</h3>
+      <p>录制Flight被测系统的登录、订票、退出脚本，然后按照脚本功能切割成三个Action，分别为登录、订票、退出。</p>
+      <h3>5.2 方案</h3>
+      <p>录制Flight被测系统的登录、订票、退出脚本，然后在脚本中选中正确的切割位置，点击工具栏按钮“Split Action”，将脚本一共切割成三个Action。</p>
+      <h3>5.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-87所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image087.png">
+        <p>图-87</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-订票-分割Action-演示，点击“Save”按钮：如下图-88所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image088.png">
+        <p>图-88</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-89所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image089.png">
+        <p>图-89</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-90所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image090.png">
+        <p>图-90</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-91所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image091.png">
+        <p>图-91</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-92所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image092.png">
+        <p>图-92</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-93所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image093.png">
+        <p>图-93</p>
+      </div>
+      <p class="number">步骤三：录制登录、订票、退出的脚本</p>
+      <p>1、选中“Action1”，点击工具栏按钮“Record”，如下图-94所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image094.png">
+        <p>图-94</p>
+      </div>
+      <p>2、录制脚本，步骤如下：登录Flight，输入订票信息，点击“Insert Order”按钮，订票成功后，点击菜单“File-&gt;Exit”退出被测系统，录制完成后点击工具栏按钮“Stop”，如下图-95所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image095.png">
+        <p>图-95</p>
+      </div>
+      <p>3、录制的脚本，如下图-96所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image096.png">
+        <p>图-96</p>
+      </div>
+      <p class="number">步骤四：切分脚本，分割出三个Action，分别为：登录、订票、退出</p>
+      <p>1、选中在“Login”对话框点击“OK”按钮代码行的下一行代码（原因：只有执行过该行代码，才能登录成功，进行订票），点击工具栏按钮“Split Action”，如下图-97所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image097.png">
+        <p>图-97</p>
+      </div>
+      <p>2、在弹出的确认对话框上点击“是”按钮，如下图-98所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image098.png">
+        <p>图-98</p>
+      </div>
+      <p>3、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：登录，第二个Action重命名：订票，点击“OK”按钮，如下图-99所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image099.png">
+        <p>图-99</p>
+      </div>
+      <p>4、切割完成之后，关键字视图存在两个Action，如下图-100所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image100.png">
+        <p>图-100</p>
+      </div>
+      <p>5、双击“登录”action，“登录”action中的代码，如下图-101所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image101.png">
+        <p>图-101</p>
+      </div>
+      <p>6、进入到“订票”action，选中点击“Insert Order”按钮代码行的下一行代码（原因：只有执行过该行代码，才能订票成功，接着退出被测系统），点击工具栏按钮“Split Action”，如下图-102所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image102.png">
+        <p>图-102</p>
+      </div>
+      <p>7、在弹出的确认对话框上点击“是”按钮，如下图-103所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image103.png">
+        <p>图-103</p>
+      </div>
+      <p>8、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：订票，第二个Action重命名：退出，点击“OK”按钮，如下图-104所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image104.png">
+        <p>图-104</p>
+      </div>
+      <p>9、切割完成之后，关键字视图存在三个Action，如下图-105所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image105.png">
+        <p>图-105</p>
+      </div>
+      <p>10、双击“订票”action，“订票”action中的代码，如下图-106所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image106.png">
+        <p>图-106</p>
+      </div>
+      <p>11、双击“退出”action，“退出”action中的代码，如下图-107所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image107.png">
+        <p>图-107</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”，如下图-108所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image108.png">
+        <p>图-108</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，如下图-109所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image109.png">
+        <p>图-109</p>
+      </div>
+      <a name="case6">
+      </a>
+      <h2>6 Flight登录-打开多次订单-退出</h2>
+      <h3>6.1 问题</h3>
+      <p>录制Flight被测系统的登录、打开订单、退出脚本，然后按照脚本功能切割成三个Action，分别为登录、打开订单、退出；对订单号做Action参数化。</p>
+      <h3>6.2 方案</h3>
+      <p>录制Flight被测系统的登录、打开订单、退出脚本，然后在脚本中选中正确的切割位置，点击工具栏按钮“Split Action”，将脚本一共切割成三个Action，再去给订单号做Action参数化，实现登录一次，打开订单多次，退出一次。</p>
+      <h3>6.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-110所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image110.png">
+        <p>图-110</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-打开订单-Action参数化-演示，点击“Save”按钮：如下图-111所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image111.png">
+        <p>图-111</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-112所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image112.png">
+        <p>图-112</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-113所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image113.png">
+        <p>图-113</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-114所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image114.png">
+        <p>图-114</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-115所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image115.png">
+        <p>图-115</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-116所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image116.png">
+        <p>图-116</p>
+      </div>
+      <p class="number">步骤三：录制登录、打开订单、退出的脚本</p>
+      <p>1、选中“Action1”，点击工具栏按钮“Record”，如下图-117所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image117.png">
+        <p>图-117</p>
+      </div>
+      <p>2、录制脚本，步骤如下：登录Flight，使用订单号打开订单，打开成功后，点击菜单“File-&gt;Exit”退出被测系统，录制完成后点击工具栏按钮“Stop”，如下图-118所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image118.png">
+        <p>图-118</p>
+      </div>
+      <p>3、录制的脚本，如下图-119所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image119.png">
+        <p>图-119</p>
+      </div>
+      <p class="number">步骤四：切分脚本，分割出三个Action，分别为：登录、打开订单、退出</p>
+      <p>1、选中在“Login”对话框点击“OK”按钮代码行的下一行代码（原因：只有执行过该行代码，登录成功之后，才能进行打开订单的操作），点击工具栏按钮“Split Action”，如下图-120所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image120.png">
+        <p>图-120</p>
+      </div>
+      <p>2、在弹出的确认对话框上点击“是”按钮，如下图-121所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image121.png">
+        <p>图-121</p>
+      </div>
+      <p>3、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：登录，第二个Action重命名：打开订单，点击“OK”按钮，如下图-122所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image122.png">
+        <p>图-122</p>
+      </div>
+      <p>4、切割完成之后，关键字视图存在两个Action，如下图-123所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image123.png">
+        <p>图-123</p>
+      </div>
+      <p>5、双击“登录”action，“登录”action中的代码，如下图-124所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image124.png">
+        <p>图-124</p>
+      </div>
+      <p>6、进入到“打开订单”action，选中点击“OK”按钮代码行的下一行代码（原因：只有执行过该行代码，才能打开订单，接着退出被测系统），点击工具栏按钮“Split Action”，如下图-125所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image125.png">
+        <p>图-125</p>
+      </div>
+      <p>7、在弹出的确认对话框上点击“是”按钮，如下图-126所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image126.png">
+        <p>图-126</p>
+      </div>
+      <p>8、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：打开订单，第二个Action重命名：退出，点击“OK”按钮，如下图-127所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image127.png">
+        <p>图-127</p>
+      </div>
+      <p>9、切割完成之后，关键字视图存在三个Action，如下图-128所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image128.png">
+        <p>图-128</p>
+      </div>
+      <p>10、双击“打开订单”action，“打开订单”action中的代码，如下图-129所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image129.png">
+        <p>图-129</p>
+      </div>
+      <p>11、双击“退出”action，“退出”action中的代码，如下图-130所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image130.png">
+        <p>图-130</p>
+      </div>
+      <p class="number">步骤五：对订单号做Action参数化</p>
+      <p>1、在“打开订单”action中选择输入订单号的代码行，点击录制过程中输入的订单号，点击后面的“&lt;#&gt;”按钮，如下图-131所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image131.png">
+        <p>图-131</p>
+      </div>
+      <p>2、点击第二个“Parameter”单选钮，Name中填写“订单号”，Location in DataTable处选择第二个单选钮（做的是Action的参数化），点击“OK”按钮，如下图-132所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image132.png">
+        <p>图-132</p>
+      </div>
+      <p>3、在DataTable中的“打开订单”页中，添加新的一列“订单号”，如下图-133所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image133.png">
+        <p>图-133</p>
+      </div>
+      <p>4、在“订单号”列下准备参数化的数据，如下图-134所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image134.png">
+        <p>图-134</p>
+      </div>
+      <p class="number">步骤六：修改“打开订单”action的反复次数</p>
+      <p>1、选中“打开订单”action，点击鼠标右键，在右键菜单中点击“Action Call Properties”如下图-135所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image135.png">
+        <p>图-135</p>
+      </div>
+      <p>2、在“Run”选项卡下，点击第二个单选钮（运行所有行数据），点击“确定”按钮，如下图-136所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image136.png">
+        <p>图-136</p>
+      </div>
+      <p class="number">步骤七：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”，如下图-137所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image137.png">
+        <p>图-137</p>
+      </div>
+      <p>2、查看结果报告，“登录”和“退出”action反复1次，“打开订单”action反复6次，如下图-138所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image138.png">
+        <p>图-138</p>
+      </div>
+      <a name="case7">
+      </a>
+      <h2>7 Flight登录-订多次票-退出</h2>
+      <h3>7.1 问题</h3>
+      <p>录制Flight被测系统的登录、订票、退出脚本，然后按照脚本功能切割成三个Action，分别为登录、订票、退出；对订票信息做Action参数化。</p>
+      <h3>7.2 方案</h3>
+      <p>录制Flight被测系统的登录、订票、退出脚本，然后在脚本中选中正确的切割位置，点击工具栏按钮“Split Action”，将脚本一共切割成三个Action，再去给订票信息做Action参数化，实现登录一次，订票多次，退出一次。</p>
+      <h3>7.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-139所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image139.png">
+        <p>图-139</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-订票-Action参数化-演示，点击“Save”按钮：如下图-140所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image140.png">
+        <p>图-140</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-141所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image141.png">
+        <p>图-141</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-142所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image142.png">
+        <p>图-142</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第一个单选钮，点击“确定”按钮，如下图-143所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image143.png">
+        <p>图-143</p>
+      </div>
+      <p class="number">步骤三：录制登录、订票、退出的脚本</p>
+      <p>1、选中“Action1”，点击工具栏按钮“Record”，如下图-144所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image144.png">
+        <p>图-144</p>
+      </div>
+      <p>2、录制脚本，步骤如下：登录Flight，输入订票信息，点击“Insert Order”按钮，订票成功后，点击菜单“File-&gt;Exit”退出被测系统，录制过程中，航班信息使用默认即可，直接点击“OK”按钮，如下图-145所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image145.png">
+        <p>图-145</p>
+      </div>
+      <p>3、点击“Insert Order”按钮订票成功后，一定要点击菜单“File-&gt;New Order”清空清单，为下一次订票做准备，如下图-146所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image146.png">
+        <p>图-146</p>
+      </div>
+      <p>4、录制结束后，点击工具栏按钮“Stop”，如下图-147所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image147.png">
+        <p>图-147</p>
+      </div>
+      <p>5、录制的脚本，如下图-148所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image148.png">
+        <p>图-148</p>
+      </div>
+      <p class="number">步骤四：切分脚本，分割出三个Action，分别为：登录、订票、退出</p>
+      <p>1、选中在“Login”对话框点击“OK”按钮代码行的下一行代码（原因：只有执行过该行代码，登录成功之后，才能进行订票的操作），点击工具栏按钮“Split Action”，如下图-149所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image149.png">
+        <p>图-149</p>
+      </div>
+      <p>2、在弹出的确认对话框上点击“是”按钮，如下图-150所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image150.png">
+        <p>图-150</p>
+      </div>
+      <p>3、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：登录，第二个Action重命名：订票，点击“OK”按钮，如下图-151所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image151.png">
+        <p>图-151</p>
+      </div>
+      <p>4、切割完成之后，关键字视图存在两个Action，如下图-152所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image152.png">
+        <p>图-152</p>
+      </div>
+      <p>5、双击“登录”action，“登录”action中的代码，如下图-153所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image153.png">
+        <p>图-153</p>
+      </div>
+      <p>6、进入到“订票”action，选中点击菜单“File-&gt;Exit”代码行的下一行代码（原因：只有执行过该行代码，订票操作完成，接着退出被测系统），点击工具栏按钮“Split Action”，如下图-154所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image154.png">
+        <p>图-154</p>
+      </div>
+      <p>7、在弹出的确认对话框上点击“是”按钮，如下图-155所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image155.png">
+        <p>图-155</p>
+      </div>
+      <p>8、左侧选择第一个单选钮（代表：切分出来的两个Action是互相独立的关系），在右侧给第一个Action重命名：订票，第二个Action重命名：退出，点击“OK”按钮，如下图-156所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image156.png">
+        <p>图-156</p>
+      </div>
+      <p>9、切割完成之后，关键字视图存在三个Action，如下图-157所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image157.png">
+        <p>图-157</p>
+      </div>
+      <p>10、双击“订票”action，“订票”action中的代码，如下图-158所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image158.png">
+        <p>图-158</p>
+      </div>
+      <p>11、双击“退出”action，“退出”action中的代码，如下图-159所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image159.png">
+        <p>图-159</p>
+      </div>
+      <p class="number">步骤五：对订票信息做Action参数化</p>
+      <p>1、在“订票”action中选择输入日期的代码行，点击录制过程中输入的日期，点击后面的“&lt;#&gt;”按钮，如下图-160所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image160.png">
+        <p>图-160</p>
+      </div>
+      <p>2、点击第二个“Parameter”单选钮，Name中填写“日期”，Location in DataTable处选择第二个单选钮（做的是Action的参数化），点击“OK”按钮，如下图-161所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image161.png">
+        <p>图-161</p>
+      </div>
+      <p>3、在DataTable中的“订票”页中，添加新的一列“日期”，如下图-162所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image162.png">
+        <p>图-162</p>
+      </div>
+      <p>4、新添加的代码，如下图-163所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image163.png">
+        <p>图-163</p>
+      </div>
+      <p>5、在“日期”列下准备参数化的数据（注：如果准备类似“090715”这样的日期，需要在日期前加英文下的单引号’），如下图-164所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image164.png">
+        <p>图-164</p>
+      </div>
+      <p>6、在“订票”action中选择输入起飞日期的代码行，点击录制过程中输入的起飞城市，点击后面的“&lt;#&gt;”按钮，如下图-165所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image165.png">
+        <p>图-165</p>
+      </div>
+      <p>7、点击第二个“Parameter”单选钮，Name中填写“起飞城市”，Location in DataTable处选择第二个单选钮（做的是Action的参数化），点击“OK”按钮，如下图-166所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image166.png">
+        <p>图-166</p>
+      </div>
+      <p>8、在DataTable中的“订票”页中，添加新的一列“起飞城市”，如下图-167所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image167.png">
+        <p>图-167</p>
+      </div>
+      <p>9、新添加的代码，如下图-168所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image168.png">
+        <p>图-168</p>
+      </div>
+      <p>10、在“起飞城市”列下准备参数化的数据（注：准备的数据应该是“Fly From:”下拉列表中的备选项，注意大小写），如下图-169所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image169.png">
+        <p>图-169</p>
+      </div>
+      <p>11、按照步骤五的方法参数化其他的控件（如：到达城市Fly To:，乘客姓名Name:等），参数化之后的DataTable，如下图-170所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image170.png">
+        <p>图-170</p>
+      </div>
+      <p>12、新添加的代码，如下图-171所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image171.png">
+        <p>图-171</p>
+      </div>
+      <p>13、在“到达城市”列和“乘客姓名”列下准备参数化的数据，如下图-172所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image172.png">
+        <p>图-172</p>
+      </div>
+      <p class="number">步骤六：修改“订票”action的反复次数</p>
+      <p>1、选中“订票”action，点击鼠标右键，在右键菜单中点击“Action Call Properties”如下图-173所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image173.png">
+        <p>图-173</p>
+      </div>
+      <p>2、在“Run”选项卡下，点击第二个单选钮（运行所有行数据），点击“确定”按钮，如下图-174所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image174.png">
+        <p>图-174</p>
+      </div>
+      <p class="number">步骤七：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”，如下图-175所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image175.png">
+        <p>图-175</p>
+      </div>
+      <p>2、查看结果报告，“登录”和“退出”action反复1次，“订票”action反复3次，如下图-176所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY05_w_files/image176.png">
+        <p>图-176</p>
+      </div>
+    </div>
+  
+</body></html>

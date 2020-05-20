@@ -1,0 +1,170 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST DATABASE DAY03_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY03_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY03_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST DATABASE DAY03_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST DATABASE DAY03_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST DATABASE DAY03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#case1">练习使用内连接查询</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#case2">练习使用外连接查询</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 练习使用内连接查询</h2>
+      <h3>1.1 问题</h3>
+      <p>查询emp表，dept表及salgrade表的信息，完成下列SQL语句的编写：</p>
+      <p>1）查询emp表中员工的编号，姓名，职位，及对应部门的编号，名称；</p>
+      <p>2）查询出员工的名称、部门名称；</p>
+      <p>3）列出员工的名字、薪水、薪水的级别；</p>
+      <p>4）查询出员工的名字和领导名字。</p>
+      <h3>1.2 方案</h3>
+      <p class="number">关联查询：</p>
+      <p>所需要查询的数据来源多张表，需要根据某种规则，把这些表中的数据进行连接，完成的数据。</p>
+      <p class="number">内连接：</p>
+      <p>select  别名1.列名/* , 别名2.列名/*</p>
+      <p>from 表名1 别名1，表名2 别名2</p>
+      <p>where 关联条件；</p>
+      <p class="number">内连接-等值连接：</p>
+      <p>在where中关联关系用“=”</p>
+      <p class="number">内连接-非等值连接：</p>
+      <p>两张表的关系不是等值关系，除了=之外，比如 &gt;  &lt;   &gt;=  &lt;=</p>
+      <p>from 表1 别名1，表2 别名2， …</p>
+      <p>where 非等值连接条件；</p>
+      <p class="number">内连接-自连接：</p>
+      <p>如果一张表中两个字段之间有关系，可以采用自连接</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：查询emp表中员工的编号，姓名，职位，及对应部门的编号，名称</p>
+      <p>查询emp表中员工的编号，姓名，职位，及对应部门的编号，名称，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>job<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>loc</li><li>from emp e<span class="sh_symbol">,</span>dept d</li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc
+from emp e,dept d
+where e.deptno = d.deptno;
+</pre></div></div>
+      <p class="number">步骤二：查询出员工的名称、部门名称</p>
+      <p>查询出员工的名称、部门名称，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>from emp e<span class="sh_symbol">,</span> dept d</li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.ename, d.dname
+from emp e, dept d
+where e.deptno = d.deptno; 
+</pre></div></div>
+      <p class="number">步骤三：列出员工的名字、薪水、薪水的级别</p>
+      <p>列出员工的名字、薪水、薪水的级别，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> g<span class="sh_symbol">.</span>grade</li><li>from emp e<span class="sh_symbol">,</span> salgrade g</li><li>where e<span class="sh_symbol">.</span>sal between g<span class="sh_symbol">.</span>losal and g<span class="sh_symbol">.</span>hisal<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.ename, e.sal, g.grade
+from emp e, salgrade g
+where e.sal between g.losal and g.hisal;
+</pre></div></div>
+      <p class="number">步骤四：查询出员工的名字和领导名字</p>
+      <p>查询出员工的名字和领导名字，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> m<span class="sh_symbol">.</span>ename</li><li>from emp e<span class="sh_symbol">,</span> emp m</li><li>where e<span class="sh_symbol">.</span>mgr <span class="sh_symbol">=</span> m<span class="sh_symbol">.</span>empno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.empno, e.ename, m.ename
+from emp e, emp m
+where e.mgr = m.empno;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>案例：查询emp表中员工的编号，姓名，职位，及对应部门的编号，名称</li><li><span class="sh_symbol">--</span>分析：emp表和dept表之间的关联关系：dept<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> emp<span class="sh_symbol">.</span>deptno</li><li>select e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>job<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span>d<span class="sh_symbol">.</span>loc</li><li>from emp e<span class="sh_symbol">,</span>dept d</li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span> </li><li><span class="sh_symbol">--</span>实例：查询出员工的名称、部门名称</li><li>select e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>from emp e<span class="sh_symbol">,</span> dept d</li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>实例：列出员工的名字、薪水、薪水的级别</li><li>select e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> g<span class="sh_symbol">.</span>grade</li><li>from emp e<span class="sh_symbol">,</span> salgrade g</li><li>where e<span class="sh_symbol">.</span>sal between g<span class="sh_symbol">.</span>losal and g<span class="sh_symbol">.</span>hisal<span class="sh_symbol">;</span> </li><li><span class="sh_symbol">--</span>实例：查询出员工的名字和领导名字</li><li>select e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> m<span class="sh_symbol">.</span>ename</li><li>from emp e<span class="sh_symbol">,</span> emp m</li><li>where e<span class="sh_symbol">.</span>mgr <span class="sh_symbol">=</span> m<span class="sh_symbol">.</span>empno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--案例：查询emp表中员工的编号，姓名，职位，及对应部门的编号，名称
+--分析：emp表和dept表之间的关联关系：dept.deptno = emp.deptno
+select e.empno,e.ename,e.job,d.deptno,d.dname,d.loc
+from emp e,dept d
+where e.deptno = d.deptno; 
+--实例：查询出员工的名称、部门名称
+select e.ename, d.dname
+from emp e, dept d
+where e.deptno = d.deptno;
+--实例：列出员工的名字、薪水、薪水的级别
+select e.ename, e.sal, g.grade
+from emp e, salgrade g
+where e.sal between g.losal and g.hisal; 
+--实例：查询出员工的名字和领导名字
+select e.empno, e.ename, m.ename
+from emp e, emp m
+where e.mgr = m.empno;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 练习使用外连接查询</h2>
+      <h3>2.1 问题</h3>
+      <p>查询emp表，dept表及salgrade表的信息，完成下列SQL语句的编写：</p>
+      <p>1）查询dept表中所有的数据，及emp表中对应部门下员工的编号，姓名，职业；</p>
+      <p>2）查询emp表中所有的员工的信息及与之关联的dept表的部门名称，地址；</p>
+      <p>3）查询dept表中所有部门的编号及名称，与之对应部门下的员工的编号，名字，职位，奖金，工资；</p>
+      <p>4）查询emp表中所有的数据，及dept表中对应部门的数据，和dept表中其他的数据。</p>
+      <h3>2.2 方案</h3>
+      <p class="number">外连接：</p>
+      <p>解决的是一个都不能少的问题，是对内连接的补充</p>
+      <p>具备三种形式</p>
+      <p>左外连接   left outer join on …</p>
+      <p>右外连接   right outer join on …</p>
+      <p>全外连接   full outer join on …</p>
+      <p class="number">Oracle特有语法：</p>
+      <p>要想让左边表的记录一个都不能少，在对方添加(+)</p>
+      <p class="number">标准SQL：</p>
+      <p>外连接-左外连接：左表 left outer join 右表 on 连接条件</p>
+      <p>外连接-右外连接：左表 right outer join 右表 on 连接条件</p>
+      <p>外连接-全外连接：左表 full outer join 右表 on 连接条件</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：查询dept表中所有的数据，及emp表中对应部门下员工的编号，姓名，职业</p>
+      <p>查询dept表中所有的数据，及emp表中对应部门下员工的编号，姓名，职业，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select d<span class="sh_symbol">.*,</span>e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>job</li><li>from emp e<span class="sh_symbol">,</span>dept d</li><li>where d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">deptno</span> <span class="sh_symbol">(+);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select d.*,e.empno,e.ename,e.job
+from emp e,dept d
+where d.deptno = e.deptno (+); 
+</pre></div></div>
+      <p class="number">步骤二：查询emp表中所有的员工的信息及与之关联的dept表的部门名称，地址</p>
+      <p>查询emp表中所有的员工的信息及与之关联的dept表的部门名称，地址，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.*,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>from emp e left join dept d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.*, d.dname, d.loc
+from emp e left join dept d
+on e.deptno = d.deptno; 
+</pre></div></div>
+      <p class="number">步骤三：查询dept表中所有部门的编号及名称，与之对应部门下的员工的编号，名字，职位，奖金，工资</p>
+      <p>查询dept表中所有部门的编号及名称，与之对应部门下的员工的编号，名字，职位，奖金，工资，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>job<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>comm<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>sal</li><li>from emp e right outer join dept d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select d.deptno, d.dname, e.empno, e.ename, e.job, e.comm,e.sal
+from emp e right outer join dept d
+on e.deptno = d.deptno; 
+</pre></div></div>
+      <p class="number">步骤四：查询emp表中所有的数据，及dept表中对应部门的数据，和dept表中其他的数据</p>
+      <p>查询emp表中所有的数据，及dept表中对应部门的数据，和dept表中其他的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.*,</span>d<span class="sh_symbol">.*</span></li><li>from dept d full outer join emp e</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.*,d.*
+from dept d full outer join emp e
+on e.deptno = d.deptno;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>案例：查询dept表中所有的数据，及emp表中对应部门下员工的编号，姓名，职业</li><li>select d<span class="sh_symbol">.*,</span>e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>job</li><li>from emp e<span class="sh_symbol">,</span>dept d</li><li>where d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">deptno</span> <span class="sh_symbol">(+)</span></li><li><span class="sh_symbol">--</span>案例：查询emp表中所有的员工的信息及与之关联的dept表的部门名称，地址</li><li>select e<span class="sh_symbol">.*,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>from emp e left join dept d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno </li><li><span class="sh_symbol">--</span>案例：查询dept表中所有部门的编号及名称，与之对应部门下的员工的编号，名字，职位，奖金，工资</li><li>select d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>empno<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>job<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>comm<span class="sh_symbol">,</span>e<span class="sh_symbol">.</span>sal</li><li>from emp e right outer join dept d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno</li><li><span class="sh_symbol">--</span>案例：查询emp表中所有的数据，及dept表中对应</li><li><span class="sh_symbol">--</span>部门的数据，和dept表中其他的数据</li><li>select e<span class="sh_symbol">.*,</span>d<span class="sh_symbol">.*</span></li><li>from dept d full outer join emp e</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--案例：查询dept表中所有的数据，及emp表中对应部门下员工的编号，姓名，职业
+select d.*,e.empno,e.ename,e.job
+from emp e,dept d
+where d.deptno = e.deptno (+)
+--案例：查询emp表中所有的员工的信息及与之关联的dept表的部门名称，地址
+select e.*, d.dname, d.loc
+from emp e left join dept d
+on e.deptno = d.deptno 
+--案例：查询dept表中所有部门的编号及名称，与之对应部门下的员工的编号，名字，职位，奖金，工资
+select d.deptno, d.dname, e.empno, e.ename, e.job, e.comm,e.sal
+from emp e right outer join dept d
+on e.deptno = d.deptno
+--案例：查询emp表中所有的数据，及dept表中对应
+--部门的数据，和dept表中其他的数据
+select e.*,d.*
+from dept d full outer join emp e
+on e.deptno = d.deptno;
+
+
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY03/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

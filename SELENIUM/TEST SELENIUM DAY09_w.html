@@ -1,0 +1,1111 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST SELENIUM DAY09_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY09_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY09_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST SELENIUM DAY09_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST SELENIUM DAY09_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST SELENIUM DAY09</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#case1">输出table所有单元格内的文本</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#case2">隐式等待结果元素出现</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#case3">内置显式等待结果元素出现</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#case4">自定义显式等待结果元素出现</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 输出table所有单元格内的文本</h2>
+      <h3>1.1 问题</h3>
+      <p>针对example下的table.html中书写代码输出所有行所有列的文本内容，table如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p>本案例针对静态网页table.html，书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开table页。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中打开table页，查看源码查看关心的表格为该网页中唯一的表格，所以可以考虑使用tagName定位的方式来定位table元素及其内部单元格元素，其中行的标签名称为tr，表头的标签名称为th,列的标签名称为td，借助firebug插件查看源码，针对某个单元格内的子元素，可以考虑使用xpath定位的方式。</p>
+      <p>在测试方法中书写代码：</p>
+      <p>（1）打开table页；</p>
+      <p>（2）使用tagName方式获得所有tr标签的个数，得到表格的总行数，对每行做循环；</p>
+      <p>（3）使用tagName定位到每行中的td或th的个数，得到每行的总列数；</p>
+      <p>（4）最后在行循环的内部做列循环，获得每个单元格的页面元素，使用getText方法获得每行每列的文本内容，再使用输出语句输出每个单元格内容；</p>
+      <p>再次，在tearDown方法中调用quit方法来退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，新建day09的package，在day09的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image002.png">
+        <p>图 - 2</p>
+      </div>
+      <p>输入类名Name为TestTableOpeartion1，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image003.png">
+        <p>图 - 3</p>
+      </div>
+      <p>TestTableOpeartion1.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestTableOpeartion1<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestTableOpeartion1{
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开table页的地址的步骤。</p>
+      <p>其中，首页页面的url如下：file:///E:/Selenium/example/table.html</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestTableOpeartion1.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestTableOpeartion1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开table页</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/table.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestTableOpeartion1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开table页
+#cold_bold		driver.get("file:///E:/Selenium/example/table.html");
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤三：查看源码分析该表格</p>
+      <p>（1）在该表格内任何一个单元格内点击右键，选择“使用Firebug查看元素”，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image004.png">
+        <p>图 - 4</p>
+      </div>
+      <p>（2）查看Firebug区域内的网页源码，查看table的个数，也可以在FirePath选项卡中使用XPath表达式//table，回车后查看结果，只匹配一个table节点，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image005.png">
+        <p>图 - 5</p>
+      </div>
+      <p class="number">这说明该网页内只有唯一的一个表格，那么所有的tr都属于该表格的行。</p>
+      <p class="number">步骤四：实现输出每个单元格文本的代码</p>
+      <p>因为该表格是该网页内唯一的表格，所以使用tagName定位方式定位所有标签名称为tr的元素，即可获得所有行，对获得的List使用for循环来遍历；</p>
+      <p>针对第1行和最后1行，使用tagName定位方式定位所有标签名称为th的元素，即可获得该行的所有表头单元格，对获得的List使用for循环来遍历；</p>
+      <p>针对中间行，使用tagName定位方式定位所有标签名称为td的元素，即可获得该行的所有列，从而获得单元格，对获得的List使用for循环来遍历；</p>
+      <p>注意：这里是先获得所有的th，判断th的个数如果大于0，代表为第1行或最后1行，否则为中间行。</p>
+      <p>对每个单元格，使用getText方法获得其中的文本值，最后再输出这些文本值即可实现要求。</p>
+      <p>TestTableOpeartion1.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>List<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestTableOpeartion1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开table页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/table.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出所有单元格内的文本</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> rows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"tr"</span><span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement r<span class="sh_symbol">:</span>rows<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> <span class="sh_comment">//遍历行</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> ths <span class="sh_symbol">=</span> r<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"th"</span><span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>ths<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">()</span> <span class="sh_symbol">!=</span> <span class="sh_number">0</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span><span class="sh_comment">//第1行和最后一行</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement cell<span class="sh_symbol">:</span>ths<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> <span class="sh_comment">//遍历列</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span> <span class="sh_comment">//中间行</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> tds <span class="sh_symbol">=</span> r<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"td"</span><span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement cell<span class="sh_symbol">:</span>tds<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> <span class="sh_comment">//遍历列</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+#cold_boldimport java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestTableOpeartion1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开table页
+		driver.get("file:///E:/Selenium/example/table.html");
+#cold_bold		//输出所有单元格内的文本
+#cold_bold		List&lt;WebElement&gt; rows = driver.findElements(By.tagName("tr"));
+#cold_bold		for (WebElement r:rows) { //遍历行
+#cold_bold			List&lt;WebElement&gt; ths = r.findElements(By.tagName("th"));
+#cold_bold			if (ths.size() != 0){//第1行和最后一行
+#cold_bold				for (WebElement cell:ths){ //遍历列
+#cold_bold					System.out.println(cell.getText());
+#cold_bold				}
+#cold_bold			} else { //中间行
+#cold_bold				List&lt;WebElement&gt; tds = r.findElements(By.tagName("td"));
+#cold_bold				for (WebElement cell:tds){ //遍历列
+#cold_bold					System.out.println(cell.getText());
+#cold_bold				}
+#cold_bold			}
+#cold_bold		}
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <p>运行成功后，需要到Console中查看是否输出了所有单元格的文本，结果如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image006.png">
+        <p>图 - 6</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中，TestTableOpeartion1类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>List<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestTableOpeartion1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开table页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/table.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出所有单元格内的文本</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> rows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"tr"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement r<span class="sh_symbol">:</span>rows<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> <span class="sh_comment">//遍历行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> ths <span class="sh_symbol">=</span> r<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"th"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>ths<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">()</span> <span class="sh_symbol">!=</span> <span class="sh_number">0</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span><span class="sh_comment">//第1行和最后一行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement cell<span class="sh_symbol">:</span>ths<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> <span class="sh_comment">//遍历列</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span> <span class="sh_comment">//中间行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;</span> tds <span class="sh_symbol">=</span> r<span class="sh_symbol">.</span><span class="sh_function">findElements</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">tagName</span><span class="sh_symbol">(</span><span class="sh_string">"td"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>WebElement cell<span class="sh_symbol">:</span>tds<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> <span class="sh_comment">//遍历列</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestTableOpeartion1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开table页
+		driver.get("file:///E:/Selenium/example/table.html");
+		//输出所有单元格内的文本
+		List&lt;WebElement&gt; rows = driver.findElements(By.tagName("tr"));
+		for (WebElement r:rows) { //遍历行
+			List&lt;WebElement&gt; ths = r.findElements(By.tagName("th"));
+			if (ths.size() != 0){//第1行和最后一行
+				for (WebElement cell:ths){ //遍历列
+					System.out.println(cell.getText());
+				}
+			} else { //中间行
+				List&lt;WebElement&gt; tds = r.findElements(By.tagName("td"));
+				for (WebElement cell:tds){ //遍历列
+					System.out.println(cell.getText());
+				}
+			}
+		}
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 隐式等待结果元素出现</h2>
+      <h3>2.1 问题</h3>
+      <p>在Example中的Wait.html中，做如下操作：</p>
+      <p>（1）点击“搜索”；</p>
+      <p>（2）使用隐式等待等待搜索结果元素出现；</p>
+      <p>（3）输出结果文本；</p>
+      <p>（4）关闭浏览器。</p>
+      <p>提示信息如下图 - 7 所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image007.png">
+        <p>图 - 7</p>
+      </div>
+      <h3>2.2 方案</h3>
+      <p>本案例针对Wait.html页面中，针对所操作到的页面元素，需要先获得其定位方式，再自己书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开Wait.html页面。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中，设置隐式等待时间（也就是定位元素的超时时间）为30秒，打开Wait.html页面，对关心的页面元素“搜索”，借助Firebug查看页面源代码，确定定位方式，书写代码点击该元素后，利用WebDriver提供的隐式等待等待“结果”出现后，再借助Firebug查看页面源代码，确定定位方式，书写代码获得并输出其文本。</p>
+      <p>在tearDown方法中退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，在day09的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image008.png">
+        <p>图 - 8</p>
+      </div>
+      <p>输入类名Name为TestWait1，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image009.png">
+        <p>图 - 9</p>
+      </div>
+      <p>TestWait1.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestWait1 {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开Wait.html页面的url的步骤。</p>
+      <p>其中，前台登录页面的url如下：file:///E:/Selenium/example/Wait.html</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestWait1.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait1{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开Wait.html页面
+#cold_bold		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤三：实现设置隐式等待时间的代码</p>
+      <p>TestWait1类中，在setUp方法的启动浏览器的步骤后，书写隐式等待30秒的步骤，语法如下：driver.manage().timeouts().implicitlyWait(时间值, 时间单位);</p>
+      <p>此业务中代码具体实现为以下形式：</p>
+      <p>driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);</p>
+      <p>TestWait1.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//设置隐式等待超时时间为30秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">manage</span><span class="sh_symbol">().</span><span class="sh_function">timeouts</span><span class="sh_symbol">().</span><span class="sh_function">implicitlyWait</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span> TimeUnit<span class="sh_symbol">.</span>SECONDS<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+#cold_boldimport java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+#cold_bold		//设置隐式等待超时时间为30秒
+#cold_bold		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+	}
+}
+
+</pre></div></div>
+      <p class="number">步骤四：实现测试方法中点击”搜索”的步骤代码</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在“搜索”元素上点击右键，选择“使用Firebug查看元素”，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image010.png">
+        <p>图 - 10</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image011.png">
+        <p>图 - 11</p>
+      </div>
+      <p>书写代码实现点击“搜索”的步骤，TestWait1.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//设置隐式等待超时时间为30秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">manage</span><span class="sh_symbol">().</span><span class="sh_function">timeouts</span><span class="sh_symbol">().</span><span class="sh_function">implicitlyWait</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span> TimeUnit<span class="sh_symbol">.</span>SECONDS<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+		//设置隐式等待超时时间为30秒
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold		//点击“搜索”
+#cold_bold		driver.findElement(By.id("b")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：实现输出结果的步骤代码</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在点击“搜索”后，等待几秒，出现的“结果”元素上点击右键，选择“使用Firebug查看元素”，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image012.png">
+        <p>图 - 12</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image013.png">
+        <p>图 - 13</p>
+      </div>
+      <p>在测试方法中，点击“搜索”的步骤后，书写使用id定位“结果”页面元素，再使用getText方法获得并输出其文本的步骤，TestWait1.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//设置隐式等待超时时间为30秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">manage</span><span class="sh_symbol">().</span><span class="sh_function">timeouts</span><span class="sh_symbol">().</span><span class="sh_function">implicitlyWait</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span> TimeUnit<span class="sh_symbol">.</span>SECONDS<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">)).</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+		//设置隐式等待超时时间为30秒
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+#cold_bold		//输出结果
+#cold_bold		System.out.println(driver.findElement(By.id("result")).getText());
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <p>运行成功后，需要到Console中查看是否输出了搜索结果的文本，结果如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image014.png">
+        <p>图 - 14</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，TestWait1类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//设置隐式等待超时时间为30秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">manage</span><span class="sh_symbol">().</span><span class="sh_function">timeouts</span><span class="sh_symbol">().</span><span class="sh_function">implicitlyWait</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span> TimeUnit<span class="sh_symbol">.</span>SECONDS<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">)).</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait1{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+		//设置隐式等待超时时间为30秒
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+		//输出结果
+		System.out.println(driver.findElement(By.id("result")).getText());
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 内置显式等待结果元素出现</h2>
+      <h3>3.1 问题</h3>
+      <p>在Example中的Wait.html中，做如下操作：</p>
+      <p>（1）点击“搜索”；</p>
+      <p>（2）使用内置显式等待结果元素出现；</p>
+      <p>（3）输出结果文本；</p>
+      <p>（4）关闭浏览器。</p>
+      <p>提示信息如下图 - 15所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image015.png">
+        <p>图 - 15</p>
+      </div>
+      <h3>3.2 方案</h3>
+      <p>本案例针对Wait.html页面中，针对所操作到的页面元素，需要先获得其定位方式，再自己书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开Wait.html页面。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中，打开Wait.html页面，对关心的页面元素“搜索”，借助Firebug查看页面源代码，确定定位方式，书写代码点击该“搜索”元素。</p>
+      <p>再借助Firebug查看页面源代码，确定“结果”元素的定位方式，创建WebDriverWait实例，并且设置等待最长时间和固定检查条件的等待间隔时间，对WebDriverWait调用until方法，传入ExpectedCondition接口的一个内置实现方法visibilityOfElementLocated的返回值，该方法可以判断当元素可以被定位到时，自动停止等待，因此实现利用WebDriver提供的内置显式等待等待“结果”元素出现后返回该元素，书写代码使用getText方法获得其文本后输出。</p>
+      <p>在tearDown方法中退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，在day09的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image016.png">
+        <p>图 - 16</p>
+      </div>
+      <p>输入类名Name为TestWait2，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image017.png">
+        <p>图 - 17</p>
+      </div>
+      <p>TestWait2.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestWait2 {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开Wait.html页面的url的步骤。</p>
+      <p>其中，前台登录页面的url如下：file:///E:/Selenium/example/Wait.html</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestWait2.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait2{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开Wait.html页面
+#cold_bold		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤三：实现测试方法中点击”搜索”的步骤代码</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在“搜索”元素上点击右键，选择“使用Firebug查看元素”，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image018.png">
+        <p>图 - 18</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image019.png">
+        <p>图 - 19</p>
+      </div>
+      <p>书写代码实现点击“搜索”的步骤，TestWait2.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait2{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold		//点击“搜索”
+#cold_bold		driver.findElement(By.id("b")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：借助Firebug调查“结果”文本元素的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在点击“搜索”后，等待几秒，出现的“结果”元素上点击右键，选择“使用Firebug查看元素”，如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image020.png">
+        <p>图 - 20</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image021.png">
+        <p>图 - 21</p>
+      </div>
+      <p class="number">步骤五：实现设置显式等待时间并获得“结果”元素的代码</p>
+      <p>TestWait2类中，在测试方法中点击“搜索”的步骤后，书写显式等待的代码，包括：</p>
+      <p>（1）创建WebDriverWait对象的实例，最长等待时间为30秒，每500毫秒检查一次，代码格式为：WebDriverWait 等待对象实例= new WebDriverWait(driver, 超时时间,等待间隔)，具体此处代码为：WebDriverWait wdw = new WebDriverWait(driver, 30,500);</p>
+      <p>（2）调用WebDriverWait 对象的until方法实现预期结果的等待，参数为ExpectedCondition接口的默认实现方法visibilityOfElementLocated来完成预期结果元素出现的等待，语法如下：等待对象实例.until(ExpectedConditions.条件方法(条件参数);该until方法返回了等待到的页面元素，所以可以接受其返回值获得“结果”元素，因此具体此处代码为：WebElement r = wdw.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));</p>
+      <p>TestWait2.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedConditions<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span>ExpectedConditions<span class="sh_symbol">.</span><span class="sh_function">visibilityOfElementLocated</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+#cold_boldimport org.openqa.selenium.support.ui.ExpectedConditions;
+#cold_boldimport org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait2{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+#cold_bold		//显示等待“结果”元素出现
+#cold_bold		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+#cold_bold		WebElement r = wdw.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：实现输出结果的步骤代码</p>
+      <p>在测试方法中，点击“搜索”的步骤后，书写使用id定位“结果”页面元素，再使用getText方法获得并输出其文本的步骤，TestWait2.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedConditions<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span>ExpectedConditions<span class="sh_symbol">.</span><span class="sh_function">visibilityOfElementLocated</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">)));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait2{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+		//显示等待“结果”元素出现
+		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+		WebElement r = wdw.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+#cold_bold		//输出结果
+#cold_bold		System.out.println(r.getText());;		
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <p>运行成功后，需要到Console中查看是否输出了搜索结果的文本，结果如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image022.png">
+        <p>图 - 22</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例中，TestWait2类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedConditions<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span>ExpectedConditions<span class="sh_symbol">.</span><span class="sh_function">visibilityOfElementLocated</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait2{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+		//显示等待“结果”元素出现
+		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+		WebElement r = wdw.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+		//输出结果
+		System.out.println(r.getText());
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 自定义显式等待结果元素出现</h2>
+      <h3>4.1 问题</h3>
+      <p>在Example中的Wait.html中，做如下操作：</p>
+      <p>（1）点击“搜索”；</p>
+      <p>（2）使用自定义显式等待结果元素出现；</p>
+      <p>（3）输出结果文本；</p>
+      <p>（4）关闭浏览器。</p>
+      <p>提示信息如下图 - 23所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image023.png">
+        <p>图 - 23</p>
+      </div>
+      <h3>4.2 方案</h3>
+      <p>本案例针对Wait.html页面中，针对所操作到的页面元素，需要先获得其定位方式，再自己书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开Wait.html页面。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中，打开Wait.html页面，对关心的页面元素“搜索”，借助Firebug查看页面源代码，确定定位方式，书写代码点击该“搜索”元素。</p>
+      <p>再借助Firebug查看页面源代码，确定“结果”元素的定位方式，创建WebDriverWait实例，并且设置等待最长时间和固定检查条件的等待间隔时间，对WebDriverWait调用until方法，传入重写ExpectedCondition中等待条件的方法apply的返回值，利用WebDriver提供的显式等待等待“结果”元素出现后返回该元素，书写代码获得并输出其文本。</p>
+      <p>在tearDown方法中退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，在day09的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image024.png">
+        <p>图 - 24</p>
+      </div>
+      <p>输入类名Name为TestWait3，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image025.png">
+        <p>图 - 25</p>
+      </div>
+      <p>TestWait3.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestWait3 {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开Wait.html页面的url的步骤。</p>
+      <p>其中，前台登录页面的url如下：file:///E:/Selenium/example/Wait.html</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestWait3.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait3{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开Wait.html页面
+#cold_bold		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤三：实现测试方法中点击”搜索”的步骤代码</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在“搜索”元素上点击右键，选择“使用Firebug查看元素”，如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image026.png">
+        <p>图 - 26</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image027.png">
+        <p>图 - 27</p>
+      </div>
+      <p>书写代码实现点击“搜索”的步骤，TestWait3.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestWait3{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+#cold_bold		//点击“搜索”
+#cold_bold		driver.findElement(By.id("b")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：借助Firebug调查“结果”文本元素的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，打开Wait.html页面，在点击“搜索”后，等待几秒，出现的“结果”元素上点击右键，选择“使用Firebug查看元素”，如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image028.png">
+        <p>图 - 28</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为id定位，复制id属性值，如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image029.png">
+        <p>图 - 29</p>
+      </div>
+      <p class="number">步骤五：实现设置自定义显式等待时间以及获得“结果”元素的代码</p>
+      <p>TestWait3类中，在测试方法中点击“搜索”的步骤后，书写显式等待的代码，包括：</p>
+      <p>（1）创建WebDriverWait对象的实例，最长等待时间为30秒，每500毫秒检查一次，代码格式为：WebDriverWait 等待对象实例= new WebDriverWait(driver, 超时时间,等待间隔)，具体此处代码为：WebDriverWait wdw = new WebDriverWait(driver, 30,500);</p>
+      <p>（2）调用WebDriverWait 对象的until方法实现预期结果的等待，参数为ExpectedCondition接口中重写ExpectedCondition中等待条件的方法apply，该自定义的apply方法提供等待的条件是id属性为“result”的元素出现，并且该方法返回等待到的页面元素，TestWait3.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedCondition<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> ExpectedCondition<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;()</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> WebElement <span class="sh_function">apply</span><span class="sh_symbol">(</span>WebDriver d<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> d<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+#cold_boldimport org.openqa.selenium.support.ui.ExpectedCondition;
+#cold_boldimport org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait3 {
+
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+#cold_bold		//显示等待“结果”元素出现
+#cold_bold		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+#cold_bold		WebElement r = wdw.until(new ExpectedCondition&lt;WebElement&gt;(){
+#cold_bold			@Override
+#cold_bold			public WebElement apply(WebDriver d){
+#cold_bold				return d.findElement(By.id("result"));
+#cold_bold			}
+#cold_bold		}
+#cold_bold		);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：实现输出结果的步骤代码</p>
+      <p>在测试方法中，点击“搜索”的步骤后，书写使用id定位“结果”页面元素，再使用getText方法获得并输出其文本的步骤，TestWait3.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedCondition<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> ExpectedCondition<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> WebElement <span class="sh_function">apply</span><span class="sh_symbol">(</span>WebDriver d<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> d<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait3 {
+
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+		//显示等待“结果”元素出现
+		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+		WebElement r = wdw.until(new ExpectedCondition&lt;WebElement&gt;(){
+			@Override
+			public WebElement apply(WebDriver d){
+				return d.findElement(By.id("result"));
+			}
+		}
+		);
+#cold_bold		//输出结果
+#cold_bold		System.out.println(r.getText());
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <p>运行成功后，需要到Console中查看是否输出了搜索结果的文本，结果如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY09_w_files/image030.png">
+        <p>图 - 30</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>本案例中，TestWait3类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day09<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebElement<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>ExpectedCondition<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>WebDriverWait<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestWait3 <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开Wait.html页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"file:///E:/Selenium/example/Wait.html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//显示等待“结果”元素出现</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebDriverWait wdw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">WebDriverWait</span><span class="sh_symbol">(</span>driver<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebElement r <span class="sh_symbol">=</span> wdw<span class="sh_symbol">.</span><span class="sh_function">until</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> ExpectedCondition<span class="sh_symbol">&lt;</span>WebElement<span class="sh_symbol">&gt;()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> WebElement <span class="sh_function">apply</span><span class="sh_symbol">(</span>WebDriver d<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> d<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">id</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出结果</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day09;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class TestWait3 {
+
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开Wait.html页面
+		driver.get("file:///E:/Selenium/example/Wait.html");
+		//点击“搜索”
+		driver.findElement(By.id("b")).click();
+		//显示等待“结果”元素出现
+		WebDriverWait wdw = new WebDriverWait(driver,30,500);
+		WebElement r = wdw.until(new ExpectedCondition&lt;WebElement&gt;(){
+			@Override
+			public WebElement apply(WebDriver d){
+				return d.findElement(By.id("result"));
+			}
+		}
+		);
+		//输出结果
+		System.out.println(r.getText());
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY09/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

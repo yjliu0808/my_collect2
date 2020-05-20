@@ -1,0 +1,214 @@
+
+<!-- saved from url=(0082)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY03_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY03_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY03_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST QTP-BASIC DAY03_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST QTP-BASIC DAY03_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST QTPB-ASIC DAY03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY03/CASE/01/index.html#case1">两位数加法器检查计算结果</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY03/CASE/01/index.html#case2">检查Flight订票成功</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 两位数加法器检查计算结果</h2>
+      <h3>1.1 问题</h3>
+      <p>对两位数加法器的计算结果做标准检查点。</p>
+      <h3>1.2 方案</h3>
+      <p>录制两位数加法器计算过程的代码，然后选择点击“计算”按钮代码行，将被测系统显示在“Active Screen”中，对“结果”文本框的计算结果做标准检查点。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;Save As”：如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：两位数加法器-标准检查点-演示，点击“Save”按钮：如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>4、点击“…”按钮，找到“两位数加法器.exe”被测系统，点击“OK”按钮：如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>2、录制脚本，步骤如下：第一个数”输入90，“第二个数”输入50，点击“计算”，点击“重置”，再点击“退出”；录制结束后，点击工具栏按钮“Stop”，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>3、录制后的代码如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p class="number">步骤四：对结算结果添加标准检查点</p>
+      <p>1、选中点击“计算”按钮代码行，切换到“Active Screen”，将“结果”文本框显示出，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p>2、在“结果”文本框上点击鼠标右键，在右键菜单中点击“Insert Standard Checkpoint”，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>3、确认抓取的对象，点击“OK”按钮，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <p>4、勾选保存计算结果的“text”属性，在Constant文本框中填写预期结果140（原因：90+50=140），在，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p>5、检查点超时时间（Checkpoint timeout）使用默认10s即可，检查点插入位置（Insert statement）选择第二个单选钮：插入到当前步骤之后（当前步骤：点击“计算”按钮；只有点击了“计算”按钮，才会出现计算结果），点击“OK”按钮，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p>6、新生成的代码，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>2、查看结果报告，检查点通过，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 检查Flight订票成功</h2>
+      <h3>2.1 问题</h3>
+      <p>使用Flight进行订票操作，通过对进度条的检查，验证是否订票成功。</p>
+      <h3>2.2 方案</h3>
+      <p>使用Flight进行订票，点击“Insert Order”按钮之后，对进度条添加标准检查点，验证text的属性的属性值是否为Insert Done…。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;Save As”：如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p class="number">步骤二：录制脚本，添加标准检查点</p>
+      <p>1、点击工具栏按钮“Record”：如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入用户名“Agent Name”：jack，密码“Passwrod”：mercury，点击“OK”按钮；登录成功后，输入订票信息，点击“Insert Order”按钮进行订票，订票成功后，点击菜单“Insert-&gt;Checkpoint-&gt;Standard Checkpoint”，如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p>3、使用小手图标/，抓取进度条对象，如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <p>4、确认抓取的对象，点击“OK”按钮，如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>5、勾选“text”属性（注意：其他不需要检查的属性，可以勾选掉），在“Constant”文本框填写预期结果：Insert Done…，检查点超时时间（Checkpoint timeout）使用10s默认即可，点击“OK”按钮，如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+      <p>6、检查点插入完成，继续录制代码，点击菜单“File-&gt;Exit”退出被测系统，录制结束，点击工具栏按钮“Stop”，如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image029.png">
+        <p>图-29</p>
+      </div>
+      <p>7、录制后的代码（注意：添加的检查点代码），如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image030.png">
+        <p>图-30</p>
+      </div>
+      <p class="number">步骤三：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-61所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image031.png">
+        <p>图-31</p>
+      </div>
+      <p>2、查看结果报告，检查点通过，如下图-32所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY03_w_files/image032.png">
+        <p>图-32</p>
+      </div>
+    </div>
+  
+</body></html>

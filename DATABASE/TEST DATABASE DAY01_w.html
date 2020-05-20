@@ -1,0 +1,421 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST DATABASE DAY01_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY01_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY01_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST DATABASE DAY01_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST DATABASE DAY01_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST DATABASE DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case1">练习使用SQL Developer</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case2">练习创建表空间</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case3">练习建表语句</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case4">练习使用insert语句</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case5">练习使用update语句</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#case6">练习使用delete语句</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 练习使用SQL Developer</h2>
+      <h3>1.1 问题</h3>
+      <p>安装并练习使用SQL Developer操作Oracle数据库。</p>
+      <h3>1.2 方案</h3>
+      <p>我们可以使用SQL Plus来操作Oracle数据库，但是会发现使用起来及其的不方便，在实际的企业开发，一般使用SQL Developer来操作数据库。</p>
+      <p>SQL Developer是Oracle公司出品的免费图形化开发工具，相对SQL Plus来说，图形化的界面更易于操作，输出效果美观。</p>
+      <p>首先我们需要下载SQL Developer，然后直接点击“sqldeveloper.exe”就可以直接使用。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：安装SQL Developer</p>
+      <p>解压sqldeveloper-1.5.4.59.40.zip压缩包即可，如图-1所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p class="number">步骤二：双击“sqldeveloper.exe”进入SQL Developer主界面</p>
+      <p>第1次使用SQL Developer是没有连接到Oralce数据库的，如图-2所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤三：配置连接Oralce数据的参数</p>
+      <p>点击新建连接，然后配置Oracle数据库的相关参数，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p class="number">步骤四：测试连接是否正确，点击测试按钮</p>
+      <p>测试连接是否正确，点击测试按钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p class="number">步骤五：点击连接按钮</p>
+      <p>点击连接，进入SQL Develop操作sql界面，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p class="number">步骤六：编写SQL语句，操作SQL Develop</p>
+      <p>查询emp表中所有数据，如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST DATABASE DAY01_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 练习创建表空间</h2>
+      <h3>2.1 问题</h3>
+      <p>创建表空间及对应的数据文件：</p>
+      <p>1）创建一个简单的表空间；</p>
+      <p>2）指定文件自动扩展的表空间；</p>
+      <p>3）指定文件增长幅度的表空间；</p>
+      <p>4）指定文件最大尺寸的表空间；</p>
+      <p>5）指定文件最大尺寸不受限制的表空间。</p>
+      <h3>2.2 方案</h3>
+      <p>创建表空间的基本格式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create   tablespace表空间名称</li><li>datafile‘数据文件路径<span class="sh_symbol">\</span>数据文件名称</li><li>size   3M</li><li>autoextend  on</li><li>next   1M</li><li>maxsize   100M</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create   tablespace表空间名称
+datafile‘数据文件路径\数据文件名称
+size   3M
+autoextend  on
+next   1M
+maxsize   100M
+</pre></div></div>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建一个简单的表空间</p>
+      <p>创建一个简单的表空间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create  tablespace userspace1</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace1.DBF'</span> </li><li>SIZE 5M </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create  tablespace userspace1
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace1.DBF' 
+SIZE 5M 
+</pre></div></div>
+      <p class="number">步骤二：指定文件自动扩展的表空间</p>
+      <p>指定文件自动扩展的表空间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>createtablespace userspace2</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace2.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">createtablespace userspace2
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace2.DBF' 
+SIZE 3M
+autoextend on 
+</pre></div></div>
+      <p class="number">步骤三：指定文件增长幅度的表空间</p>
+      <p>指定文件增长幅度的表空间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>createtablespace userspace3</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace3.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">createtablespace userspace3
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace3.DBF' 
+SIZE 3M
+autoextend on 
+next 1M 
+</pre></div></div>
+      <p class="number">步骤四：指定文件最大尺寸的表空间</p>
+      <p>指定文件最大尺寸的表空间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>createtablespace userspace4</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace4.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M</li><li>maxsize 100M </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">createtablespace userspace4
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace4.DBF' 
+SIZE 3M
+autoextend on 
+next 1M
+maxsize 100M 
+</pre></div></div>
+      <p class="number">步骤五：指定文件最大尺寸不受限制的表空间</p>
+      <p>指定文件最大尺寸不受限制的表空间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>createtablespace userspace5</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace5.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M</li><li>maxsize unlimited </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">createtablespace userspace5
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace5.DBF' 
+SIZE 3M
+autoextend on 
+next 1M
+maxsize unlimited 
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>实例<span class="sh_number">1</span>、创建一个简单的表空间</li><li>create  tablespace userspace1</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace1.DBF'</span> </li><li>SIZE 5M </li><li><span class="sh_symbol">--</span>实例<span class="sh_number">2</span>、指定文件自动扩展</li><li>createtablespace userspace2</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace2.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on   </li><li><span class="sh_symbol">--</span>实例<span class="sh_number">3</span>、指定文件增长幅度</li><li>createtablespace userspace3</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace3.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M</li><li><span class="sh_symbol">--</span>实例<span class="sh_number">4</span>、指定文件最大尺寸</li><li>create  tablespace userspace4</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace4.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M</li><li>maxsize 100M</li><li><span class="sh_symbol">--</span>实例<span class="sh_number">5</span>、指定文件最大尺寸不受限制</li><li>createtablespace userspace5</li><li>datafile <span class="sh_string">'C:</span><span class="sh_specialchar">\o</span><span class="sh_string">racle</span><span class="sh_specialchar">\p</span><span class="sh_string">roduct</span><span class="sh_specialchar">\1</span><span class="sh_string">0.1.0</span><span class="sh_specialchar">\o</span><span class="sh_string">radata</span><span class="sh_specialchar">\c</span><span class="sh_string">eshi</span><span class="sh_specialchar">\u</span><span class="sh_string">serspace5.DBF'</span> </li><li>SIZE 3M</li><li>autoextend on </li><li>next 1M</li><li>maxsize unlimited </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--实例1、创建一个简单的表空间
+create  tablespace userspace1
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace1.DBF' 
+SIZE 5M 
+--实例2、指定文件自动扩展
+createtablespace userspace2
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace2.DBF' 
+SIZE 3M
+autoextend on   
+--实例3、指定文件增长幅度
+createtablespace userspace3
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace3.DBF' 
+SIZE 3M
+autoextend on 
+next 1M
+--实例4、指定文件最大尺寸
+create  tablespace userspace4
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace4.DBF' 
+SIZE 3M
+autoextend on 
+next 1M
+maxsize 100M
+--实例5、指定文件最大尺寸不受限制
+createtablespace userspace5
+datafile 'C:\oracle\product\10.1.0\oradata\ceshi\userspace5.DBF' 
+SIZE 3M
+autoextend on 
+next 1M
+maxsize unlimited 
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 练习建表语句</h2>
+      <h3>3.1 问题</h3>
+      <p>创建雇员表EMP，部门表DEPT，工资等级表SALGRADE，图书表book，顾客表customer。</p>
+      <h3>3.2 方案</h3>
+      <p>创建表的SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create   table   方案名<span class="sh_symbol">.</span>表名</li><li><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;列名<span class="sh_number">1</span>  数据类型指定约束<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;列名<span class="sh_number">2</span>  数据类型指定约束<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;……</li><li><span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create   table   方案名.表名
+(
+	列名1  数据类型指定约束,
+	列名2  数据类型指定约束,
+	……
+)
+</pre></div></div>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建雇员表</p>
+      <p>创建雇员表，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table EMP</li><li><span class="sh_symbol">(</span></li><li>EMPNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> PRIMARY KEY<span class="sh_symbol">,</span></li><li>ENAME <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>JOB <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">9</span><span class="sh_symbol">),</span></li><li>MGR <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>HIREDATE DATE<span class="sh_symbol">,</span></li><li>SAL <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>COMM <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>DEPTNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table EMP
+(
+EMPNO NUMBER(4) PRIMARY KEY,
+ENAME VARCHAR2(10) not null,
+JOB VARCHAR2(9),
+MGR NUMBER(4),
+HIREDATE DATE,
+SAL NUMBER(7,2),
+COMM NUMBER(7,2),
+DEPTNO NUMBER(4)
+);
+</pre></div></div>
+      <p class="number">步骤二：创建部门表</p>
+      <p>创建部门表，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE TABLE <span class="sh_function">DEPT</span> <span class="sh_symbol">(</span></li><li>DEPTNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>DNAME <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">14</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> unique<span class="sh_symbol">,</span></li><li>LOC <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">13</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE DEPT (
+DEPTNO NUMBER(4) primary key,
+DNAME VARCHAR2(14) not null unique,
+LOC VARCHAR2(13)
+);
+</pre></div></div>
+      <p class="number">步骤三：创建工资等级表</p>
+      <p>创建工资等级表，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE TABLE <span class="sh_function">SALGRADE</span><span class="sh_symbol">(</span></li><li>GRADE INT<span class="sh_symbol">,</span></li><li>LOSAL INT<span class="sh_symbol">,</span></li><li>HISAL INT</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE SALGRADE(
+GRADE INT,
+LOSAL INT,
+HISAL INT
+);
+</pre></div></div>
+      <p class="number">步骤四：创建图书表</p>
+      <p>创建工资等级表，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">book</span><span class="sh_symbol">(</span></li><li>cid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key <span class="sh_symbol">,</span></li><li>name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>pub <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>author <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>type <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>numinput <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">),</span></li><li>numstore <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table book(
+cid number(4) primary key ,
+name varchar2(50),
+pub varchar2(50),
+author varchar2(50),
+type varchar2(20),
+numinput number(6),
+numstore number(6)
+)
+</pre></div></div>
+      <p class="number">步骤五：创建顾客表</p>
+      <p>创建工资等级表，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table customer</li><li><span class="sh_symbol">(</span></li><li>cid <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">8</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> primary key<span class="sh_symbol">,</span></li><li>cname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li><span class="sh_function">addressvarchar</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li><span class="sh_function">phonevarchar</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li><span class="sh_function">emailvarchar</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table customer
+(
+cid char(8) not null primary key,
+cname varchar2(20) not null,
+sex char(2),
+addressvarchar(50),
+phonevarchar(20),
+emailvarchar(50)
+)
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table EMP</li><li><span class="sh_symbol">(</span></li><li>EMPNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> PRIMARY KEY<span class="sh_symbol">,</span></li><li>ENAME <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>JOB <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">9</span><span class="sh_symbol">),</span></li><li>MGR <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>HIREDATE DATE<span class="sh_symbol">,</span></li><li>SAL <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>COMM <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>DEPTNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>CREATE TABLE <span class="sh_function">DEPT</span><span class="sh_symbol">(</span></li><li>DEPTNO <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>DNAME <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">14</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> unique<span class="sh_symbol">,</span></li><li>LOC <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">13</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>CREATE TABLE <span class="sh_function">SALGRADE</span><span class="sh_symbol">(</span></li><li> GRADE INT<span class="sh_symbol">,</span></li><li> LOSAL INT<span class="sh_symbol">,</span></li><li> HISAL INT</li><li><span class="sh_symbol">)</span></li><li>create table <span class="sh_function">book</span><span class="sh_symbol">(</span></li><li>cid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key <span class="sh_symbol">,</span></li><li>name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>pub <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>author <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li>type <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>numinput <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">),</span></li><li>numstore <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">)</span></li><li>create table customer</li><li><span class="sh_symbol">(</span></li><li>cid <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">8</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> primary key<span class="sh_symbol">,</span></li><li>cname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li><span class="sh_function">addressvarchar</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li><span class="sh_function">phonevarchar</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li><span class="sh_function">emailvarchar</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table EMP
+(
+EMPNO NUMBER(4) PRIMARY KEY,
+ENAME VARCHAR2(10) not null,
+JOB VARCHAR2(9),
+MGR NUMBER(4),
+HIREDATE DATE,
+SAL NUMBER(7,2),
+COMM NUMBER(7,2),
+DEPTNO NUMBER(4)
+);
+CREATE TABLE DEPT(
+DEPTNO NUMBER(4) primary key,
+DNAME VARCHAR2(14) not null unique,
+LOC VARCHAR2(13)
+);
+CREATE TABLE SALGRADE(
+ GRADE INT,
+ LOSAL INT,
+ HISAL INT
+)
+create table book(
+cid number(4) primary key ,
+name varchar2(50),
+pub varchar2(50),
+author varchar2(50),
+type varchar2(20),
+numinput number(6),
+numstore number(6)
+)
+create table customer
+(
+cid char(8) not null primary key,
+cname varchar2(20) not null,
+sex char(2),
+addressvarchar(50),
+phonevarchar(20),
+emailvarchar(50)
+)
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 练习使用insert语句</h2>
+      <h3>4.1 问题</h3>
+      <p>练习使用insert语句向EMP表和DEPT表中插入数据。</p>
+      <h3>4.2 方案</h3>
+      <p>向所有列插入数据，需要使用以下SQL:</p>
+      <p>insert    into    表名  values（列值1，列值2，……）；</p>
+      <p>向某些字段插入数据，需要使用以下SQL:</p>
+      <p>insert  into  表名（列名1，列名2，……） values（列值1，列值2，……）；</p>
+      <p>date类型：需要使用到to_date函数进行转化：</p>
+      <p>例如：to_date('3-12-1981','dd-mm-yyyy')。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：向Emp表中插入数据（所有的列都插入数据）</p>
+      <p>向Emp表中插入5条数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7369</span><span class="sh_symbol">,</span><span class="sh_string">'SMITH'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7902</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'17-12-1980'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">800</span><span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7499</span><span class="sh_symbol">,</span><span class="sh_string">'ALLEN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'20-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1600</span><span class="sh_symbol">,</span><span class="sh_number">300</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7521</span><span class="sh_symbol">,</span><span class="sh_string">'WARD'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'22-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7566</span><span class="sh_symbol">,</span><span class="sh_string">'JONES'</span><span class="sh_symbol">,</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'2-4-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">2975</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7654</span><span class="sh_symbol">,</span><span class="sh_string">'MARTIN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'28-9-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">1400</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO EMP VALUES
+(7369,'SMITH','CLERK',7902,to_date('17-12-1980','dd-mm-yyyy'),800,null,20);
+INSERT INTO EMP VALUES
+(7499,'ALLEN','SALESMAN',7698,to_date('20-2-1981','dd-mm-yyyy'),1600,300,30);
+INSERT INTO EMP VALUES
+(7521,'WARD','SALESMAN',7698,to_date('22-2-1981','dd-mm-yyyy'),1250,500,30);
+INSERT INTO EMP VALUES
+(7566,'JONES','MANAGER',7839,to_date('2-4-1981','dd-mm-yyyy'),2975,NULL,20);
+INSERT INTO EMP VALUES
+(7654,'MARTIN','SALESMAN',7698,to_date('28-9-1981','dd-mm-yyyy'),1250,1400,30);
+</pre></div></div>
+      <p class="number">步骤二：向Emp表中插入数据（向某些字段插入数据）</p>
+      <p>向Emp表中插入2条数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">EMP</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">6666</span><span class="sh_symbol">,</span><span class="sh_string">'张居正'</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">EMP</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">9999</span><span class="sh_symbol">,</span><span class="sh_string">'戚继光'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO EMP(empno, ename) VALUES
+(6666,'张居正');
+INSERT INTO EMP(empno, ename) VALUES
+(9999,'戚继光');
+</pre></div></div>
+      <p class="number">步骤三：向部门表插入数据</p>
+      <p>向Dept表中插入2条数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO Dept <span class="sh_function">VALUES</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'ACCOUNTING'</span><span class="sh_symbol">,</span><span class="sh_string">'NEW YORK'</span><span class="sh_symbol">);</span></li><li>INSERT INTO Dept <span class="sh_function">VALUES</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'RESEARCH'</span><span class="sh_symbol">,</span><span class="sh_string">'DALLAS'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO Dept VALUES (10,'ACCOUNTING','NEW YORK');
+INSERT INTO Dept VALUES (20,'RESEARCH','DALLAS');
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7369</span><span class="sh_symbol">,</span><span class="sh_string">'SMITH'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7902</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'17-12-1980'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">800</span><span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7499</span><span class="sh_symbol">,</span><span class="sh_string">'ALLEN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'20-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1600</span><span class="sh_symbol">,</span><span class="sh_number">300</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7521</span><span class="sh_symbol">,</span><span class="sh_string">'WARD'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'22-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7566</span><span class="sh_symbol">,</span><span class="sh_string">'JONES'</span><span class="sh_symbol">,</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'2-4-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">2975</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO EMP VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">7654</span><span class="sh_symbol">,</span><span class="sh_string">'MARTIN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'28-9-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">1400</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">EMP</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">6666</span><span class="sh_symbol">,</span><span class="sh_string">'张居正'</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">EMP</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> VALUES</li><li><span class="sh_symbol">(</span><span class="sh_number">9999</span><span class="sh_symbol">,</span><span class="sh_string">'戚继光'</span><span class="sh_symbol">);</span> </li><li>INSERT INTO Dept <span class="sh_function">VALUES</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'ACCOUNTING'</span><span class="sh_symbol">,</span><span class="sh_string">'NEW YORK'</span><span class="sh_symbol">);</span></li><li>INSERT INTO Dept <span class="sh_function">VALUES</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'RESEARCH'</span><span class="sh_symbol">,</span><span class="sh_string">'DALLAS'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO EMP VALUES
+(7369,'SMITH','CLERK',7902,to_date('17-12-1980','dd-mm-yyyy'),800,null,20);
+INSERT INTO EMP VALUES
+(7499,'ALLEN','SALESMAN',7698,to_date('20-2-1981','dd-mm-yyyy'),1600,300,30);
+INSERT INTO EMP VALUES
+(7521,'WARD','SALESMAN',7698,to_date('22-2-1981','dd-mm-yyyy'),1250,500,30);
+INSERT INTO EMP VALUES
+(7566,'JONES','MANAGER',7839,to_date('2-4-1981','dd-mm-yyyy'),2975,NULL,20);
+INSERT INTO EMP VALUES
+(7654,'MARTIN','SALESMAN',7698,to_date('28-9-1981','dd-mm-yyyy'),1250,1400,30);
+INSERT INTO EMP(empno, ename) VALUES
+(6666,'张居正');
+INSERT INTO EMP(empno, ename) VALUES
+(9999,'戚继光'); 
+INSERT INTO Dept VALUES (10,'ACCOUNTING','NEW YORK');
+INSERT INTO Dept VALUES (20,'RESEARCH','DALLAS');
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 练习使用update语句</h2>
+      <h3>5.1 问题</h3>
+      <p>练习使用update语句，修改emp表中的信息：</p>
+      <p>1、修改编号是6666的雇员的名字为李靖；</p>
+      <p>2、修改编号是9999的雇员sal为10000，奖金为30000。</p>
+      <h3>5.2 方案</h3>
+      <p>更新表中数据的语法：</p>
+      <p>update   表名set  列名1=该列新值，列名2=该列新值，……  where  条件；</p>
+      <p>如果不指定where条件，将把表中所有记录的要更新的列的值都更新成相同的新值</p>
+      <p>可以同时更新多列。</p>
+      <h3>5.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：修改编号是6666的雇员的名字为李靖</p>
+      <p>修改编号是6666的雇员的名字为李靖，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>update emp set ename <span class="sh_symbol">=</span> <span class="sh_string">'李靖'</span></li><li>whereempno <span class="sh_symbol">=</span> <span class="sh_number">6666</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">update emp set ename = '李靖'
+whereempno = 6666
+</pre></div></div>
+      <p class="number">步骤二：修改编号是9999的雇员sal为10000，奖金为30000</p>
+      <p>修改编号是9999的雇员sal为10000，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>updateemp set sal <span class="sh_symbol">=</span> <span class="sh_number">10000</span><span class="sh_symbol">,</span>comm <span class="sh_symbol">=</span> <span class="sh_number">30000</span></li><li>whereempno <span class="sh_symbol">=</span> <span class="sh_number">9999</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">updateemp set sal = 10000,comm = 30000
+whereempno = 9999
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>修改编号是<span class="sh_number">6666</span>的雇员的名字为李靖</li><li>update emp set ename <span class="sh_symbol">=</span> <span class="sh_string">'李靖'</span></li><li>whereempno <span class="sh_symbol">=</span> <span class="sh_number">6666</span></li><li><span class="sh_symbol">--</span>修改编号是<span class="sh_number">9999</span>的雇员sal为<span class="sh_number">10000</span><span class="sh_symbol">,</span>奖金为<span class="sh_number">30000</span></li><li>updateemp set sal <span class="sh_symbol">=</span> <span class="sh_number">10000</span><span class="sh_symbol">,</span>comm <span class="sh_symbol">=</span> <span class="sh_number">30000</span></li><li>whereempno <span class="sh_symbol">=</span> <span class="sh_number">9999</span>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>hour2<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--修改编号是6666的雇员的名字为李靖
+update emp set ename = '李靖'
+whereempno = 6666
+--修改编号是9999的雇员sal为10000,奖金为30000
+updateemp set sal = 10000,comm = 30000
+whereempno = 9999	System.out.println(hour2);
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case6">
+      </a>
+      <h2>6 练习使用delete语句</h2>
+      <h3>6.1 问题</h3>
+      <p>练习使用delete语句，删除emp表中及dept表中的数据：</p>
+      <p>1）删除emp表中编号是6666的雇员的信息；</p>
+      <p>2）删除emp表中编号是9999的雇员的信息；</p>
+      <p>3）删除dept表中所有的信息。</p>
+      <h3>6.2 方案</h3>
+      <p>使用delete删除：</p>
+      <p>delete  from  表名where  条件；</p>
+      <p class="emphasiz">说明：</p>
+      <p class="emphasiz">1）如果不指定where条件，将把表中所有记录都删除掉。</p>
+      <p class="emphasiz">2）如果使用where指定条件，则满足条件的记录被删除。</p>
+      <h3>6.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：删除emp表中编号是6666的雇员的信息</p>
+      <p>删除emp表中编号是6666的雇员的信息，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">delete</span> from emp where empno <span class="sh_symbol">=</span> <span class="sh_number">6666</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">delete from emp where empno = 6666
+</pre></div></div>
+      <p class="number">步骤二：删除emp表中编号是9999的雇员的信息</p>
+      <p>删除emp表中编号是9999的雇员的信息，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">delete</span> from emp where empno <span class="sh_symbol">=</span> <span class="sh_number">9999</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">delete from emp where empno = 9999
+</pre></div></div>
+      <p class="number">步骤三：删除dept表中所有的信息</p>
+      <p>删除dept表中所有的信息，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">delete</span> from dept</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">delete from dept
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>删除emp表中编号是<span class="sh_number">6666</span>的雇员的信息</li><li><span class="sh_keyword">delete</span> from emp where empno <span class="sh_symbol">=</span> <span class="sh_number">6666</span></li><li><span class="sh_symbol">--</span>删除emp表中编号是<span class="sh_number">9999</span>的雇员的信息</li><li><span class="sh_keyword">delete</span> from emp where empno <span class="sh_symbol">=</span> <span class="sh_number">9999</span></li><li><span class="sh_symbol">--</span>删除dept表中所有的信息</li><li><span class="sh_keyword">delete</span> from dept<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--删除emp表中编号是6666的雇员的信息
+delete from emp where empno = 6666
+--删除emp表中编号是9999的雇员的信息
+delete from emp where empno = 9999
+--删除dept表中所有的信息
+delete from dept;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

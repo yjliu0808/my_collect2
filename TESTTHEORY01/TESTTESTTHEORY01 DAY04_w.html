@@ -1,0 +1,220 @@
+
+<!-- saved from url=(0085)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY01/DAY04/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TESTTESTTHEORY01 DAY04_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TESTTESTTHEORY01 DAY04_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TESTTESTTHEORY01 DAY04_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TESTTESTTHEORY01 DAY04_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TESTTESTTHEORY01 DAY04_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY01/DAY04/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST TESTTHEORY01 DAY04</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY01/DAY04/CASE/01/index.html#case1">企业工资发放软件的数据分析</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY01/DAY04/CASE/01/index.html#case2">使用判定表法分析企业工资发放软件</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY01/DAY04/CASE/01/index.html#case3">使用判定表法分析字符组合程序</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 企业工资发放软件的数据分析</h2>
+      <h3>1.1 问题</h3>
+      <p>对企业工作发放软件的输入和输出数据进行分析。具体需求是：</p>
+      <p>工资分为年薪制NX，月薪制YX；</p>
+      <p>错误程度分为普通PT，严重YZ；</p>
+      <p>工资为NX的员工犯普通错误的扣工资2％（K1），犯严重错误扣工资4％（K2）；</p>
+      <p>工资为YX的员工犯普通错误的扣工资4％（K3），犯严重错误扣工资8％（K4）。</p>
+      <p class="number">员工编号：</p>
+      <p>1——1000的整数，不能为空。</p>
+      <p class="number">姓名：</p>
+      <p>1——20个字符，不能为空。</p>
+      <p class="number">本月工资：</p>
+      <p>0.00——100000.00的小数，小数点后最多保留2位，不能为空。</p>
+      <p>企业工资发放软件如下图-1所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p>要实现对企业工作发放软件数据的分析，解决方案如下：</p>
+      <p>1) 分析“员工编号”的有效等价类，无效等价类和边界值。</p>
+      <p>2）分析“姓名”的有效等价类，无效等价类和边界值。</p>
+      <p>3）分析“本月工资”的有效等价类，无效等价类和边界值。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：分析“员工编号”的有效等价类、无效等价类和边界值情况</p>
+      <p>对员工编号进行分析，分析员工编号的有效范围和无效范围，对员工编号的有效范围的边界数据进行分析，分析如下图-2所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：分析“姓名”的有效等价类、无效等价类和边界值情况</p>
+      <p>对姓名的输入条件进行分析，分析有效的输入和无效的输入，还有输入字符的边界数据分析如下图-3所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p class="number">步骤三：分析“本月工资”的有效等价类、无效等价类和边界值情况</p>
+      <p>分析本月工资的有效工资范围和无效工资范围的数据，还有需求数据的边界是哪些，分析如下图-4所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 使用判定表法分析企业工资发放软件</h2>
+      <h3>2.1 问题</h3>
+      <p>使用判定表法分析企业工资发放软件。具体需求是：</p>
+      <p>工资分为年薪制NX，月薪制YX；</p>
+      <p>错误程度分为普通PT，严重YZ；</p>
+      <p>工资为NX的员工犯普通错误的扣工资2％（K1），犯严重错误扣工资4％（K2）；</p>
+      <p>工资为YX的员工犯普通错误的扣工资4％（K3），犯严重错误扣工资8％（K4）。</p>
+      <p class="number">员工编号：</p>
+      <p>1——1000的整数，不能为空。</p>
+      <p class="number">姓名：</p>
+      <p>1——20个字符，不能为空。</p>
+      <p class="number">本月工资：</p>
+      <p>0.00——100000.00的小数，小数点后最多保留2位，不能为空。</p>
+      <h3>2.2 方案</h3>
+      <p>1、找出所有的输入条件。</p>
+      <p>2、明确所有的输出结果。</p>
+      <p>3、明确所有条件之间关系。</p>
+      <p>4、确定因果关系，写出判定表。</p>
+      <p>5、编写测试用例。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：找出所有的输入条件</p>
+      <p>找出企业工资发放软件的所有输入条件。</p>
+      <p class="number">工资薪制：</p>
+      <p>条件①：年薪制NX</p>
+      <p>条件②：月薪制YX</p>
+      <p class="number">错误程度：</p>
+      <p>条件③：普通PT</p>
+      <p>条件④：严重YZ</p>
+      <p class="number">步骤二：明确所有的输出结果</p>
+      <p>扣工资2％（K1）</p>
+      <p>扣工资4％（K2）</p>
+      <p>扣工资4％（K3）</p>
+      <p>扣工资8％（K4）</p>
+      <p>不扣款（NO）</p>
+      <p class="number">步骤三：明确所有条件之间的关系</p>
+      <p class="number">哪些条件不能组合在一起：</p>
+      <p>条件①年薪制和条件②月薪制不能组合</p>
+      <p class="number">哪些条件可以组合在一起：</p>
+      <p>条件①年薪制和条件③普通可以组合</p>
+      <p>条件①年薪制和条件④严重可以组合</p>
+      <p>条件①年薪制和条件③普通以及条件④严重可以组合</p>
+      <p>条件①年薪制可以单独存在</p>
+      <p>条件②月薪制YX和条件③普通可以组合</p>
+      <p>条件②月薪制YX和条件④严重可以组合</p>
+      <p>条件②月薪制YX和条件③普通以及条件④严重可以组合</p>
+      <p>条件②月薪制YX可以单独存在</p>
+      <p class="number">步骤四：确定因果关系，写出判定表</p>
+      <p>判定表如下图-5所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p class="number">步骤五：编写测试用例</p>
+      <p>本案例中，使用判定法分析企业工作发放软件的完整用例如下图-6、图-7、图-8、图-9、图-10、图-11、图-10、图-11、图-12、图-13所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image008.png">
+        <p>图-9</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image009.png">
+        <p>图-10</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image010.png">
+        <p>图-11</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image011.png">
+        <p>图-12</p>
+      </div>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image012.png">
+        <p>图-13</p>
+      </div>
+      <a name="case3">
+      </a>
+      <h2>3 使用判定表法分析字符组合程序</h2>
+      <h3>3.1 问题</h3>
+      <p>有一个字符组合程序，需求如下：</p>
+      <p>输入的第一个字符必须为# 或 * ，第二个字符必须是一个数字，在此情况下进行文件修改；如果第一个字符不是#或*，则给出信息N；如果第二个字符不是数字，则给出信息M</p>
+      <p>N和M可以同时输出</p>
+      <p>暂时先不考虑其他情况，如第一个或第二个字符不填写情况</p>
+      <h3>3.2 方案</h3>
+      <p>1、找出所有的输入条件。</p>
+      <p>2、明确所有的输出结果。</p>
+      <p>3、明确所有条件之间关系。</p>
+      <p>4、确定因果关系，写出判定表。</p>
+      <p>5、编写测试用例。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：找出所有的输入条件</p>
+      <p>找出企字符组合程序的所有输入条件：</p>
+      <p>（1）第一个字符为#</p>
+      <p>（2）第一个字符为*</p>
+      <p>（3）第一个字符为其他（#*以外的）</p>
+      <p>（4）第二个字符为数字</p>
+      <p>（5）第二个字符为非数字</p>
+      <p class="number">步骤二：明确所有的输出结果</p>
+      <p>A、修改文件</p>
+      <p>B、给出信息N</p>
+      <p>C、给出信息M</p>
+      <p class="number">步骤三：明确所有条件之间的关系</p>
+      <p>（1）限制：</p>
+      <p>输入（1）（2）（3）不能组合</p>
+      <p>输入（4）（5）不能组合</p>
+      <p>（2）组合 ：</p>
+      <p>输入（1）（4）组合</p>
+      <p>输入（1）（5）组合</p>
+      <p>输入（2）（4）组合</p>
+      <p>输入（2）（5）组合</p>
+      <p>输入（3）（4）组合</p>
+      <p>输入（3）（5）组合</p>
+      <p class="number">步骤四：确定因果关系，写出判定表</p>
+      <p>找到输入组合和输出组合的对应关系</p>
+      <p>输入（1）（4）组合	=&gt;  输出A</p>
+      <p>输入（1）（5）组合	=&gt;  输出C</p>
+      <p>输入（2）（4）组合	=&gt;  输出A</p>
+      <p>输入（2）（5）组合	=&gt;  输出C</p>
+      <p>输入（3）（4）组合	=&gt;  输出B</p>
+      <p>输入（3）（5）组合	=&gt;  输出BC</p>
+      <p>如下图-14所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image013.png">
+        <p>图-14</p>
+      </div>
+      <p class="number">步骤五：编写测试用例</p>
+      <p>如下图-15所示：</p>
+      <div class="image">
+        <img src="./TESTTESTTHEORY01 DAY04_w_files/image014.png">
+        <p>图-15</p>
+      </div>
+    </div>
+  
+</body></html>

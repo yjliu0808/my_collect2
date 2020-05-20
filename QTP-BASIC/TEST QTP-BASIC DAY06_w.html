@@ -1,0 +1,197 @@
+
+<!-- saved from url=(0082)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY06/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY06_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY06_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY06_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST QTP-BASIC DAY06_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST QTP-BASIC DAY06_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY06/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST QTP-ADVANCED DAY06</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY06/CASE/01/index.html#case1">专家视图中修改Flight登录用户名</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY06/CASE/01/index.html#case2">书写代码Flight的Tickets参数化</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 专家视图中修改Flight登录用户名</h2>
+      <h3>1.1 问题</h3>
+      <p>录制Flight登录的脚本，用户名使用：jack，在专家视图中修改登录的用户名，回放时使用mary登录。</p>
+      <h3>1.2 方案</h3>
+      <p>录制Flight登录的脚本，用户名使用：jack，在专家视图中修改登录的用户名，将jack修改为mary，回放脚本。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-修改登录用户名-演示，点击“Save”按钮，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>4、点击“…”按钮，找到“flight4a.exe”被测系统，点击“OK”按钮：如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>5、点击“确定”按钮（注意：Application details中只有一个被测程序）：如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入用户名（Agent Name）：jack，输入密码（Password）：mercury，点击“OK”按钮，登录成功之后，关闭窗口退出被测系统，录制结束后，点击工具栏按钮“Stop”，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>3、录制后的代码如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p class="number">步骤四：修改登录用户名</p>
+      <p>1、将登录用户名“jack”修改为“mary”（注意：将mary加双引号，set方法和mary之间要加空格），如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，并且使用用户名“mary”进行登录，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 书写代码Flight的Tickets参数化</h2>
+      <h3>2.1 问题</h3>
+      <p>录制Flight被测系统登录、订票、退出的脚本，在专家视图中编写代码，参数化票数“Tickets”文本框。</p>
+      <h3>2.2 方案</h3>
+      <p>录制Flight被测系统登录、订票、退出的脚本，在Global表单中准备一列参数“票数”，然后在专家视图中编写脚本，对“Tickets”参数做DataTable参数化。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight_订票_Tickets参数化_演示，点击“Save”按钮：如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第一个单选钮，再点击“确定”按钮，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p>2、录制脚本，步骤如下：从“开始”菜单中启动Flight，输入用户名“Agent Name”：jack，输入密码“Password”：mercury，点击“OK”按钮；登录成功后，输入订票信息（注意：最好修改下票的张数，将“Tickets”对象添加到对象仓库中），点击“Insert Order”按钮进行订票，订票成功后，点击菜单“Flie-&gt;Exit“退出被测系统；录制结束后，点击工具栏按钮“Stop”：如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p>3、录制后的代码（说明：如果没有操作Tickets控件修改票数，可以在脚本录制结束后，将“Tickets”文本框添加到对象仓库）如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p class="number">步骤四：在“Global”表单中准备参数列</p>
+      <p>1、在“Global”表单中双击第一列的列名（“A”），在弹出的窗口中填写“票数”，点击“OK”按钮，如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p>2、“票数”参数添加成功，如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p>3、在“票数”参数列下准备参数化的值，如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p class="number">步骤五：在专家视图中编写参数化的代码</p>
+      <p>1、将录制脚本时填写的票数常量值（3）修改为从Global表单中“票数”参数列取值的参数化代码，如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p class="number">步骤六：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <p>2、查看结果报告，脚本反复4次，回放通过，如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>3、每次订票的张数，和DataTable中提供的取值一致，如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY06_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+    </div>
+  
+</body></html>

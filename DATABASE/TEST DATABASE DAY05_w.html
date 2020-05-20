@@ -1,0 +1,312 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST DATABASE DAY05_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY05_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY05_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST DATABASE DAY05_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST DATABASE DAY05_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST ORACLE DAY05</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#case1">练习使用日期处理函数</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#case2">练习视图的创建，修改，删除</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#case3">练习通过视图对表进行修改，插入，删除操作</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 练习使用日期处理函数</h2>
+      <h3>1.1 问题</h3>
+      <p>使用日期处理函数，完成下列SQL语句的编写：</p>
+      <p>1）测试sysdate在dual中显示效果；</p>
+      <p>2）查询昨天，今天，明天；</p>
+      <p>3）显示当前时间，要求显示格式：yyyy-mm-dd；</p>
+      <p>4）显示当前时间，要求显示格式：yyyy-mm-dd hh24:mi:ss；</p>
+      <p>5）显示emp表的员工编号，姓名及入职时间hiredate,要求把入职时间格式转化为：yyyy-mm-dd hh24：mi：ss；</p>
+      <p>6）获得当前日期年份（可以使用任意一种日期格式格式）；</p>
+      <p>7）获得当前日期月份（可以使用任意一种日期格式格式）；</p>
+      <p>8）查询emp表，求出雇员编号，姓名,雇员入职的年份；</p>
+      <p>9）查询emp表，求出5月份入职的员工的编号，姓名，入职时间；</p>
+      <h3>1.2 方案</h3>
+      <p>日期处理函数：</p>
+      <p>1）日期处理函数，主要处理日期型数据。</p>
+      <p>处理：date。</p>
+      <p>2）常用日期的处理函数：</p>
+      <p>sysdate :获得当前系统的时间；</p>
+      <p>to_char(日期,'日期的格式'):将date转化为特定的char显示；</p>
+      <p>to_date():将特定的char转化为date；</p>
+      <p>3）常见的日期的格式：</p>
+      <p>a）标准的日期格式：</p>
+      <p>yyyy-mm-dd hh24:mi:ss；</p>
+      <p>年   月  日  时  分 秒</p>
+      <p>yyyy-mm-dd；</p>
+      <p>年   月  日</p>
+      <p>yyyy: 年份</p>
+      <p>yy：年份</p>
+      <p>year：年份</p>
+      <p>month：月份</p>
+      <p>mm：月份</p>
+      <p>Oracle数据库不区分，大小写，mm指代月份，mi指代分钟。</p>
+      <p>b）默认的日期格式：DD-MON-YY；</p>
+      <p>4）sysdate的使用：</p>
+      <p>sysdate：表示当前系统的时间，可以通过“-”连接数字，或者“+”连接数字，表示当前时间之前或者之后多少天。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：测试sysdate在dual中显示效果</p>
+      <p>测试sysdate在dual中显示效果，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selectsysdate from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectsysdate from dual;
+</pre></div></div>
+      <p class="number">步骤二：查询昨天，今天，明天</p>
+      <p>查询昨天，今天，明天，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select sysdate<span class="sh_number">-1</span><span class="sh_symbol">,</span>sysdate<span class="sh_symbol">,</span>sysdate<span class="sh_number">+1</span> from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select sysdate-1,sysdate,sysdate+1 from dual;
+</pre></div></div>
+      <p class="number">步骤三：显示当前时间，要求显示格式：yyyy-mm-dd</p>
+      <p>显示当前时间，要求显示格式：yyyy-mm-dd，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectto_char(sysdate,'yyyy-mm-dd') from dual;
+</pre></div></div>
+      <p class="number">步骤四：显示当前时间，要求显示格式：yyyy-mm-dd hh24:mi:ss</p>
+      <p>显示当前时间，要求显示格式：yyyy-mm-dd hh24:mi:ss，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd hh24:mi:ss'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectto_char(sysdate,'yyyy-mm-dd hh24:mi:ss') from dual;
+</pre></div></div>
+      <p class="number">步骤五：显示emp表的员工编号，姓名及入职时间hiredate,要求把入职时间格式转化为：yyyy-mm-dd hh24：mi：ss</p>
+      <p>时间格式转化为：yyyy-mm-dd hh24：mi：ss，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span>hiredate<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd hh24:mi:ss'</span><span class="sh_symbol">)</span></li><li>fromemp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectempno,ename,hiredate,to_char(hiredate,'yyyy-mm-dd hh24:mi:ss')
+fromemp;
+</pre></div></div>
+      <p class="number">步骤六：获得当前日期年份（可以使用任意一种日期格式格式）</p>
+      <p>获得当前日期年份，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yy'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'year'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectto_char(sysdate,'yyyy') from dual;
+selectto_char(sysdate,'yy') from dual;
+selectto_char(sysdate,'year') from dual;
+</pre></div></div>
+      <p class="number">步骤七：获得当前日期月份（可以使用任意一种日期格式格式）</p>
+      <p>获得当前日期月份，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'mm'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span> </li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'month'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectto_char(sysdate,'mm') from dual; 
+selectto_char(sysdate,'month') from dual;
+</pre></div></div>
+      <p class="number">步骤八：查询emp表，求出雇员编号，姓名,雇员入职的年份</p>
+      <p>查询emp表，求出雇员编号，姓名,雇员入职的年份，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> from emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectempno,ename,to_char(hiredate,'yyyy') from emp;
+</pre></div></div>
+      <p class="number">步骤九：查询emp表，求出5月份入职的员工的编号，姓名，入职时间</p>
+      <p>查询emp表，求出5月份入职的员工的编号，姓名，入职时间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">)</span> from emp</li><li><span class="sh_function">whereto_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'mm'</span><span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_string">'05'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectempno,ename,to_char(hiredate,'yyyy-mm-dd') from emp
+whereto_char(hiredate,'mm') = '05';
+</pre></div></div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>案例：测试sysdate在dual中显示效果</li><li>selectsysdate from dual</li><li><span class="sh_symbol">--</span>案例<span class="sh_symbol">:</span> 查询昨天，今天，明天</li><li>select sysdate<span class="sh_number">-1</span><span class="sh_symbol">,</span>sysdate<span class="sh_symbol">,</span>sysdate<span class="sh_number">+1</span> from dual</li><li><span class="sh_symbol">--</span>案例：显示当前时间，要求显示格式：yyyy<span class="sh_symbol">-</span>mm<span class="sh_symbol">-</span>dd</li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">)</span> from dual</li><li><span class="sh_symbol">--</span>案例：显示当前时间，要求显示格式：yyyy<span class="sh_symbol">-</span>mm<span class="sh_symbol">-</span>dd hh24<span class="sh_symbol">:</span>mi<span class="sh_symbol">:</span>ss</li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd hh24:mi:ss'</span><span class="sh_symbol">)</span> from dual </li><li><span class="sh_symbol">--</span>案例：显示emp表的员工编号，姓名及入职时间hiredate</li><li><span class="sh_symbol">--</span>要求把入职时间格式转化为：yyyy<span class="sh_symbol">-</span>mm<span class="sh_symbol">-</span>dd hh24：mi：ss</li><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span>hiredate<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd hh24:mi:ss'</span><span class="sh_symbol">)</span></li><li>fromemp<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>案例：获得当前日期年份</li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'yy'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'year'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>案例：获得当前日期月份</li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'mm'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span> </li><li><span class="sh_function">selectto_char</span><span class="sh_symbol">(</span>sysdate<span class="sh_symbol">,</span><span class="sh_string">'month'</span><span class="sh_symbol">)</span> from dual<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>案例：查询emp表，求出雇员编号，姓名<span class="sh_symbol">,</span>雇员入职的年份</li><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> from emp<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>案例：查询emp表，求出<span class="sh_number">5</span>月份入职的员工的编号，姓名，入职时间</li><li>selectempno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span><span class="sh_function">to_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">)</span> from emp</li><li><span class="sh_function">whereto_char</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'mm'</span><span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_string">'05'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--案例：测试sysdate在dual中显示效果
+selectsysdate from dual
+--案例: 查询昨天，今天，明天
+select sysdate-1,sysdate,sysdate+1 from dual
+--案例：显示当前时间，要求显示格式：yyyy-mm-dd
+selectto_char(sysdate,'yyyy-mm-dd') from dual
+--案例：显示当前时间，要求显示格式：yyyy-mm-dd hh24:mi:ss
+selectto_char(sysdate,'yyyy-mm-dd hh24:mi:ss') from dual 
+--案例：显示emp表的员工编号，姓名及入职时间hiredate
+--要求把入职时间格式转化为：yyyy-mm-dd hh24：mi：ss
+selectempno,ename,hiredate,to_char(hiredate,'yyyy-mm-dd hh24:mi:ss')
+fromemp;
+--案例：获得当前日期年份
+selectto_char(sysdate,'yyyy') from dual;
+selectto_char(sysdate,'yy') from dual;
+selectto_char(sysdate,'year') from dual;
+--案例：获得当前日期月份
+selectto_char(sysdate,'mm') from dual; 
+selectto_char(sysdate,'month') from dual;
+--案例：查询emp表，求出雇员编号，姓名,雇员入职的年份
+selectempno,ename,to_char(hiredate,'yyyy') from emp;
+--案例：查询emp表，求出5月份入职的员工的编号，姓名，入职时间
+selectempno,ename,to_char(hiredate,'yyyy-mm-dd') from emp
+whereto_char(hiredate,'mm') = '05';
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 练习视图的创建，修改，删除</h2>
+      <h3>2.1 问题</h3>
+      <p>练习对视图的创建，修改，删除等操作：</p>
+      <p>1）创建empinfo表，并插入对应的数据；</p>
+      <p>2）根据empinfo表，创建视图view_emp1，并通过该视图查询empinfo表中所有的数据；</p>
+      <p>3） 根据empinfo表，创建视图view_emp2，并通过该视图查询empinfo表中的数据；</p>
+      <p>4）修改视图view_emp2；</p>
+      <p>5）删除视图view_emp2；</p>
+      <h3>2.2 方案</h3>
+      <p>1)创建视图的格式：</p>
+      <p>create   view   视图名称</p>
+      <p>as查询语句</p>
+      <p>2)使用视图查询数据</p>
+      <p>select     列名   from   视图名称</p>
+      <p>3)修改视图格式：</p>
+      <p>create    or   replace   view   视图名称</p>
+      <p>as</p>
+      <p>查询语句</p>
+      <p>4)删除视图格式：</p>
+      <p>drop   view   视图名称</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建empinfo表，并插入对应的数据</p>
+      <p>创建empinfo表，并插入对应的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table empinfo</li><li><span class="sh_symbol">(</span></li><li>eid number primary key<span class="sh_symbol">,</span></li><li><span class="sh_function">first_namevarchar2</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li><span class="sh_function">last_namevarchar2</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>province <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>city <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>salary number</li><li><span class="sh_symbol">)</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_string">'张'</span><span class="sh_symbol">,</span><span class="sh_string">'均'</span><span class="sh_symbol">,</span><span class="sh_string">'广东'</span><span class="sh_symbol">,</span><span class="sh_string">'深圳'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_string">'刘'</span><span class="sh_symbol">,</span><span class="sh_string">'新'</span><span class="sh_symbol">,</span><span class="sh_string">'广东'</span><span class="sh_symbol">,</span><span class="sh_string">'广州'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span><span class="sh_string">'王'</span><span class="sh_symbol">,</span><span class="sh_string">'一凡'</span><span class="sh_symbol">,</span><span class="sh_string">'广西'</span><span class="sh_symbol">,</span><span class="sh_string">'桂林'</span><span class="sh_symbol">,</span><span class="sh_number">3800</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">,</span><span class="sh_string">'周'</span><span class="sh_symbol">,</span><span class="sh_string">'峰'</span><span class="sh_symbol">,</span><span class="sh_string">'江苏'</span><span class="sh_symbol">,</span><span class="sh_string">'苏州'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_string">'徐'</span><span class="sh_symbol">,</span><span class="sh_string">'佳林'</span><span class="sh_symbol">,</span><span class="sh_string">'浙江'</span><span class="sh_symbol">,</span><span class="sh_string">'杭州'</span><span class="sh_symbol">,</span><span class="sh_number">2900</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table empinfo
+(
+eid number primary key,
+first_namevarchar2(4),
+last_namevarchar2(4),
+province varchar2(20),
+city varchar2(10),
+salary number
+)
+insert into empinfo values(1,'张','均','广东','深圳',3000);
+insert into empinfo values(2,'刘','新','广东','广州',4000);
+insert into empinfo values(3,'王','一凡','广西','桂林',3800);
+insert into empinfo values(4,'周','峰','江苏','苏州',4000);
+insert into empinfo values(5,'徐','佳林','浙江','杭州',2900);
+</pre></div></div>
+      <p class="number">步骤二：根据empinfo表，创建视图view_emp1，并通过该视图查询empinfo表中所有的数据</p>
+      <p>创建视图view_emp1，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create view view_emp1</li><li>as</li><li>select <span class="sh_symbol">*</span> from empinfo<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>使用视图</li><li>select <span class="sh_symbol">*</span> from view_emp1<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create view view_emp1
+as
+select * from empinfo;
+--使用视图
+select * from view_emp1;
+</pre></div></div>
+      <p class="number">步骤三：根据empinfo表，创建视图view_emp2，并通过该视图查询empinfo表中的数据</p>
+      <p>创建视图view_emp2，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create view view_emp2</li><li>as</li><li>selecteid<span class="sh_symbol">,</span>  first_name <span class="sh_symbol">||</span> last_name as employee_name<span class="sh_symbol">,</span> </li><li>province <span class="sh_symbol">||</span> <span class="sh_string">'-'</span> <span class="sh_symbol">||</span> city as location from empinfo</li><li>select <span class="sh_symbol">*</span> from view_emp2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create view view_emp2
+as
+selecteid,  first_name || last_name as employee_name, 
+province || '-' || city as location from empinfo
+select * from view_emp2;
+</pre></div></div>
+      <p class="number">步骤四：修改视图view_emp2</p>
+      <p>修改视图view_emp2，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create or replace view view_emp2 </li><li>as</li><li>select eid as 编号<span class="sh_symbol">,</span>  first_name<span class="sh_symbol">||</span> last_name as 姓名<span class="sh_symbol">,</span> </li><li>       province <span class="sh_symbol">||</span> <span class="sh_string">'-'</span> <span class="sh_symbol">||</span> city as 住址<span class="sh_symbol">,</span>salary as 薪水 from empinfo</li><li>select <span class="sh_symbol">*</span> from view_emp2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create or replace view view_emp2 
+as
+select eid as 编号,  first_name|| last_name as 姓名, 
+       province || '-' || city as 住址,salary as 薪水 from empinfo
+select * from view_emp2;
+</pre></div></div>
+      <p class="number">步骤五：删除视图view_emp2</p>
+      <p>删除视图view_emp2，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>drop view view_emp2 <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">drop view view_emp2 ;
+</pre></div></div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table empinfo</li><li><span class="sh_symbol">(</span></li><li>eid number primary key<span class="sh_symbol">,</span></li><li><span class="sh_function">first_namevarchar2</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li><span class="sh_function">last_namevarchar2</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>province <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>city <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>salary number</li><li><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_string">'张'</span><span class="sh_symbol">,</span><span class="sh_string">'均'</span><span class="sh_symbol">,</span><span class="sh_string">'广东'</span><span class="sh_symbol">,</span><span class="sh_string">'深圳'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_string">'刘'</span><span class="sh_symbol">,</span><span class="sh_string">'新'</span><span class="sh_symbol">,</span><span class="sh_string">'广东'</span><span class="sh_symbol">,</span><span class="sh_string">'广州'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span><span class="sh_string">'王'</span><span class="sh_symbol">,</span><span class="sh_string">'一凡'</span><span class="sh_symbol">,</span><span class="sh_string">'广西'</span><span class="sh_symbol">,</span><span class="sh_string">'桂林'</span><span class="sh_symbol">,</span><span class="sh_number">3800</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">,</span><span class="sh_string">'周'</span><span class="sh_symbol">,</span><span class="sh_string">'峰'</span><span class="sh_symbol">,</span><span class="sh_string">'江苏'</span><span class="sh_symbol">,</span><span class="sh_string">'苏州'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into empinfo <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_string">'徐'</span><span class="sh_symbol">,</span><span class="sh_string">'佳林'</span><span class="sh_symbol">,</span><span class="sh_string">'浙江'</span><span class="sh_symbol">,</span><span class="sh_string">'杭州'</span><span class="sh_symbol">,</span><span class="sh_number">2900</span><span class="sh_symbol">);</span></li><li>select <span class="sh_symbol">*</span> from empinfo</li><li><span class="sh_symbol">--</span>根据empinfo表，创建视图view_emp1</li><li>create view view_emp1</li><li>as</li><li>select <span class="sh_symbol">*</span> from empinfo<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>使用视图</li><li>select <span class="sh_symbol">*</span> from view_emp1<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>根据empinfo表，创建视图view_emp2，并通过该视图查询empinfo表中的数据</li><li>create view view_emp2</li><li>as</li><li>selecteid<span class="sh_symbol">,</span>  first_name <span class="sh_symbol">||</span> last_name as employee_name<span class="sh_symbol">,</span> </li><li>province <span class="sh_symbol">||</span> <span class="sh_string">'-'</span> <span class="sh_symbol">||</span> city as location from empinfo<span class="sh_symbol">;</span></li><li>select <span class="sh_symbol">*</span> from view_emp2<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>实例<span class="sh_number">3</span>：修改视图</li><li>create or replace view view_emp2 </li><li>as</li><li>select eid as 编号<span class="sh_symbol">,</span>  first_name<span class="sh_symbol">||</span> last_name as 姓名<span class="sh_symbol">,</span> </li><li>       province <span class="sh_symbol">||</span> <span class="sh_string">'-'</span> <span class="sh_symbol">||</span> city as 住址<span class="sh_symbol">,</span>salary as 薪水 from empinfo</li><li>select <span class="sh_symbol">*</span> from view_emp2<span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>实例<span class="sh_number">4</span>：删除视图<span class="sh_symbol">;</span></li><li>drop view view_emp2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table empinfo
+(
+eid number primary key,
+first_namevarchar2(4),
+last_namevarchar2(4),
+province varchar2(20),
+city varchar2(10),
+salary number
+);
+insert into empinfo values(1,'张','均','广东','深圳',3000);
+insert into empinfo values(2,'刘','新','广东','广州',4000);
+insert into empinfo values(3,'王','一凡','广西','桂林',3800);
+insert into empinfo values(4,'周','峰','江苏','苏州',4000);
+insert into empinfo values(5,'徐','佳林','浙江','杭州',2900);
+select * from empinfo
+--根据empinfo表，创建视图view_emp1
+create view view_emp1
+as
+select * from empinfo;
+--使用视图
+select * from view_emp1;
+--根据empinfo表，创建视图view_emp2，并通过该视图查询empinfo表中的数据
+create view view_emp2
+as
+selecteid,  first_name || last_name as employee_name, 
+province || '-' || city as location from empinfo;
+select * from view_emp2;
+--实例3：修改视图
+create or replace view view_emp2 
+as
+select eid as 编号,  first_name|| last_name as 姓名, 
+       province || '-' || city as 住址,salary as 薪水 from empinfo
+select * from view_emp2;
+--实例4：删除视图;
+drop view view_emp2;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 练习通过视图对表进行修改，插入，删除操作</h2>
+      <h3>3.1 问题</h3>
+      <p>练习通过视图对表进行修改，插入，删除操作：</p>
+      <p>1）通过视图view_emp1，修改刘新的工资；</p>
+      <p>2）通过视图view_emp2修改empinfo表中的数据；</p>
+      <p>3）通过视图view_emp1往empinfo表中插入数据；</p>
+      <p>4）通过视图view_emp1删除empinfo表中last_name=‘强’的数据；</p>
+      <p>5）通过视图view_emp2删除empinfo表中的数据；</p>
+      <h3>3.2 方案</h3>
+      <p>通过视图view_emp1和view_emp2来操作emoinfo表。</p>
+      <p>对视图的修改，插入，删除操作可以直接影响到表。</p>
+      <p>对视图的修改，插入，删除等操作跟操作表的语法结构完全一致。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：通过视图view_emp1，修改刘新的工资</p>
+      <p>通过视图view_emp1，修改刘新的工资，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>update view_emp1 set salary<span class="sh_symbol">=</span>salary<span class="sh_number">+200</span> </li><li>where first_name<span class="sh_symbol">=</span><span class="sh_string">'刘'</span> and last_name<span class="sh_symbol">=</span><span class="sh_string">'新'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">update view_emp1 set salary=salary+200 
+where first_name='刘' and last_name='新';
+</pre></div></div>
+      <p class="number">步骤二：通过视图view_emp2修改empinfo表中的数据</p>
+      <p>通过视图view_emp2修改empinfo表中的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>update view_emp2 set 编号<span class="sh_symbol">=</span><span class="sh_number">50</span> where 编号<span class="sh_symbol">=</span><span class="sh_number">5</span><span class="sh_symbol">;</span></li><li>update view_emp2 set 编号<span class="sh_symbol">=</span><span class="sh_number">51</span> where 姓名<span class="sh_symbol">=</span><span class="sh_string">'王一凡'</span><span class="sh_symbol">;</span></li><li>update view_emp2 set 薪水<span class="sh_symbol">=</span><span class="sh_number">3500</span> where 住址<span class="sh_symbol">=</span><span class="sh_string">'广西-桂林'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">update view_emp2 set 编号=50 where 编号=5;
+update view_emp2 set 编号=51 where 姓名='王一凡';
+update view_emp2 set 薪水=3500 where 住址='广西-桂林';
+</pre></div></div>
+      <p class="number">步骤三：通过视图view_emp1往empinfo表中插入数据</p>
+      <p>通过视图view_emp1往empinfo表中插入数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>insert into view_emp1 </li><li><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_string">'李'</span><span class="sh_symbol">,</span><span class="sh_string">'力'</span><span class="sh_symbol">,</span><span class="sh_string">'浙江'</span><span class="sh_symbol">,</span><span class="sh_string">'温州'</span><span class="sh_symbol">,</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>insert into view_emp1 </li><li><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span>FIRST_NAME<span class="sh_symbol">,</span>LAST_NAME<span class="sh_symbol">,</span>SALARY<span class="sh_symbol">)</span></li><li><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">8</span><span class="sh_symbol">,</span><span class="sh_string">'赵'</span><span class="sh_symbol">,</span><span class="sh_string">'强'</span><span class="sh_symbol">,</span><span class="sh_number">4300</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">insert into view_emp1 
+values(7,'李','力','浙江','温州',5000);
+insert into view_emp1 
+(eid,FIRST_NAME,LAST_NAME,SALARY)
+values(8,'赵','强',4300);
+</pre></div></div>
+      <p class="number">步骤四：通过视图view_emp1删除empinfo表中last_name=‘强’的数据</p>
+      <p>通过视图view_emp1删除empinfo表中last_name=‘强’的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">delete</span> from view_emp1 where last_name<span class="sh_symbol">=</span><span class="sh_string">'强'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">delete from view_emp1 where last_name='强';
+</pre></div></div>
+      <p class="number">步骤五：通过视图view_emp2删除empinfo表中的数据</p>
+      <p>通过视图view_emp2删除empinfo表中的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">delete</span> from view_emp2 where 姓名<span class="sh_symbol">=</span><span class="sh_string">'刘新'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">delete from view_emp2 where 姓名='刘新';
+</pre></div></div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>实例：通过视图view_emp1，修改刘新的工资</li><li>update view_emp1 set salary<span class="sh_symbol">=</span>salary<span class="sh_number">+200</span> </li><li>where first_name<span class="sh_symbol">=</span><span class="sh_string">'刘'</span> and last_name<span class="sh_symbol">=</span><span class="sh_string">'新'</span><span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>案例：通过视图view_emp2修改empinfo表中的数据</li><li>update view_emp2 set 编号<span class="sh_symbol">=</span><span class="sh_number">50</span> where 编号<span class="sh_symbol">=</span><span class="sh_number">5</span><span class="sh_symbol">;</span></li><li>update view_emp2 set 编号<span class="sh_symbol">=</span><span class="sh_number">51</span> where 姓名<span class="sh_symbol">=</span><span class="sh_string">'王一凡'</span><span class="sh_symbol">;</span></li><li>update view_emp2 set 薪水<span class="sh_symbol">=</span><span class="sh_number">3500</span> where 住址<span class="sh_symbol">=</span><span class="sh_string">'广西-桂林'</span><span class="sh_symbol">;</span></li><li><span class="sh_symbol">--</span>实例：通过视图view_emp1往empinfo表中插入数据</li><li>insert into view_emp1 </li><li><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_string">'李'</span><span class="sh_symbol">,</span><span class="sh_string">'力'</span><span class="sh_symbol">,</span><span class="sh_string">'浙江'</span><span class="sh_symbol">,</span><span class="sh_string">'温州'</span><span class="sh_symbol">,</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>insert into view_emp1 </li><li><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span>FIRST_NAME<span class="sh_symbol">,</span>LAST_NAME<span class="sh_symbol">,</span>SALARY<span class="sh_symbol">)</span></li><li><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">8</span><span class="sh_symbol">,</span><span class="sh_string">'赵'</span><span class="sh_symbol">,</span><span class="sh_string">'强'</span><span class="sh_symbol">,</span><span class="sh_number">4300</span><span class="sh_symbol">);</span></li><li><span class="sh_symbol">--</span>实例：通过视图view_emp1删除empinfo表中last_name<span class="sh_symbol">=</span>‘强’的数据</li><li><span class="sh_keyword">delete</span> from view_emp1 where last_name<span class="sh_symbol">=</span><span class="sh_string">'强'</span></li><li><span class="sh_symbol">--</span>实例：通过视图view_emp2删除empinfo表中的数据</li><li><span class="sh_keyword">delete</span> from view_emp2 where 姓名<span class="sh_symbol">=</span><span class="sh_string">'刘新'</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>select <span class="sh_symbol">*</span> from employ<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--实例：通过视图view_emp1，修改刘新的工资
+update view_emp1 set salary=salary+200 
+where first_name='刘' and last_name='新';
+--案例：通过视图view_emp2修改empinfo表中的数据
+update view_emp2 set 编号=50 where 编号=5;
+update view_emp2 set 编号=51 where 姓名='王一凡';
+update view_emp2 set 薪水=3500 where 住址='广西-桂林';
+--实例：通过视图view_emp1往empinfo表中插入数据
+insert into view_emp1 
+values(7,'李','力','浙江','温州',5000);
+insert into view_emp1 
+(eid,FIRST_NAME,LAST_NAME,SALARY)
+values(8,'赵','强',4300);
+--实例：通过视图view_emp1删除empinfo表中last_name=‘强’的数据
+delete from view_emp1 where last_name='强'
+--实例：通过视图view_emp2删除empinfo表中的数据
+delete from view_emp2 where 姓名='刘新';
+
+select * from employ;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

@@ -1,0 +1,131 @@
+
+<!-- saved from url=(0085)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY02/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST TESTTHEORY02 DAY02_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST TESTTHEORY02 DAY02_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST TESTTHEORY02 DAY02_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST TESTTHEORY02 DAY02_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST TESTTHEORY02 DAY02_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY02/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST TESTTHEORY02 DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY02/DAY02/CASE/01/index.html#case1">使用场景法设计删除类型的测试用例</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/TESTTHEORY02/DAY02/CASE/01/index.html#case2">使用场景法设计删除房间的测试用例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 使用场景法设计删除类型的测试用例</h2>
+      <h3>1.1 问题</h3>
+      <p>删除类型的基本功能：</p>
+      <p>在房间设置选项卡中的左侧“房间类型”表格中选择不同的房间类型，单击“删除类型”按钮，给出不同的 提示信息，房间设置_删除类型如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST TESTTHEORY02 DAY02_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p>要实现使用场景法设计房间设置_删除类型功能的测试用例，解决方案如下：</p>
+      <p>1、根据说明，列出主要场景。</p>
+      <p>2、对每一个场景生成相应的测试用例。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：</p>
+      <p>根据说明，列出主要场景，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST TESTTHEORY02 DAY02_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：</p>
+      <p>对每一个场景生成相应的测试用例，如下所示：</p>
+      <p class="number">第1条用例</p>
+      <p class="number">用例编号： 系统设置_房间设置_删除类型01</p>
+      <p class="number">用例描述</p>
+      <p class="number">测试目的：</p>
+      <p class="number">1、该种房间类型没有分配服务生，并且房态为可供或者清理或者停用状态，给出提示（确定，取消）可以删除</p>
+      <p class="number">预置条件：</p>
+      <p class="number">1、“蜜月套房”当前全部为“可供”状态，并且当前没有分配服务生</p>
+      <p class="number">测试步骤：</p>
+      <p class="number">1、在系统中的“系统设置-房间设置选项卡”中的“房间类型表”中选择房间类型为“蜜月套房”的记录，点击右侧的“删除类型”按钮</p>
+      <p class="number">2、点击“消息提示框”中的“取消”按钮</p>
+      <p class="number">3、重复步骤1的操作，点击“消息提示框”中的“确定”按钮</p>
+      <p class="number">预期结果：</p>
+      <p class="number">1、弹出“消息提示框”，提示：“是否删除此房间类型？”</p>
+      <p class="number">2、“消息提示框”关闭，“蜜月套房”未删除</p>
+      <p class="number">3、“消息提示框”关闭，“蜜月套房”被删除</p>
+      <p class="number">第2条用例</p>
+      <p class="number">用例编号：系统设置_房间设置_删除类型02</p>
+      <p class="number">用例描述</p>
+      <p class="number">测试目的：</p>
+      <p class="number">1、该种房间类型分配有服务生，房间房态为可供或者清理或者停用状态，给出提示，不能删除</p>
+      <p class="number">预置条件：</p>
+      <p class="number">1、“商务套房”分配有服务生，房态均为“可供”状态</p>
+      <p class="number">测试步骤：</p>
+      <p class="number">1、在系统的“系统设置-房间设置选项卡”中的“房间类型表”中，选择房间类型为“商务套房”的记录，点击右侧的“删除类型”按钮</p>
+      <p class="number">2、在“消息提示框”中点击“确定”按钮</p>
+      <p class="number">预期结果：</p>
+      <p class="number">1、弹出“消息提示框”，提示：“该房间类型分配有服务生，不能删除！”</p>
+      <p class="number">2、“消息提示框”关闭，“商务套房”未被删除</p>
+      <p class="number">第3条用例</p>
+      <p class="number">用例编号：系统设置_房间设置_删除类型03</p>
+      <p class="number">用例描述</p>
+      <p class="number">测试目的：</p>
+      <p class="number">1、该种房间类型没有分配服务生，但是房间房态为占用或者预定或者长包房状态，给出提示，不能删除</p>
+      <p class="number">预置条件：</p>
+      <p class="number">1、“标准双人间”没有分配服务生，包含房态为“占用”状态的房间</p>
+      <p class="number">测试步骤：</p>
+      <p class="number">1、在系统的“系统设置-房间设置选项卡”中的“房间类型表”中，选择房间类型为“标准双人间”的记录，点击右侧的“删除类型”按钮</p>
+      <p class="number">2、在“消息提示框”中点击“确定”按钮</p>
+      <p class="number">预期结果：</p>
+      <p>1、弹出“消息提示框”，提示：“该房间类型被占用，不能删除！”</p>
+      <p>2、“消息提示框”关闭，“标准双人间”未被删除</p>
+      <a name="case2">
+      </a>
+      <h2>2 使用场景法设计删除房间的测试用例</h2>
+      <h3>2.1 问题</h3>
+      <p>删除房间的基本功能：</p>
+      <p>在房间设置选项卡中的左侧“房间”表格中选择不同的房间，单击“删除房间”按钮，给出不同的 提示信息，房间设置_删除房间如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST TESTTHEORY02 DAY02_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>2.2 方案</h3>
+      <p>要实现使用场景法设计房间设置_删除房间功能的测试用例，解决方案如下：</p>
+      <p>1、根据说明，列出主要场景。</p>
+      <p>2、对每一个场景生成相应的测试用例。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：</p>
+      <p>根据说明，列出主要场景，如下图-4所示：</p>
+      <p>/</p><p>图-4</p><p></p>
+      <p class="number">步骤二：</p>
+      <p>对每一个场景生成相应的测试用例，如下所示：</p>
+      <p class="number">第1条用例</p>
+      <p class="number">用例编号：系统设置_房间设置_删除房间_01</p>
+      <p class="number">用例描述</p>
+      <p class="number">测试目的：</p>
+      <p class="number">1、该房间房态为：可供或者清理或者停用时，给出提示（确定，取消），可以删除</p>
+      <p class="number">预置条件：</p>
+      <p class="number">1、设置标准单人间中房间号为“BD006”的房态为：可供</p>
+      <p class="number">测试步骤：</p>
+      <p class="number">1、在系统中的“系统设置-房间设置选项卡”中的“房间表”中选择房间号为：“BD006”的记录，点击“删除房间”按钮</p>
+      <p class="number">2、点击“消息提示框”中的“取消”按钮</p>
+      <p class="number">3、重复步骤1，在“消息提示框”中点击“确定”按钮</p>
+      <p class="number">预期结果：</p>
+      <p>1、弹出“消息提示框”，提示：“是否确定删除此房间？”</p>
+      <p>2、“消息提示框”关闭，房间号为“BD006”的记录未被删除</p>
+      <p>3、“消息提示框”关闭，房间号为“BD006”的记录成功删除</p><p></p><p></p>
+    </div>
+  
+</body></html>

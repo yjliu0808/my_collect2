@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://tts.tmooc.cn/studentCenter/toMyttsPage -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>TTS学习中心</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="./TTS_files/style.css">
+</head>
+<body>
+    <div class="page-header" id="headerDiv"><script src="./TTS_files/hm.js"></script><script type="text/javascript">
+$(function(){
+	
+	//百度统计
+    var _hmt = _hmt || [];
+     (function() {
+         var hm = document.createElement("script");
+         hm.src = "https://hm.baidu.com/hm.js?e997f0189b675e95bb22e0f8e2b5fa74";
+         var s = document.getElementsByTagName("script")[0]; 
+         s.parentNode.insertBefore(hm, s);
+         })();
+		
+	/* TTS_URL+ */
+	//初始化logo图片
+	$("#logoImage").attr("src","../private/ttsfront/img/logo_foot.png");
+	
+	var versionCode=$("#version").val();
+	
+	
+	
+	$('#out_login').click(function(evt){
+		evt.stopPropagation();
+		window.location.href=tmooc_path;
+	});
+	
+
+	
+
+    var isCenterCookie = $.cookie("isCenterCookie");//yes/no
+
+    var versionStr = $.cookie("versionListCookie");
+    var versions = new Array();
+    versionStr = versionStr.replace("\"","");
+    versionStr = versionStr.replace("\"","");
+    versions = versionStr.split(",,");
+
+    if(versions.length != ($('#versionListUl').length-1)){
+	    for(var i=0;i<versions.length;i++) {
+	    	var version = versions[i];
+	    	var defaultVersionCookie = $.cookie('defaultVersionCookie');
+	    	if(version == defaultVersionCookie) {
+	    		$('#versionListUl').append("<li class='active' style='overflow-x:hidden'><p class='con-lty'><a href='"+TTS_URL+"studentCenter/toMyttsPage?versionCode="+version+"' title='"+version+"'>"+version+"</a></p></li>");
+	    	}else{
+	    		$('#versionListUl').append("<li style='overflow-x:hidden'><p class='con-lty'><a href='"+TTS_URL+"studentCenter/toMyttsPage?versionCode="+version+"' title='"+version+"'>"+version+"</a></p></li>");
+	    	}	    	
+	    }
+
+    }
+    	
+   
+ /**------------发ajax获取在家还是在中心-------------*/   
+    $.ajax({
+    	type: "get", 
+    	url: tts_video_url+"isCenter.html", 
+    	dataType: "html",
+    	data:{},
+    		success: function (data) {
+    		/* 	alert("有文件"); */
+    			$.cookie("isCenterCookie","yes",{path:"/"});  
+    			 var courseName = $.cookie("courseCookie");
+    			   if(courseName == "JAVA"){
+    			       if($('#hmenuicon_3').length>0){
+    			           $('#hmenuicon_3').remove();
+    			       }
+    			       if($('#hmenuicon_2').length==0){
+    			            $('.dropdownlist-lty').append("<li id='hmenuicon_2'><a href='javascript:;' onclick='dowload()'>资料下载</a></li>");
+    			       }
+    			   }else if(courseName == "ACC"){
+    			       if($('#hmenuicon_2').length>0){
+    			           $('#hmenuicon_2').remove();
+    			       }
+    			       if($('#hmenuicon_3').length==0){
+    			        $('.dropdownlist-lty').append("<li id='hmenuicon_3'><a href='javascript:;' onclick='dowloadKuaiji()'>资料下载</a></li>");
+    			       }
+    			   }
+    	}, 
+    		error: function (XMLHttpRequest) { 
+    			//alert("没有文件");
+    			$.cookie("isCenterCookie","no");
+    			//if(XMLHttpRequest.readyState == 4 && XMLHttpRequest.status == 404){
+    			//	
+    			//}
+    			 if($('#hmenuicon_1').length>0){
+                     $('#hmenuicon_1').remove();
+                 }
+    			 if($('#hmenuicon_2').length>0){
+                     $('#hmenuicon_2').remove();
+                 }
+                 if($('#hmenuicon_3').length>0){
+                     $('#hmenuicon_3').remove();
+                 }
+    	}
+    });
+
+});
+/*拆分session*/
+function main_getLoginUserFromCookie() {
+    var sessionid = $.cookie("sessionid");
+    sessionid=sessionid.replace("\"","");
+    if (sessionid == null || sessionid.length < 1) return null;
+    var user = new Object();
+    var str = new Array();
+    str = sessionid.split("|");
+    /**
+     * sessionid|studentCode
+     **/
+    user.sessionid = str[0];
+    user.loginname = str[1];
+    user.name = str[2];
+    user.istts = str[3];
+    user.outdays = str[4];
+    user.sex = str[5];
+    user.img = str[6];
+    user.vip = str[7];
+    user.graduatetime = parseInt(str[8]) + 185 * 24 * 60 * 60 * 1000;
+    user.isupdatepwd = str[9];
+    if (user.outdays > 0 && user.vip == 0) {
+        updateVIPIMG(user);
+    }
+    return user;
+}
+
+var sessObj = main_getLoginUserFromCookie();
+var sessionId = sessObj.sessionid;
+//去投诉页面 
+function toSuggest(){
+	window.location.href=TTS_URL+"frontSuggest/getMySuggest";
+}
+
+//去用户中心的界面
+function toUserCenter(){
+	window.location.href=TTS_URL+"user/userCenter";
+}
+//去我的问题页面
+function toUserProblemPage() {
+    window.location.href = TTS_URL + 'ttsOnlineFaq/toUserProblemPage';
+}
+// 去在线问答页面
+function toOnlineQuestion() {
+	window.location.href = TTS_URL + 'ttsOnlineFaq/toOnlineFaqPage';
+}
+//学习中心
+function studyCenter(){
+	window.location.href=TTS_URL+"studentCenter/toMyttsPage";
+}
+//在线考试
+function toqs() {
+	var defaultVersionCookie = $.cookie('defaultVersionCookie');
+	 if (defaultVersionCookie != null) {
+	    var str = new Array();
+	    str = defaultVersionCookie.split("_");
+	    var type = str[0];
+	    if(type == "VIP") {
+	    	window.location.href=qw_tm_exam+"?sessionId="+sessionId;
+	    }else{
+	        window.location.href=qs_kao_path+"?sessionId="+sessionId;
+	    }
+	 }
+	 return  null;
+}
+//问卷调查
+function questiond() {
+	//window.location.href=will_vote_list + ";jsessionid="+sessionId;
+	window.open(TTS_URL+"studentCenter/toVote");
+}
+//JAVA方向资料下载
+function dowload() {
+	window.location.href=TTS_URL+"dowload/dow";
+}
+//会计方向资料下载
+function dowloadKuaiji() {
+	window.location.href=TTS_URL+"dowload/kuaiji";
+}
+//有奖征文
+function onbbs(){
+	window.open(TTS_URL+"bbs/toIndex");
+}
+//云主机
+function toCloud(){
+	window.location.href=TTS_URL+"cloudHost/index";
+}
+function questinSea(){
+    window.location.href=qw_tm_exam+"?sessionId="+sessionId;
+}
+</script>
+
+<div class="md2017082401lty">
+            <div class="container">
+                <!--logo-->
+                <div class="sclogo-lty">
+                    <a href="http://tts.tmooc.cn/studentCenter/toMyttsPage#">
+                        <img id="logoImage" src="./TTS_files/logo_foot.png" alt="">
+                    </a>
+                </div>
+                <!--导航条-->
+                <!--课程切换-->             
+                </div>
+            </div>
+        </div></div>
+    <div class="page-body">
+        <div class="md2017082402lty">
+            <nav class="banner-top-lty">
+                <div class="container">
+                    <div class="begin-study-lty pull-left">
+                        <a href="javascript:;" onclick="startStudy()">
+                            <img src="./TTS_files/begin_study.png" alt="">
+                        </a>
+                    </div>
+                 
+                </div>
+            </nav>
+            <div class="container wipper-960-190">
+            <input type="hidden" id="version" value="TSDTN201801">
+                <div class="col-960 md2017110202lty">
+                <!-- 循环各个阶段 -->
+                <!-- 开始循环 ,bigStage是大阶段开始-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="11"></a>
+                       <span class="headline-content">BASIC</span>
+                    	</h2>
+                    	
+                    <div id="stage679398" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">BASIC</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				软件测试的基本概念、软件缺陷的定义、计算机的层次和软件的分类、常用DOS命令
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例--> 	<!--  刘玉娟 -->
+                                        	<li class="al"><a target="_blank" href=".\BASIC\TEST BASIC DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\BASIC\TEST BASIC DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\BASIC\TEST BASIC DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				进制转换、逻辑代数的基本运算、互联网概述、网络体系及网络协议、B/S、C/S结构、抓包工具
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\BASIC\TEST BASIC DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\BASIC\TEST BASIC DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\BASIC\TEST BASIC DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="12"></a>
+                       <span class="headline-content">TESTTHEORY01</span>
+                    	</h2>
+                    	
+                    <div id="stage679406" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">TESTTHEORY01</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				软件缺陷的标准定义、缺陷报告的编写及处理流程、测试用例的概念、等价类划分法、等价类划分法概念、等价类划分法步骤、等价类划分法总结
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				边界值法的概念、边界值法步骤、用例的优化、用例的强化、综合应用、测试用例总结
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				边界值法的概念、边界值法步骤、用例的优化、用例的强化、综合应用、测试用例总结
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				因果图法概述、因果图中基本符号、因果图中约束条件符号、步骤概述、案例需求、步骤详解、因果图法小结
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY04_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				判定表法概述、企业工资发放软件、判定表法步骤、字符组合程序、自动售货机程序、判定表法小结
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY05_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY05_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				正交表的基本概念、正交排列法详解、正交表法小结、正交排列法的思想、正交排列法扩展
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY06_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY06_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\TESTTHEORY01\TESTTESTTHEORY01 DAY06_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                            
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="13"></a>
+                       <span class="headline-content">TESTTHEORY02</span>
+                    	</h2>
+                    	
+                    <div id="stage679416" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">TESTTHEORY02</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				场景法的基本概念、场景法步骤、场景法案例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				删除类型、删除房间、提成设置、最重要的方法、重要的方法、次重要的方法
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				软件开发阶段划分、软件测试阶段划分、V模型、W模型、按照测试技术分类、按是否需要运行代码分类
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				按软件特性分类、黑盒测试与白盒测试、动态、静态测试、返测、回归测试等
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\TESTTHEORY02\TEST TESTTHEORY02 DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="14"></a>
+                       <span class="headline-content">ZENTAO</span>
+                    	</h2>
+                    	
+                    <div id="stage679425" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">ZENTAO</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				禅道简介、禅道安装、分组和用户、回收站、自定义
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				创建产品、模块维护、创建需求、创建项目、关联、分解任务
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				分解任务、创建用例、创建版本、提交测试、执行用例、缺陷管理
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\ZENTAO\TEST AENTAO DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="15"></a>
+                       <span class="headline-content">FUNCTIONPROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage679432" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">FUNCTIONPROJECT</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				项目整体安排、熟悉软件需求、结账后声音和状态、添加类型、房间费打折
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				单个添加、批量添加、修改房间、删除房间、添加类别、添加商品、提成设置、添加服务生等级、添加员工、添加客户来源、添加营销人员
+                                   		</p>
+                                    	<ul class="course-link">
+                                    	<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				软件需求、需求分析、编写测试用例、软件需求、需求分析、编写测试用例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				软件需求、场景分析、编写测试用例、软件需求、场景分析、编写测试用例、搭建QC环境、执行前准备工作、执行测试用例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY04_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				测试计划概述、测试计划组成、测试总结报告概述、测试总结报告组成、项目常见面试题
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY05_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\FUNCTIONPROJECT\TEST FUNCTIONPROJECT DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="21"></a>
+                       <span class="headline-content">DATABASE</span>
+                    	</h2>
+                    	
+                    <div id="stage679443" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">DATABASE</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				数据库发展过程、关系模型、Oracle基本介绍、Oracle的数据类型、SQL语句
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				基本SQL查询、带条件的查询、聚合函数、子查询
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				关联查询、约束
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				主键约束、唯一约束、检查约束、默认值约束
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY04_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				外键约束、非空约束、Oracle常用函数、视图
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY05_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY05_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				索引、序列、函数
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY06_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY06_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\DATABASE\TEST DATABASE DAY06_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="22"></a>
+                       <span class="headline-content">LOADRUNNER-BASIC</span>
+                    	</h2>
+                    	
+                    <div id="stage679456" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">LOADRUNNER-BASIC</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				性能测试基本概念、LoadRunner工具介绍、VuGen脚本录制回放、LoadRunner常用术语
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	 
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				性能测试基本概念、脚本调试技巧、三大组件协同工作、性能测试策略、基准测试
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY02_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	 
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				并发测试、LoadRunner工具组成、脚本参数化、检查点、关联技术
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY03_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	 
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				场景介绍、按场景设置、多机联合、结果数据监控、按组设置、百分比场景、资源分析、编写性能测试报告
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY04_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LOADRUNNER-BASIC\TEST LOADRUNNER-BASIC DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	 
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="23"></a>
+                       <span class="headline-content">JMETER</span>
+                    	</h2>
+                    	
+                    <div id="stage679465" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">JMETER</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				JMeter的概述、JMeter的优缺点、JMeter支持协议、JMeter的安装和使用
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="--------------------------------">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				JMeter的基本使用、BadBoy录制脚本、测试计划分析、Vuser及场景设计(线程组、调度器)
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="--------------------------------------------">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				JMeter关联技术、JMeter参数化
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="-----------------------">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				JMeter调试和应用、接口测试
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href="------------------------------------">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="24"></a>
+                       <span class="headline-content">LINUX</span>
+                    	</h2>
+                    	
+                    <div id="stage679474" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">LINUX</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Linux的安装、Linux的基本操作
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LINUX\TEST LINUX DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LINUX\TEST LINUX DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LINUX\TEST LINUX DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				软硬件体系结构、基本层次结构、Linux基本命令、Linux系统的版本、Linux系统分区、挂载命令、Linux常用命令
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LINUX\TEST LINUX DAY02_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LINUX\TEST LINUX DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LINUX\TEST LINUX DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				用户和组的管理、案例、文件/目录的权限、常用技巧
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\LINUX\TEST LINUX DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\LINUX\TEST LINUX DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\LINUX\TEST LINUX DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="25"></a>
+                       <span class="headline-content">MOBILE</span>
+                    	</h2>
+                    	
+                    <div id="stage679482" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">MOBILE</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				移动设备发展、Android产品特点、Android测试平台搭建、Android测试主体
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\MOBILE\MOBILE DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				ADB调试技术、Logcat日志分析、Android用户体验测试、Android功能测试、测试工具Monkey、测试监控工具DDMS、业内测试资源、真实APP案例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\MOBILE\MOBILE DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>--
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				MonkeyRunner简介、环境搭建与基本使用、Python语言基础、MonkeyRunner API、MonkeyRunner脚本录制、Python语言基础、Appium技术、微信测试用例设计、功能自动化应用
+                                   		</p>
+                                    	<ul class="course-link">
+                                    			<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\MOBILE\MOBILE DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="31"></a>
+                       <span class="headline-content">QTP-BASIC</span>
+                    	</h2>
+                    	
+                    <div id="stage679489" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">QTP-BASIC</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				课程概述、功能自动化测试、QTP简介、QTP界面介绍、录制回放模式、Flight简介、自动启动的方式、手动启动的方式
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Mtours简介、自动启动的方式、测试流程、QTP原理、对象仓库、Object Spy工具、常见回放错误
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				检查点简介、标准检查点、文本检查点、文本区域检查点、位图检查点
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				参数化简介、参数化步骤、注意事项、补录
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY04_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				Action基本使用、Action参数化、Action参数化步骤、Action参数化注意事项
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY05_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY05_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				复用Action、输出值简介、标准输出值、数据表的类型
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY06_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY06_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\QTP-BASIC\TEST QTP-BASIC DAY06_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="32"></a>
+                       <span class="headline-content">FUNCTIONPROJECT02</span>
+                    	</h2>
+                    	
+                    <div id="stage679502" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">FUNCTIONPROJECT02</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				编写测试计划、分析系统需求
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				编写测试用例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				执行测试用例
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				提交缺陷报告、编写测试总结报告
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                    	<!-- courseStage是小阶段 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="41"></a>
+                       <span class="headline-content">LOADRUNNER-ADVANCED</span>
+                    	</h2>
+                    	
+                    <div id="stage679522" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">LOADRUNNER-ADVANCED</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				性能测试计划的编写
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				IP欺骗技术、Http报文结构
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				编写性能测试报告
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				综合场景设计
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				类C语言深入讲解
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				系统性能分析
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<!--PPT  -->
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="42"></a>
+                       <span class="headline-content">PERFORMENCEPROJECT</span>
+                    	</h2>
+                    	
+                    <div id="stage679535" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">PERFORMENCEPROJECT</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				分析系统需求、设计测试计划、搭建测试环境、录制脚本
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\PERFORMENCEPROJECT\TEST PERFORMENCEPROJECT DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\PERFORMENCEPROJECT\TEST PERFORMENCEPROJECT DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				执行测试、分析测试结果、编写测试报告
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\PERFORMENCEPROJECT\TEST PERFORMENCEPROJECT DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\PERFORMENCEPROJECT\TEST PERFORMENCEPROJECT DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="43"></a>
+                       <span class="headline-content">JAVA-FUNDAMENTAL</span>
+                    	</h2>
+                    	
+                    <div id="stage679511" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">JAVA-FUNDAMENTAL</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Java开发环境的配置、变量的声明、变量的访问、标识符
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Java数据类型分类、"、算术运算符、关系运算符、逻辑运算符、条件运算符
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY02_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				流程控制语句、选择结构、if语句、if-else语句、if-else-if语句、switch语句
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				循环结构、while语句、do-while语句、for语句、break和continue、循环嵌套
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY04_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				数组的定义、数组的访问、数组的初始化、数组的遍历、方法的定义、方法要素、方法的调用
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY05_w.html">案例</a></li>
+                                        <!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-FUNDAMENTAL\TEST JAVA-FUNDAMENTAL DAY05_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="44"></a>
+                       <span class="headline-content">JAVA-OOP</span>
+                    	</h2>
+                    	
+                    <div id="stage679540" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">JAVA-OOP</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				面向对象基本概念、创建类和类实例化、构造方法、this关键字、方法重载、继承、继承中构造方法
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY01_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				变量隐藏、方法重写、super关键字、创建和导入包
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY02_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				抽象类、接口、访问控制
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY03_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\JAVA-OOP\TEST JAVA-OOP DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	
+                    	<h2 class="headline-1">
+                       <a class="anchor-1" name="45"></a>
+                       <span class="headline-content">SELENIUM</span>
+                    	</h2>
+                    	
+                    <div id="stage679547" class="course-list">
+                        <!--<div class="course-title">
+                            <span class="t-lty">SELENIUM</span>
+                        </div>
+                          -->
+                        <div class="course-menu">
+                            <ul>
+                            	<!-- 循环day开始 -->
+                                	<li class="opened">
+                                   		<p>01：
+                                   				Selenium概述 、Selenium 、IDE
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY01_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY01_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY01_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>02：
+                                   				Selenium命令
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY02_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY02_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY02_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>03：
+                                   				WebDriver基础、WebDriver集成JUnit
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY03_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY03_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY03_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>04：
+                                   				浏览器操作、定位页面元素1
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY04_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY04_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY04_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>05：
+                                   				定位页面元素2、常用操作和断言
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY05_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY05_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY05_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>06：
+                                   				Select对象、Alert对象
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY06_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY06_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY06_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>07：
+                                   				Frame处理、多窗口处理
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY07_w.html">案例</a></li>
+                                        		<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY07_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY07_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>08：
+                                   				XPath
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY08_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY08_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY08_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                                <!-- 循环day结束 -->
+                                	<li class="opened">
+                                   		<p>09：
+                                   				数据驱动测试、WebDriver集成TestNG
+                                   		</p>
+                                    	<ul class="course-link">
+                                    		<!--案例  -->
+                                        	<li class="al"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY09_w.html">案例</a></li>
+                                        	<!--PPT  -->
+                                        	<li class="ppt"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY09_p.html">PPT</a></li>
+                                        	<!--作业  -->
+                                        	<li class="zy"><a target="_blank" href=".\SELENIUM\TEST SELENIUM DAY09_z.html">作业</a></li>
+                                        	<!--视频  -->
+                                        	
+                                    	</ul>
+                                	</li>
+                              
+                                <!-- 循环day结束 -->
+                            </ul>
+                        </div>
+                    </div>
+                    	<!--循环 courseStage小阶段结束 -->
+                    	<!-- 开始循环 ,bigStage大阶段结束-->
+                </div>
+                
+               
+                
+                <div class="col-190 md2017111501lty" style="position: fixed; top: 10px; left: 1250px;">
+                    <div class="md2017110201lty">
+                    <div class="slide" style="">
+                     <div id="sideToolbar" style="">
+                     <div id="sideCatalog" class="sideCatalogBg" style="visibility: visible;">
+                     <div id="sideCatalog-sidebar">
+                        <div class="sideCatalog-sidebar-top"></div>
+                        <div class="sideCatalog-sidebar-bottom"></div>
+                     </div>
+                    <div id="sideCatalog-updown" style="visibility: visible;">
+                        <div id="sideCatalog-up" class="sideCatalog-up-enable" title="向上翻页"></div>
+                        <div id="sideCatalog-down" class="sideCatalog-down-enable" title="向下翻页"></div>
+                    </div>
+                    <div id="sideCatalog-catalog">
+                        <dl style="width: 175px; zoom: 1; top: -434.114px;"><dd id="sideToolbar-item-0-11" class="sideCatalog-item1"><span class="sideCatalog-index1">11</span><a class="nslog:1026" onclick="return false;" title="part11" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#11">BASIC</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-12" class="sideCatalog-item1"><span class="sideCatalog-index1">12</span><a class="nslog:1026" onclick="return false;" title="part12" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#12">TESTTHEORY01</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-13" class="sideCatalog-item1"><span class="sideCatalog-index1">13</span><a class="nslog:1026" onclick="return false;" title="part13" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#13">TESTTHEORY02</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-14" class="sideCatalog-item1"><span class="sideCatalog-index1">14</span><a class="nslog:1026" onclick="return false;" title="part14" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#14">ZENTAO</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-15" class="sideCatalog-item1"><span class="sideCatalog-index1">15</span><a class="nslog:1026" onclick="return false;" title="part15" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#15">FUNCTIONPROJECT</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-21" class="sideCatalog-item1"><span class="sideCatalog-index1">21</span><a class="nslog:1026" onclick="return false;" title="part21" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#21">DATABASE</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-22" class="sideCatalog-item1"><span class="sideCatalog-index1">22</span><a class="nslog:1026" onclick="return false;" title="part22" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#22">LOADRUNNER-BASIC</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-23" class="sideCatalog-item1"><span class="sideCatalog-index1">23</span><a class="nslog:1026" onclick="return false;" title="part23" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#23">JMETER</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-24" class="sideCatalog-item1"><span class="sideCatalog-index1">24</span><a class="nslog:1026" onclick="return false;" title="part24" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#24">LINUX</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-25" class="sideCatalog-item1"><span class="sideCatalog-index1">25</span><a class="nslog:1026" onclick="return false;" title="part25" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#25">MOBILE</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-31" class="sideCatalog-item1"><span class="sideCatalog-index1">31</span><a class="nslog:1026" onclick="return false;" title="part31" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#31">QTP-BASIC</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-32" class="sideCatalog-item1"><span class="sideCatalog-index1">32</span><a class="nslog:1026" onclick="return false;" title="part32" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#32">FUNCTIONPROJECT02</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-41" class="sideCatalog-item1"><span class="sideCatalog-index1">41</span><a class="nslog:1026" onclick="return false;" title="part41" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#41">LOADRUNNER-ADVANCED</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-42" class="sideCatalog-item1"><span class="sideCatalog-index1">42</span><a class="nslog:1026" onclick="return false;" title="part42" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#42">PERFORMENCEPROJECT</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-43" class="sideCatalog-item1"><span class="sideCatalog-index1">43</span><a class="nslog:1026" onclick="return false;" title="part43" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#43">JAVA-FUNDAMENTAL</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-44" class="sideCatalog-item1 highlight"><span class="sideCatalog-index1">44</span><a class="nslog:1026" onclick="return false;" title="part44" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#44">JAVA-OOP</a><span class="sideCatalog-dot"></span></dd><dd id="sideToolbar-item-0-45" class="sideCatalog-item1"><span class="sideCatalog-index1">45</span><a class="nslog:1026" onclick="return false;" title="part45" href="http://tts.tmooc.cn/studentCenter/toMyttsPage#45">SELENIUM</a><span class="sideCatalog-dot"></span></dd></dl>
+                    </div>
+                </div>
+                <a id="sideCatalogBtn" class="" style="visibility: visible;" href="javascript:void(0);"></a>
+                <a id="sideToolbar-up" style="visibility: visible;" title="返回顶部" href="javascript:void(0)"></a>
+            </div>
+            </div>
+             </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+   
+        </div></div>
+     <script src="./TTS_files/jquery-2.1.1.js"></script>
+    <script src="./TTS_files/jquery-cookie.js"></script>
+     <script src="./TTS_files/rightNav.min.js"></script>
+    <script src="./TTS_files/main.js"></script>
+    <script src="./TTS_files/mytts.js"></script><script src="./TTS_files/jquery.eBox.js"></script>
+    <script> 
+    	$("#headerDiv").load("http://tts.tmooc.cn/ttsPage/main/header.html");
+		$("#footerDiv").load("http://tts.tmooc.cn/ttsPage/main/footer.html");
+    </script>
+
+</body></html>

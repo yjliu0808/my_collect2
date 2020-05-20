@@ -1,0 +1,423 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST SELENIUM DAY01_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY01_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY01_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST SELENIUM DAY01_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST SELENIUM DAY01_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST SELENIUM DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#case1">安装FireFox、IDE、FireBug、FirePath</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#case2">IDE在留言簿中录制和运行</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#case3">留言簿增加步骤</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#case4">留言簿复制TestCase</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 安装FireFox、IDE、FireBug、FirePath</h2>
+      <h3>1.1 问题</h3>
+      <p>如何安装FireFox、IDE、FireBug、FirePath，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p>分析图-1，可以看出，需要先安装合适版本的FireFox浏览器，而Selenium IDE、FireBug、FirePath等都是FireFox浏览器的插件，安装的方法分为两种：在线安装组件、下载插件直接拖拽到浏览器来安装。我们的环境如果是已经连接外网的环境，使用在线安装比较方便，如果是不连外网的环境，应该选择下载插件后拖拽到浏览器的方式来安装。此案例我们是已经下载了插件，在离线状态下安装各种插件。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：安装FireFox浏览器</p>
+      <p>首先获取安装包：FirefoxSetup23.0.1chs.exe，双击此文件，按照提示一步一步安装。</p>
+      <p class="number">步骤二：设置FireFox不自动更新</p>
+      <p>启动FireFox，设置为不自动更新，设置位置为：工具\选项\高级\更新\Firefox更新\不检查更新（不推荐：安全风险）（N），具体设置如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image002.png">
+        <p>图－2</p>
+      </div>
+      <p class="number">步骤三：安装Selenium IDE插件</p>
+      <p>1、获取Selenium IDE插件的安装文件：selenium-ide-2.5.0.xpi，打开FireFox浏览器，把Selenium IDE插件的安装文件拖拽到FirFox浏览器中，如下图-3所示：</p>
+      <p>/</p><p>图－3</p><p></p>
+      <p>2、弹出提示，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image003.png">
+      </div>
+      <p>3、点击“立即安装”，安装完成后，会提示你重新启动Firefox，如下图-5所示：</p>
+      <p>/</p><p>图－5</p><p></p>
+      <p>4、重新启动FireFox浏览器，打开“工具”菜单，如果存在Selenium IDE的选项，表示该插件安装正确，如下图-6所示：</p>
+      <p>/</p>
+      <p>图－6</p>
+      <p class="number">步骤四：安装FireBug插件</p>
+      <p>首先获取FireBug插件的安装文件：firebug-1.13.0a1.xpi，打开FireFox浏览器，拖拽FireBug的安装文件到浏览器中。点击“立即安装”后，再重启浏览器,增加如下菜单即表示安装成功：工具\Web开发者\FireBug，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image004.png">
+        <p>图-7</p>
+      </div>
+      <p class="number">步骤五：安装FirePath插件</p>
+      <p>首先获取FirePath插件的安装文件：firepath-0.9.7-fx.xpi，打开FireFox浏览器，拖拽FirePath的安装文件到浏览器中。点击“立即安装”后，再重启浏览器，打开FireBug后，在FireBug面板中增加了FirePath的标签页即表示安装成功，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image005.png">
+        <p>图-8</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 IDE在留言簿中录制和运行</h2>
+      <h3>2.1 问题</h3>
+      <p>需要使用Selenium IDE工具实现对留言簿程序的录制和运行，主要操作步骤为：输入名字、E-Mail、留言后，点击"完成"按钮实现留言功能。</p>
+      <p>本案例要求对于Selenium IDE的界面和基本使用方法有基本了解后，进行代码的录制，录制后保存Test Case以及Test Suite后，再回放代码，实现留言簿功能在Firefox浏览器中的自动化测试。</p>
+      <h3>2.2 方案</h3>
+      <p>首先，打开Selenium IDE:</p>
+      <p>选择“工具”（Tools）菜单中的Selenium-IDE 打开 Selenium IDE。</p>
+      <p>其次，使用Selenium IDE的录制功能，来录制被测系统的操作步骤，此案例中主要是FireFox浏览器中打开指定网页，输入留言簿的基本信息，包括：名字、E-Mail、留言内容，点击”提交“按钮，完成功能的录制操作。</p>
+      <p>再次，保存代码的Test Case和Test Suite。</p>
+      <p>最后，点击运行来运行代码，实现留言簿功能在FireFox浏览器中的回放，从而实现自动化测试。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：打开Selenium IDE</p>
+      <p>1、启动FireFox浏览器，在浏览器的地址栏中输入留言簿的URL：file:///C:/example/message.html，打开浏览器“工具”菜单中的Selenium IDE，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image006.png">
+        <p>图－9</p>
+      </div>
+      <p>2、展示Selenium IDE的界面，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image007.png">
+        <p>图－10</p>
+      </div>
+      <p>3、Selenium IDE的基本功能如下：</p>
+      <p>菜单栏：</p>
+      <p>这里提一下Help菜单里面的“UI-Element Documentation”是蛮有用的帮助文档。其他部分略过。</p>
+      <p>工具栏：</p>
+      <p>下面是工具栏上面按钮的一些介绍：</p>
+      <p>速度控制：控制测试用例的执行速度</p>
+      <p>执行全部：执行测试套件（test suite）中的所有测试用例</p>
+      <p>执行：执行单全选中的测试用例。</p>
+      <p>暂停/继续：暂停和继续执行测试用例</p>
+      <p>单步执行：让测试用例一个一个命令执行。</p>
+      <p>录制：录制用户在浏览器中的操作。</p>
+      <p>测试用例面板</p>
+      <p>测试用例面板会显示你所编写的测试用例脚本。他有两个标签页，一个是“table”一个是“source”。</p>
+      <p>table标签页显示的是以表格形式显示出脚本中的命令：</p>
+      <p>标签页下方的Command，Target，Value会显示出当前选中的命令的对应信息。通过修改输入框里面的值，命令就会被修改。</p>
+      <p>当你在Command输入框中开始输入命令，一个下拉列表就会出现，下拉列表中会显示出以你输入的字母开始的命令。你可以从中选择你想输入的命令。</p>
+      <p>source标签页是以源代码的形式显示脚本，默认是HTML的形式，这里的源代码可以通过IDE中的“Options -&gt; Format”菜单来转换显示的语言。支持7种语言：Java，Groovy，C#，Perl，PHP，Python和Ruby，支持11种形式。</p>
+      <p>Log/Reference/UI-Element/Rollup 面板</p>
+      <p>在IDE的下方，有一个面板，里面包含4个标签页，它们是Log, Reference, UI-Element, Rollup：</p>
+      <p>(1) Log (日志)</p>
+      <p>当在运行测试用例的时候，提示信息和错误信息都会在Log中显示。这些日志信息往往对于测试用例的调试很有用。</p>
+      <p>Log标签页的右上侧有一个“Clear”的按钮，它可以清理Log中的所有日志。“Clear”按钮左侧有一个下拉的选项，它可以让你选择输出的日志信息的级别。级别有4个：Debug, Info, Warn和Error。 默认选中是“Info”。</p>
+      <p>(2) Reference (参考)</p>
+      <p>参考标签页，当你在输入或者是修改命令的时候会默认选中。参考标签页里面会展示出当前命令的文档。</p>
+      <p>要注意的是，命令的参数个数、顺序、类型都必须与Reference中的一致，否则命令可能会不能正确执行。</p>
+      <p>Reference标签中的信息作为快速的参考很有用，详细的Reference可以参考：</p>
+      <p>http://release.openqa.org/selenium-core/1.0/reference.html</p>
+      <p>(3) UI-Element 和 Rollup</p>
+      <p>这两个高级功能的详细说明可以在帮助菜单中的“UI-Element Documentation”找到。</p>
+      <p class="number">步骤二：创建测试用例</p>
+      <p>1、通过录制脚本来创建测试用例,当Selenium-IDE第一次开启的时候，录制的按钮是默认开启的。可以通过再次点击录制按钮取消此次录制操作。如果你不希望开启Selenium-IDE的时候，录制就开始，你可以通过选择"选项"（Options）菜单下的”选项“（Options）菜单，取消“Start recording immediately on open”的复选框，如下图-11所示：</p>
+      <p>/</p><p>图－11</p><p></p>
+      <p>2、新建用例需要用到”文件“菜单选项，文件菜单展开后如下图-12所示：</p>
+      <p>/</p><p>图－12</p><p></p>
+      <p>3、文件菜单中出现最多的是Test Case和Test Suite， 通常，一组相关的测试用例（Test Case）就是一个测试套件（Test Suite）。也就是说，一个测试套件由多个测试用例串连组成，可以将测试套件理解为测试用例组。</p>
+      <p>在打开Selenium IDE时，IDE已经默认建立了一个测试套件，这个测试套件中包含了一个名为”Untitled“的测试用例。</p>
+      <p>现在要录制的是”留言簿.html“的网页中的各个动作，首先要在Base URL文本框中输入留言簿的地址，如下图-13所示：</p>
+      <p>/</p><p>图－13</p><p></p>
+      <p>4、然后确认红色圆点型的录制按钮处于凹陷状态，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image008.png">
+        <p>图-14</p>
+      </div>
+      <p>5、在FireFox中留言簿的html页面，输入名字”zhangsan“，E-Mail：zhangsan@163.com，留言：Hello!,点击”完成“按钮，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image009.png">
+        <p>图-15</p>
+      </div>
+      <p>6、返回Selenium IDE界面并点击红色圆点按钮来停止录制，可以看到Untitled测试用例的测试步骤表格中增加了几行新步骤。界面如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image010.png">
+        <p>图－16</p>
+      </div>
+      <p class="number">步骤三：保存Test Case和Test Suite</p>
+      <p>Selenium区分测试用例 (Test case) 和 测试套件 (Test Suite)。你可以保存测试用例，然后保存整个测试套件。</p>
+      <p>1、通过文件菜单中的Save Test Case来保存测试用例，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image011.png">
+        <p>图-17</p>
+      </div>
+      <p>2、在弹出的对话框中输入文件名：IDE在留言簿中录制和运行，点击“保存”按钮，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image012.png">
+        <p>图-18</p>
+      </div>
+      <p>3、通过文件菜单中的Save Test Suite来保存测试套件。如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image013.png">
+        <p>图-19</p>
+      </div>
+      <p>4、在弹出的对话框中输入文件名：IDE在留言簿中录制和运行，点击“保存”按钮，如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image014.png">
+        <p>图-20</p>
+      </div>
+      <p class="number">步骤四：运行测试用例</p>
+      <p>1、点击工具栏的“Play current test case”按钮来运行这条测试用例，如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image015.png">
+        <p>图-21</p>
+      </div>
+      <p>2、查看运行结果，如果Failures是0,代表运行通过，如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image016.png">
+        <p>图-22</p>
+      </div>
+      <p>3、也可以查看Table视图中步骤的颜色，如果都是绿色，则表示运行通过，如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image017.png">
+        <p>图-23</p>
+      </div>
+      <p>4、Table视图颜色的说明：在运行脚本后，IDE表格的颜色发生了变化，运行前，脚本表格为白色，成功运行完毕后，表格为青色，其中还分为深青色和浅青色两种，浅青色表示：动作成功，如：打开网页成功，点击按钮成功等等，而深青色表示：判断正确。</p>
+      <p>出错时，表格可能会出现两种颜色，一种是浅粉红色，一种是深粉红色。浅粉红色表示判断结果为false，这种情况案例还是会继续执行下去，判断的失败不会影响案例的运行，深粉红色表示动作失败，如：没有找到按钮等，这种情况下案例会停止运行。</p>
+      <p>5、也可以在运行前，调整运行速度，如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image018.png">
+        <p>图-24</p>
+      </div>
+      <a name="case3">
+      </a>
+      <h2>3 留言簿增加步骤</h2>
+      <h3>3.1 问题</h3>
+      <p>在上个课堂练习中录制的留言簿的代码后，增加如下一个步骤： 再次输入名字为”lisi“ 。</p>
+      <h3>3.2 方案</h3>
+      <p>这个案例中，在Selenium IDE录制好的脚本中，再次通过插入命令(insert Command) 来增加一些功能。</p>
+      <p>需要先理解原有录制代码中每行的意义，然后在表格视图（Table View） 中插入命令。</p>
+      <p>首先，在关键字视图中选中一行，点击右键，选择插入命令（Insert Command），选择行的上方添加一个新空白行，空白行也可以通过拖拽来移动位置。</p>
+      <p>或者在源代码视图（Source View） 中的相应位置点击左键，敲入命令也可以。</p>
+      <p>注意：</p>
+      <p>1. 这里的输入的是HTML格式的需要有3列的表格代码。3列分别是：命令、第一个参数、第二个参数。</p>
+      <p>2. 首先保存，然后才能切换到表格视图（Table View）。</p>
+      <p>3. 有些步骤需要等待后才能进行下一个步骤，这时需要考虑使用xxxAndWait的命令来完成。</p>
+      <p>如下图-25所示。</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image019.png">
+        <p>图－25</p>
+      </div>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：打开TestSuite</p>
+      <p>1、为了打开上个案例的程序，重命名后继续编辑，首先使用文件菜单下的Open Test Suite，打开“IDE在留言簿中录制和运行”的Test Suite，如下图-26到图-27所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image020.png">
+        <p>图-26</p>
+      </div>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image021.png">
+        <p>图-27</p>
+      </div>
+      <p>2、使用文件菜单下的Save Test Suite As，另存为“留言簿增加步骤”的Test Suite，如下图-28到图-29所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image022.png">
+        <p>图-28</p>
+      </div>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image023.png">
+        <p>图-29</p>
+      </div>
+      <p>3、使用文件菜单下的Save Test Case As，另存为“留言簿增加步骤”的Test Case，如下图-30到图-31所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image024.png">
+        <p>图-30</p>
+      </div>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image025.png">
+        <p>图-31</p>
+      </div>
+      <p>4、使用文件菜单下的Add Test Case，增加“留言簿增加步骤”的Test Case，如下图-32到图-33所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image026.png">
+        <p>图-32</p>
+      </div>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image027.png">
+        <p>图-33</p>
+      </div>
+      <p class="number">步骤二：定位新增加的步骤</p>
+      <p>1、双击左侧Test Case视图中的“留言簿增加步骤”的Test Case，如下图-34所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image028.png">
+        <p>图-34</p>
+      </div>
+      <p>2、因为要插入的步骤在所有步骤之后，所以不需要选择Insert New Command菜单，直接点击最后一行代码之后的行，就可以定位新步骤的位置，如下图-35所示：</p>
+      <p>/</p><p>图－35</p><p></p>
+      <p class="number">步骤三：输入命令及其参数</p>
+      <p>1、在Table视图中下方填写Command为type，Target为name=name,Value为"lisi"，如下图-36所示：</p>
+      <p>/</p><p>图－36</p><p></p>
+      <p>2、说明：也可以利用Select按钮来定位到页面的名字文本框元素来生成Target列中的locator：name=name</p>
+      <p class="number">步骤四：保存调试代码</p>
+      <p>1、通过文件菜单中的Save Test Case和Save Test Suite保存测试用例或测试套件。</p>
+      <p>2、单击工具栏的Play current Test Case运行单个测试用例来执行测试，如下图-37所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image029.png">
+        <p>图-37</p>
+      </div>
+      <p>3、查看FireFox浏览器中被测系统的执行情况以及Selenium IDE中Runs和Failures的数目。</p>
+      <p>在运行脚本后，IDE表格的颜色发生了变化，运行前，脚本表格为白色，成功运行完毕后，表格为青色，其中还分为深青色和浅青色两种，浅青色表示：动作成功，如：打开网页成功，点击按钮成功等等，而深青色表示：判断正确。</p>
+      <p>出错时，表格可能会出现两种颜色，一种是浅粉红色，一种是深粉红色。浅粉红色表示判断结果为false，这种情况案例还是会继续执行下去，判断的失败不会影响案例的运行，深粉红色表示动作失败，如：没有找到按钮等，这种情况下案例会停止运行。</p>
+      <p>具体结果如果出现Failures显示0表示运行正常。如下图-38所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image030.png">
+        <p>图－38</p>
+      </div>
+      <a name="case4">
+      </a>
+      <h2>4 留言簿复制TestCase</h2>
+      <h3>4.1 问题</h3>
+      <p>在上个课堂练习中录制的留言簿的代码，使用Selenium IDE的复制代码 :</p>
+      <p>（1）复制TestCase的部分步骤为JUnit4格式的代码；</p>
+      <p>（2）复制整个TestCase为Junit4格式的代码。</p>
+      <h3>4.2 方案</h3>
+      <p>首先，需要先设置允许转换为其他格式的代码。</p>
+      <p>然后完成复制功能：</p>
+      <p>（1）复制TestCase的部分步骤：使用菜单在Options\ Clipboard Format中选择复制的源码类型Java /JUnit 4/WebDriver，然后在Source视图中复制所有的源码，粘贴到指定编辑器中；</p>
+      <p>（2）复制整个TestCase：使用菜单Options\ Format中选择复制的源码类型Java /JUnit 4/WebDriver，将指定格式的代码从Source视图中复制，再粘贴到指定的文件中。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：设置允许转换为其他格式</p>
+      <p>1、打开Selenium IDE，再打开上个案例中的“留言簿增加步骤”的Test Suite的代码，使用菜单勾选如下复选框即可设置允许转换代码格式：Options-&gt;Options-&gt;General选项卡下勾选Enable experimental&nbsp;features，如下图-39所示：</p>
+      <p>/</p><p>图－39</p><p></p>
+      <p class="number">步骤二：设置剪切板源码格式</p>
+      <p>在Selenium IDE的菜单Options\Clipboard Format中设置剪切板的源码格式为Java/JUnit 4 /WebDriver,如下图-40所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image031.png">
+        <p>图－40</p>
+      </div>
+      <p class="number">步骤三：复制部分源码</p>
+      <p>1、在Selenium IDE中打开上一案例中准备的Test Case，选中所有步骤，点击右键，选择Copy菜单，或者使用快捷键Ctrl+C，如下图-41所示：</p>
+      <p>/</p><p>图－41</p><p></p>
+      <p>2、在“开始”菜单的“运行”中输入notepad，再输入回车后，新建一个记事本文件，粘贴剪切板上复制的代码，保存文件为“留言簿复制代码-部分TestCase.txt”。</p>
+      <p class="number">步骤四：设置显示源码格式</p>
+      <p>1、在Selenium IDE的菜单Options\Format\中设置显示的源码格式为Java/JUnit 4 /WebDriver,如下图-42所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY01_w_files/image032.png">
+        <p>图－42</p>
+      </div>
+      <p>2、如果有如下的提示，点击确定，如下图-43所示：</p>
+      <p>/</p><p>图－43</p><p></p>
+      <p class="number">步骤五：复制整个TestCase</p>
+      <p>1、在Source选项卡中，使用右键菜单或者快捷键，全选（Ctril+A）后，复制（Ctrl+C）所有源码，如图-44所示：</p>
+      <p>/</p><p>图－44</p><p></p>
+      <p>2、在“开始”菜单的“运行”中输入notepad，再输入回车后，新建一个记事本文件，粘贴剪切板上复制的代码，保存文件为“留言簿复制代码-整个TestCase.txt”。</p>
+      <h3>4.4 完整代码</h3>
+      <p>本案例中，复制的部分TestCase的JUnit 4完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>baseUrl <span class="sh_symbol">+</span> <span class="sh_string">"file:///C:/example/message.html"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"zhangsan"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"e-mail"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"e-mail"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"zhangsan@163.com"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"comments"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"comments"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"Hello!"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">cssSelector</span><span class="sh_symbol">(</span><span class="sh_string">"input[type=</span><span class="sh_specialchar">\"</span><span class="sh_string">submit</span><span class="sh_specialchar">\"</span><span class="sh_string">]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"lisi"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    driver.get(baseUrl + "file:///C:/example/message.html");
+    driver.findElement(By.name("name")).clear();
+    driver.findElement(By.name("name")).sendKeys("zhangsan");
+    driver.findElement(By.name("e-mail")).clear();
+    driver.findElement(By.name("e-mail")).sendKeys("zhangsan@163.com");
+    driver.findElement(By.name("comments")).clear();
+    driver.findElement(By.name("comments")).sendKeys("Hello!");
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    driver.findElement(By.name("name")).clear();
+    driver.findElement(By.name("name")).sendKeys("lisi");
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>复制整个TestCase的JUnit 4完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>example<span class="sh_symbol">.</span>tests<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>regex<span class="sh_symbol">.</span>Pattern<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>concurrent<span class="sh_symbol">.</span>TimeUnit<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.*;</span></li><li>import <span class="sh_keyword">static</span> org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Assert<span class="sh_symbol">.*;</span></li><li>import <span class="sh_keyword">static</span> org<span class="sh_symbol">.</span>hamcrest<span class="sh_symbol">.</span>CoreMatchers<span class="sh_symbol">.*;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.*;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ui<span class="sh_symbol">.</span>Select<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span>  <span class="sh_cbracket">{</span></li><li>  <span class="sh_keyword">private</span> WebDriver driver<span class="sh_symbol">;</span></li><li>  <span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> baseUrl<span class="sh_symbol">;</span></li><li>  <span class="sh_keyword">private</span> boolean acceptNextAlert <span class="sh_symbol">=</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>  <span class="sh_keyword">private</span> StringBuffer verificationErrors <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">StringBuffer</span><span class="sh_symbol">();</span></li><li><span style="display:none;">&nbsp;</span></li><li>  @Before</li><li>  <span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>    driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>    baseUrl <span class="sh_symbol">=</span> <span class="sh_string">"file:///C:/example/"</span><span class="sh_symbol">;</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">manage</span><span class="sh_symbol">().</span><span class="sh_function">timeouts</span><span class="sh_symbol">().</span><span class="sh_function">implicitlyWait</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span> TimeUnit<span class="sh_symbol">.</span>SECONDS<span class="sh_symbol">);</span></li><li>  <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>  @Test</li><li>  <span class="sh_keyword">public</span> void <span class="sh_function">test</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>baseUrl <span class="sh_symbol">+</span> <span class="sh_string">"file:///C:/example/message.html"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"zhangsan"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"e-mail"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"e-mail"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"zhangsan@163.com"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"comments"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"comments"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"Hello!"</span><span class="sh_symbol">);</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">cssSelector</span><span class="sh_symbol">(</span><span class="sh_string">"input[type=</span><span class="sh_specialchar">\"</span><span class="sh_string">submit</span><span class="sh_specialchar">\"</span><span class="sh_string">]"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"lisi"</span><span class="sh_symbol">);</span></li><li>  <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>  @After</li><li>  <span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>    driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>    <span class="sh_predef_func">String</span> verificationErrorString <span class="sh_symbol">=</span> verificationErrors<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">();</span></li><li>    <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span><span class="sh_string">""</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>verificationErrorString<span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>      <span class="sh_function">fail</span><span class="sh_symbol">(</span>verificationErrorString<span class="sh_symbol">);</span></li><li>    <span class="sh_cbracket">}</span></li><li>  <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>  <span class="sh_keyword">private</span> boolean <span class="sh_function">isElementPresent</span><span class="sh_symbol">(</span>By by<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>      driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>by<span class="sh_symbol">);</span></li><li>      <span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>NoSuchElementException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>      <span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>  <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>  <span class="sh_keyword">private</span> boolean <span class="sh_function">isAlertPresent</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>      driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">alert</span><span class="sh_symbol">();</span></li><li>      <span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>NoAlertPresentException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>      <span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>  <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>  <span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> <span class="sh_function">closeAlertAndGetItsText</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>      Alert alert <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">alert</span><span class="sh_symbol">();</span></li><li>      <span class="sh_predef_func">String</span> alertText <span class="sh_symbol">=</span> alert<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">();</span></li><li>      <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>acceptNextAlert<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        alert<span class="sh_symbol">.</span><span class="sh_function">accept</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        alert<span class="sh_symbol">.</span><span class="sh_function">dismiss</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">return</span> alertText<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span> <span class="sh_keyword">finally</span> <span class="sh_cbracket">{</span></li><li>      acceptNextAlert <span class="sh_symbol">=</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>  <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class  {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+  @Before
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "file:///C:/example/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  }
+
+  @Test
+  public void test() throws Exception {
+    driver.get(baseUrl + "file:///C:/example/message.html");
+    driver.findElement(By.name("name")).clear();
+    driver.findElement(By.name("name")).sendKeys("zhangsan");
+    driver.findElement(By.name("e-mail")).clear();
+    driver.findElement(By.name("e-mail")).sendKeys("zhangsan@163.com");
+    driver.findElement(By.name("comments")).clear();
+    driver.findElement(By.name("comments")).sendKeys("Hello!");
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    driver.findElement(By.name("name")).clear();
+    driver.findElement(By.name("name")).sendKeys("lisi");
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

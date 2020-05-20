@@ -1,0 +1,255 @@
+
+<!-- saved from url=(0082)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY01_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY01_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST QTP-BASIC DAY01_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST QTP-BASIC DAY01_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST QTP-BASIC DAY01_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST QTP-BASIC DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY01/CASE/01/index.html#case1">两位数加法器加法计算</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY01/CASE/01/index.html#case2">自动启动Flight登录退出</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/QTP-BASIC/DAY01/CASE/01/index.html#case3">手动启动Flight登录退出</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 两位数加法器加法计算</h2>
+      <h3>1.1 问题</h3>
+      <p>录制两位数加法器运算过程脚本，运行脚本通过，并且回放时，修改回放速度。</p>
+      <h3>1.2 方案</h3>
+      <p>使用自动启动的方式，启动两位数加法器，点击工具栏按钮“Record”进行录制，录制结束后点击“Stop”结束录制，在菜单“Tools-&gt;Options”下修改回放速度，点击工具栏按钮“Run”进行回放。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：两位数加法器-录制回放-演示，点击“Save”按钮：如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>4、点击“…”按钮，找到“两位数加法器.exe”被测系统，点击“OK”按钮：如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>5、点击“确定”按钮（注：Application details中只有一个被测程序）：如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>2、录制脚本，步骤如下：“第一个数”输入90，“第二个数”输入50，点击“计算”，点击“重置”，再点击“退出”；录制结束后，点击工具栏按钮“Stop”：如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>3、录制后的代码如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p class="number">步骤四：修改回放速度</p>
+      <p>1、点击菜单“Tools-&gt;Options”，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <p>2、在“Options”窗口中，点击左侧“Run”；在“Run mode”分组框中点击第一个单选钮，每个步骤的延迟时间设置为500ms，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p class="number">步骤五：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <a name="case2">
+      </a>
+      <h2>2 自动启动Flight登录退出</h2>
+      <h3>2.1 问题</h3>
+      <p>使用自动启动方式，录制Flight登录、退出过程脚本，运行脚本通过。</p>
+      <h3>2.2 方案</h3>
+      <p>使用自动启动的方式，启动Flight，点击工具栏按钮“Record”进行录制，录制结束后点击“Stop”结束录制，点击工具栏按钮“Run”进行回放。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-登录退出-自动启动-演示，点击“Save”按钮：如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第二个单选钮，再点击“+”按钮：如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image019.png">
+        <p>图-19</p>
+      </div>
+      <p>4、点击“…”按钮，找到“Flight.exe”被测系统，点击“OK”按钮：如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image020.png">
+        <p>图-20</p>
+      </div>
+      <p>5、点击“确定”按钮（注：Application details中只有一个被测程序）：如下图-21所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image021.png">
+        <p>图-21</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、点击工具栏按钮“Record”：如下图-22所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image022.png">
+        <p>图-22</p>
+      </div>
+      <p>2、录制脚本，步骤如下：输入用户名“Agent Name”：jack，输入密码“Password”：mercury，点击“OK”按钮；登录成功后，点击菜单“Flie-&gt;Exit“退出被测系统；录制结束后，点击工具栏按钮“Stop”：如下图-23所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image023.png">
+        <p>图-23</p>
+      </div>
+      <p>3、录制后的代码如下图-24所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image024.png">
+        <p>图-24</p>
+      </div>
+      <p class="number">步骤四：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-25所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image025.png">
+        <p>图-25</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，如下图-26所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image026.png">
+        <p>图-26</p>
+      </div>
+      <a name="case3">
+      </a>
+      <h2>3 手动启动Flight登录退出</h2>
+      <h3>3.1 问题</h3>
+      <p>使用手动启动方式，录制Flight登录、退出过程脚本，运行脚本通过。</p>
+      <h3>3.2 方案</h3>
+      <p>使用手动启动的方式，启动Flight，点击工具栏按钮“Record”进行录制，录制结束后点击“Stop”结束录制，点击工具栏按钮“Run”进行回放。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：新建脚本，保存脚本</p>
+      <p>1、打开QTP，点击菜单“File-&gt;New-&gt;Test”，点击菜单“File-&gt;Save As”：如下图-27所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image027.png">
+        <p>图-27</p>
+      </div>
+      <p>2、在“File Name”中填写脚本名称：Flight-登录退出-手动启动-演示，点击“Save”按钮：如下图-28所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image028.png">
+        <p>图-28</p>
+      </div>
+      <p class="number">步骤二：设置被测系统录制和回放模式</p>
+      <p>1、点击菜单“Automation-&gt;Record and Run Settings”：如下图-29所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image029.png">
+        <p>图-29</p>
+      </div>
+      <p>2、在“Web”选项卡中点击第一个单选钮，如下图-30所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image030.png">
+        <p>图-30</p>
+      </div>
+      <p>3、在“Windows Applications”选项卡中点击第一个单选钮，点击“确定“按钮，如下图-31所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image031.png">
+        <p>图-31</p>
+      </div>
+      <p class="number">步骤三：录制脚本</p>
+      <p>1、为方便起见，将Flight被测系统拖拽到“开始“菜单中，如下图-32所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image032.png">
+        <p>图-32</p>
+      </div>
+      <p>2、点击工具栏按钮“Record”：如下图-33所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image033.png">
+        <p>图-33</p>
+      </div>
+      <p>3、录制脚本，步骤如下：在开始菜单中启动Flight，输入用户名“Agent Name”：jack，输入密码“Password”：mercury，点击“OK”按钮；登录成功后，点击菜单“Flie-&gt;Exit“退出被测系统；录制结束后，点击工具栏按钮“Stop”：如下图-34所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image034.png">
+        <p>图-34</p>
+      </div>
+      <p>4、录制后的代码如下图-35所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image035.png">
+        <p>图-35</p>
+      </div>
+      <p class="number">步骤四：运行脚本</p>
+      <p>1、点击工具栏按钮“Run”（注意：运行前，将被测程序都关闭），如下图-36所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image036.png">
+        <p>图-36</p>
+      </div>
+      <p>2、查看结果报告，脚本回放通过，如下图-37所示：</p>
+      <div class="image">
+        <img src="./TEST QTP-BASIC DAY01_w_files/image037.png">
+        <p>图-37</p>
+      </div>
+    </div>
+  
+</body></html>

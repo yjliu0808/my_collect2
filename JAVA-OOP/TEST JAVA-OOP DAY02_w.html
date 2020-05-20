@@ -1,0 +1,656 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST JAVA-OOP DAY02_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST JAVA-OOP DAY02_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST JAVA-OOP DAY02_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST JAVA-OOP DAY02_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST JAVA-OOP DAY02_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST JAVA-OOP DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#case1">使用构造方法设计Emp类</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#case2">使用方法重载设计Math1类</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#case3">使用构造方法重载重新设计Box类</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#case4">使用继承创建Person类和Customer类</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#case5">继承中构造方法的综合应用</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 使用构造方法设计Emp类</h2>
+      <h3>1.1 问题</h3>
+      <p>设计Emp类，其中属性：名字（name），年龄（age），性别（sex），工资（salary），奖金（comm）。</p>
+      <p>方法：show方法，用于显示Person类中所有的属性值，showYearSalary方法显示年薪。</p>
+      <p>在main中创建该类的对象。</p>
+      <h3>1.2 方案</h3>
+      <p>设计Emp类，首先编写属性：名字（name），年龄（age），性别（sex），工资（salary），奖金（comm）。</p>
+      <p>然后编写构造方法，给Emp中所有的属性赋值。之后再编写show方法，用于显示Emp类中所有的属性值，showYearSalary方法显示年薪。</p>
+      <p>最后在main方法中创建该Emp类的对象，然后给所有的属性赋值，然后调用show方法，显示所有的属性值及showYearSalary方法显示年薪。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：设计类Emp</p>
+      <p>首先定义一个名为Emp的类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+}
+</pre></div></div>
+      <p class="number">步骤二：定义Emp类属性</p>
+      <p>定义Emp类的属性：名字（name），年龄（age），性别（sex），工资（salary），奖金（comm），代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double comm<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+	String name;
+	int age;
+	String sex;
+	double salary;
+	double comm;
+}
+</pre></div></div>
+      <p class="number">步骤三：定义Emp构造方法</p>
+      <p>定义Emp类的构造方法：给所有的属性赋值，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double comm<span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span>int age<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> sex<span class="sh_symbol">,</span>double salary<span class="sh_symbol">,</span>double comm<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>comm <span class="sh_symbol">=</span> comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+	String name;
+	int age;
+	String sex;
+	double salary;
+	double comm;
+//构造方法：
+	Emp(String name,int age,String sex,double salary,double comm){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.salary = salary;
+			this.comm = comm;
+	}
+</pre></div></div>
+      <p class="number">步骤四：编写show()方法</p>
+      <p>编写Emp类的方法：show ()，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li><span class="sh_comment">//属性：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double comm<span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span>int age<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> sex<span class="sh_symbol">,</span>double salary<span class="sh_symbol">,</span>double comm<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>comm <span class="sh_symbol">=</span> comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_comment">//方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">show</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>age<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>sex<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>salary<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>comm<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li> <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+//属性：
+	String name;
+	int age;
+	String sex;
+	double salary;
+	double comm;
+//构造方法：
+	Emp(String name,int age,String sex,double salary,double comm){
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.salary = salary;
+		this.comm = comm;
+	}
+//方法：
+	void show(){
+		System.out.println(name+","+age+","+sex+","+salary+","+comm);
+	}
+ }
+</pre></div></div>
+      <p class="number">步骤五：编写showYearSalary ()方法</p>
+      <p>编写Emp类的方法：showYearSalary ()，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li><span class="sh_comment">//属性：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double comm<span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span>int age<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> sex<span class="sh_symbol">,</span>double salary<span class="sh_symbol">,</span>double comm<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>comm <span class="sh_symbol">=</span> comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_comment">//方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">show</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>age<span class="sh_symbol">+</span><span class="sh_string">","</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span>sex<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>salary<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>comm<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>void <span class="sh_function">showYearSalary</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> salary<span class="sh_symbol">*</span><span class="sh_number">12</span><span class="sh_symbol">+</span>comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"您的年薪是："</span><span class="sh_symbol">+</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+//属性：
+	String name;
+	int age;
+	String sex;
+	double salary;
+	double comm;
+//构造方法：
+	Emp(String name,int age,String sex,double salary,double comm){
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.salary = salary;
+		this.comm = comm;
+	}
+//方法：
+	void show(){
+		System.out.println(name+","+age+","
+		+sex+","+salary+","+comm);
+	}
+void showYearSalary(){
+		double result = salary*12+comm;
+		System.out.println("您的年薪是："+result);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：定义测试类Demo1及 main方法</p>
+      <p>定义Demo1及main方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo1{
+	public static void main(String[] args){		
+	} 
+}
+</pre></div></div>
+      <p class="number">步骤七：创建Person对象</p>
+      <p>定义Demo1及main方法，用于创建Emp对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_comment">//1 调用给所有的属性赋值的构造方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_string">"蓝玉"</span><span class="sh_symbol">,</span><span class="sh_number">36</span><span class="sh_symbol">,</span><span class="sh_string">"男"</span><span class="sh_symbol">,</span><span class="sh_number">10000.6</span><span class="sh_symbol">,</span><span class="sh_number">3000000.1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp<span class="sh_symbol">.</span><span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp<span class="sh_symbol">.</span><span class="sh_function">showYearSalary</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo1{
+	public static void main(String[] args){	
+//1 调用给所有的属性赋值的构造方法
+	Emp emp =  new Emp("蓝玉",36,"男",10000.6,3000000.1);
+	emp.show();
+	emp.showYearSalary();
+	} 
+}
+</pre></div></div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中，Emp类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp<span class="sh_cbracket">{</span></li><li><span class="sh_comment">//属性：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double comm<span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span>int age<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> sex<span class="sh_symbol">,</span>double salary<span class="sh_symbol">,</span>double comm<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>comm <span class="sh_symbol">=</span> comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_comment">//方法：</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">show</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>age<span class="sh_symbol">+</span><span class="sh_string">","</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span>sex<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>salary<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>comm<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li> void <span class="sh_function">showYearSalary</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> salary<span class="sh_symbol">*</span><span class="sh_number">12</span><span class="sh_symbol">+</span>comm<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"您的年薪是："</span><span class="sh_symbol">+</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp{
+//属性：
+	String name;
+	int age;
+	String sex;
+	double salary;
+	double comm;
+//构造方法：
+	Emp(String name,int age,String sex,double salary,double comm){
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.salary = salary;
+		this.comm = comm;
+	}
+//方法：
+	void show(){
+		System.out.println(name+","+age+","
+		+sex+","+salary+","+comm);
+	}
+ void showYearSalary(){
+		double result = salary*12+comm;
+		System.out.println("您的年薪是："+result);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Demo1类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 1 调用给所有的属性赋值的构造方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_string">"蓝玉"</span><span class="sh_symbol">,</span> <span class="sh_number">36</span><span class="sh_symbol">,</span> <span class="sh_string">"男"</span><span class="sh_symbol">,</span> <span class="sh_number">10000.6</span><span class="sh_symbol">,</span> <span class="sh_number">3000000.1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp<span class="sh_symbol">.</span><span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp<span class="sh_symbol">.</span><span class="sh_function">showYearSalary</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo1 {
+	public static void main(String[] args) {
+		// 1 调用给所有的属性赋值的构造方法
+		Emp emp = new Emp("蓝玉", 36, "男", 10000.6, 3000000.1);
+		emp.show();
+		emp.showYearSalary();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 使用方法重载设计Math1类</h2>
+      <h3>2.1 问题</h3>
+      <p>设计Math1类，设计4个重载的add（加法）运算。</p>
+      <h3>2.2 方案</h3>
+      <p>首先设计Math1类，方法重载要求在一个类内部，方法名相同，参数不同，编写4个add方法。</p>
+      <p>在main方法中创建对象，给属性赋值，调用getVolume()方法，显示结果。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：设计类Math1</p>
+      <p>首先定义一个名为Math1的类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> classMath1<span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public classMath1{
+}
+</pre></div></div>
+      <p class="number">步骤二：编写add方法</p>
+      <p>编写4个重载的add方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Math1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>int num1<span class="sh_symbol">,</span> int num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>double num1<span class="sh_symbol">,</span> double num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>int num1<span class="sh_symbol">,</span> double num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>double num1<span class="sh_symbol">,</span> int num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Math1 {
+	void add(int num1, int num2) {
+		int result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(double num1, double num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(int num1, double num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(double num1, int num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：定义测试类Demo2及 main方法</p>
+      <p>定义Demo2及main方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){		
+	} 
+}
+</pre></div></div>
+      <p class="number">步骤四：创建Math1对象</p>
+      <p>定义Demo2及main方法，用于创建Box对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;Math1 math1<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Math1</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">25.5</span><span class="sh_symbol">,</span> <span class="sh_number">15.5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span> <span class="sh_number">1.2</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20.9</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){	
+	Math1 math1= new Math1();
+	math1.add(20, 10);
+	math1.add(25.5, 15.5);
+	math1.add(20, 1.2);
+	math1.add(20.9, 10);
+	} 
+}
+</pre></div></div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，Math1类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Math1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>int num1<span class="sh_symbol">,</span> int num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>double num1<span class="sh_symbol">,</span> double num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>int num1<span class="sh_symbol">,</span> double num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">add</span><span class="sh_symbol">(</span>double num1<span class="sh_symbol">,</span> int num2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double result <span class="sh_symbol">=</span> num1 <span class="sh_symbol">-</span> num2<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>result<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Math1 {
+	void add(int num1, int num2) {
+		int result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(double num1, double num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(int num1, double num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+	void add(double num1, int num2) {
+		double result = num1 - num2;
+		System.out.println(result);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Demo2类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo2<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;Math1 math1<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Math1</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">25.5</span><span class="sh_symbol">,</span> <span class="sh_number">15.5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span> <span class="sh_number">1.2</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;math1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">20.9</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo2{
+	public static void main(String[] args){	
+	Math1 math1= new Math1();
+	math1.add(20, 10);
+	math1.add(25.5, 15.5);
+	math1.add(20, 1.2);
+	math1.add(20.9, 10);
+	} 
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 使用构造方法重载重新设计Box类</h2>
+      <h3>3.1 问题</h3>
+      <p>设计Box类，其中属性：长(length)，宽(width)，高（height）；</p>
+      <p>构造方法：1）带三个参数，分别给长宽高赋值；</p>
+      <p>2）带一个参数，给长宽高都赋同一个值；</p>
+      <p>方法：getVolume()，用于获得体积，在main中创建该类的对象。</p>
+      <h3>3.2 方案</h3>
+      <p>首先设计Box类，属性：length，widht，height，然后编写构造方法要注意，这次要用到构造方法重载，分别是带3个参数的构造方法和带1个参数的构造方法，来创建长方体对象和正方体对象，最后编写getVolume()方法，该方法要求返回的是体积的数值，求体积的公式：长*宽*高，把该体积的值返回到main方法中显示。</p>
+      <p>在main方法中创建对象，给属性赋值，调用getVolume()方法，显示结果。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：设计类Box</p>
+      <p>首先定义一个名为Box的类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Box<span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Box{
+}
+</pre></div></div>
+      <p class="number">步骤二：定义Box类属性</p>
+      <p>定义Box类的属性：长(length)，宽(width)，高（height），代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Box<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int height<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Box{
+	int length;
+	int width;
+	int height;
+}
+</pre></div></div>
+      <p class="number">步骤三：编写Box类构造方法</p>
+      <p>构造方法重载，分别是带3个参数的构造方法和带1个参数的构造方法，来创建长方体对象和正方体对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Box<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int height<span class="sh_symbol">;</span></li><li><span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">,</span>int width<span class="sh_symbol">,</span>int height<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> height<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Box{
+	int length;
+	int width;
+	int height;
+Box(int length,int width,int height){
+		this.length = length;
+		this.width = width;
+		this.height = height;
+}
+	Box(int length){
+		this.length = length;
+		this.width = length;
+		this.height = length;
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：定义getVolume()方法</p>
+      <p>定义Box类的方法：getVolume()，获得体积，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Box<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int height<span class="sh_symbol">;</span></li><li><span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">,</span>int width<span class="sh_symbol">,</span>int height<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> height<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>int <span class="sh_function">getVolume</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">return</span> length<span class="sh_symbol">*</span>width<span class="sh_symbol">*</span>height<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Box{
+	int length;
+	int width;
+	int height;
+Box(int length,int width,int height){
+		this.length = length;
+		this.width = width;
+		this.height = height;
+}
+	Box(int length){
+		this.length = length;
+		this.width = length;
+		this.height = length;
+	}
+int getVolume(){
+return length*width*height;
+}
+}
+</pre></div></div>
+      <p class="number">骤五：定义测试类Demo3及 main方法</p>
+      <p>定义Demo3及main方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo3<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo3{
+	public static void main(String[] args){		
+	} 
+}
+</pre></div></div>
+      <p class="number">步骤六：创建Box对象</p>
+      <p>定义Demo3及main方法，用于创建Box对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo3<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//1 创建长方体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Box box1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Box</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">60</span><span class="sh_symbol">,</span><span class="sh_number">50</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result1 <span class="sh_symbol">=</span> box1<span class="sh_symbol">.</span><span class="sh_function">getVolume</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"box1的体积是"</span><span class="sh_symbol">+</span>result1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//2 创建正方体</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Box box2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Box</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result2 <span class="sh_symbol">=</span> box2<span class="sh_symbol">.</span><span class="sh_function">getVolume</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"box2的体积是"</span><span class="sh_symbol">+</span>result2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo3{
+	public static void main(String[] args){	
+		//1 创建长方体		
+		Box box1 = new Box(100,60,50);
+		int result1 = box1.getVolume();
+		System.out.println("box1的体积是"+result1);
+		//2 创建正方体
+		Box box2 = new Box(100);
+		int result2 = box2.getVolume();
+		System.out.println("box2的体积是"+result2);
+	} 
+}
+</pre></div></div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例中，Person类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Box<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int height<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">,</span>int width<span class="sh_symbol">,</span>int height<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> width<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> height<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Box</span><span class="sh_symbol">(</span>int length<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>length <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>width <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>height <span class="sh_symbol">=</span> length<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int <span class="sh_function">getVolume</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> length<span class="sh_symbol">*</span>width<span class="sh_symbol">*</span>height<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Box{
+	int length;
+	int width;
+	int height;
+	Box(int length,int width,int height){
+			this.length = length;
+			this.width = width;
+			this.height = height;
+	}
+	Box(int length){
+		this.length = length;
+		this.width = length;
+		this.height = length;
+	}
+	int getVolume(){
+		return length*width*height;
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Demo3类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo3<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//1 创建长方体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Box box1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Box</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">60</span><span class="sh_symbol">,</span><span class="sh_number">50</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result1 <span class="sh_symbol">=</span> box1<span class="sh_symbol">.</span><span class="sh_function">getVolume</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"box1的体积是"</span><span class="sh_symbol">+</span>result1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//2 创建正方体</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Box box2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Box</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result2 <span class="sh_symbol">=</span> box2<span class="sh_symbol">.</span><span class="sh_function">getVolume</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"box2的体积是"</span><span class="sh_symbol">+</span>result2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo3{
+	public static void main(String[] args){	
+		//1 创建长方体		
+		Box box1 = new Box(100,60,50);
+		int result1 = box1.getVolume();
+		System.out.println("box1的体积是"+result1);
+		//2 创建正方体
+		Box box2 = new Box(100);
+		int result2 = box2.getVolume();
+		System.out.println("box2的体积是"+result2);
+	} 
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 使用继承创建Person类和Customer类</h2>
+      <h3>4.1 问题</h3>
+      <p>设计一个Person 类，属性：姓名（name），年龄（age），性别（sex），</p>
+      <p>方法：show():显示name，age，sex。</p>
+      <p>设计一个Customer，继承Person，属性：姓名（name），年龄（age），</p>
+      <p>性别（sex），地址（address），邮箱（email）。</p>
+      <p>方法：show():显示name，age，sex。</p>
+      <p>showEmail():只显示email。</p>
+      <h3>4.2 方案</h3>
+      <p>首先设计Person类，属性：name，age，sex，方法：show()，用于显示所有的属性。</p>
+      <p>然后在设计Customer类，作为Person的子类，则继承Person中name , age, sex属性及show方法，在Customer类只需要编写属性地址（address），邮箱（email）及方法showEmail()。</p>
+      <p>在main方法中创建Customer对象，给属性赋值，并调用show()方法及showEmail()。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：设计类Person</p>
+      <p>首先定义一个名为Person的类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>publicclass Person<span class="sh_cbracket">{</span></li><li>｝</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">publicclass Person{
+｝
+</pre></div></div>
+      <p class="number">步骤二：定义Person类属性</p>
+      <p>定义Person类的属性：name，age，sex，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Person <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Person {
+	String name;
+	int age;
+	String sex;
+}
+</pre></div></div>
+      <p class="number">步骤三：编写show()方法</p>
+      <p>编写Person类的方法：show()，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Person<span class="sh_cbracket">{</span><span class="sh_comment">//父类</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">show</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>age<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>sex<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Person{//父类
+	String name;
+	int age;
+	String sex;
+	void show(){
+		System.out.println(name+","+age+","+sex);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：创建Customer</p>
+      <p>创建Customer，并继承Person类：代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>publicclass Customer <span class="sh_keyword">extends</span> Person<span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">publicclass Customer extends Person{
+}
+</pre></div></div>
+      <p class="number">步骤五：编写Customer属性及方法</p>
+      <p>属性地址（address），邮箱（email）及方法showEmail()，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Customer <span class="sh_keyword">extends</span> Person<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> address<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> email<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">showEmail</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>email<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Customer extends Person{
+	String address;
+	String email;
+	void showEmail(){
+		System.out.println(email);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：定义测试类Demo4及 main方法</p>
+      <p>定义Demo4及main方法，用于创建Customer对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo4<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer customer <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Customer</span> <span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> <span class="sh_string">"戚继光"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> <span class="sh_number">35</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> <span class="sh_string">"男"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>address <span class="sh_symbol">=</span> <span class="sh_string">"福建"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>email<span class="sh_symbol">=</span><span class="sh_string">"guang@163.com"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span> <span class="sh_function">showEmail</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span> <span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo4{
+	public static void main(String[] args){	
+		Customer customer = new Customer ();
+		customer.name = "戚继光";
+		customer.age = 35;
+		customer.sex = "男";
+		customer.address = "福建";
+		customer.email="guang@163.com";
+		customer. showEmail();
+		customer. show();
+	} 
+}
+</pre></div></div>
+      <h3>4.4 完整代码</h3>
+      <p>本案例中，Person类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Person<span class="sh_cbracket">{</span><span class="sh_comment">//父类</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> sex<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">show</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>age<span class="sh_symbol">+</span><span class="sh_string">","</span><span class="sh_symbol">+</span>sex<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Person{//父类
+	String name;
+	int age;
+	String sex;
+	void show(){
+		System.out.println(name+","+age+","+sex);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Customer类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Customer <span class="sh_keyword">extends</span> Person<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> address<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> email<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">showEmail</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>email<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Customer extends Person{
+	String address;
+	String email;
+	void showEmail(){
+			System.out.println(email);
+		}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Demo4类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo4<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer customer <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Customer</span> <span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> <span class="sh_string">"戚继光"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> <span class="sh_number">35</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>sex <span class="sh_symbol">=</span> <span class="sh_string">"男"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>address <span class="sh_symbol">=</span> <span class="sh_string">"福建"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span>email<span class="sh_symbol">=</span><span class="sh_string">"guang@163.com"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span> <span class="sh_function">showEmail</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;customer<span class="sh_symbol">.</span> <span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo4{
+	public static void main(String[] args){	
+		Customer customer = new Customer ();
+		customer.name = "戚继光";
+		customer.age = 35;
+		customer.sex = "男";
+		customer.address = "福建";
+		customer.email="guang@163.com";
+		customer. showEmail();
+		customer. show();
+	} 
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 继承中构造方法的综合应用</h2>
+      <h3>5.1 问题</h3>
+      <p>设计Car（父类）：</p>
+      <p>属性：车名（name），编号（no），速度（speed = 0），</p>
+      <p>构造方法：给车名和编号赋值。</p>
+      <p>方法：start():启动，speed=speed+100。</p>
+      <p>run():行驶，显示当前车名和速度。</p>
+      <p>stop():刹车，speed = 0，显示速度。</p>
+      <p>设计Bmw（子类）：</p>
+      <p>属性：车名（name），编号（no），速度（speed=0），颜色（color），价格（price）。</p>
+      <p>构造方法：给speed之外所有属性赋值。</p>
+      <p>方法：start():启动，speed=speed+100。</p>
+      <p>run():行驶，显示当前车名和速度。</p>
+      <p>stop():刹车，speed = 0，显示速度。</p>
+      <h3>5.2 方案</h3>
+      <p>首先设计Car类，属性：车名（name），编号（no），速度（speed = 0），构造方法，方法：start()，run()，stop()。</p>
+      <p>然后在设计Bmw类，作为Car的子类，则继承Car中车名（name），编号（no），速度（speed = 0）属性及start()，run()，stop()方法，在Customer类只需要编写属性颜色（color），价格（price），要注意Bmw中构造方法的编写。</p>
+      <p>在main方法中创建Bmw对象，给属性赋值，并调用start()，run()，stop()方法。</p>
+      <h3>5.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建父类Car</p>
+      <p>首先定义一个名为Car的类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>publicclass Car<span class="sh_cbracket">{</span></li><li>｝</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">publicclass Car{
+｝
+</pre></div></div>
+      <p class="number">步骤二：定义Car类属性</p>
+      <p>定义Car类的属性：name，no，speed，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Car <span class="sh_cbracket">{</span></li><li><span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Car {
+//属性
+	String name;
+	String no;
+	int speed = 0;
+}
+</pre></div></div>
+      <p class="number">步骤三：编写构造方法</p>
+      <p>编写带参数的构造方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Car<span class="sh_cbracket">{</span><span class="sh_comment">//父类</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//构造方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Car</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> no<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>no <span class="sh_symbol">=</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Car{//父类
+	//属性
+	String name;
+	String no;
+	int speed = 0;
+	//构造方法
+	Car(String name,String no){
+		this.name = name;
+		this.no = no;
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：编写start()，run()，stop()</p>
+      <p>编写start()，run()，stop()方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Car<span class="sh_cbracket">{</span><span class="sh_comment">//父类</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Car</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> no<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>no <span class="sh_symbol">=</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>void <span class="sh_function">start</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed <span class="sh_symbol">=</span> speed <span class="sh_symbol">+</span> <span class="sh_number">100</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"启动了，加速"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"当前速度"</span><span class="sh_symbol">+</span>speed<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">stop</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"刹车,速度"</span><span class="sh_symbol">+</span>speed<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Car{//父类
+	//属性
+	String name;
+	String no;
+	int speed = 0;
+//构造方法
+	Car(String name,String no){
+		this.name = name;
+		this.no = no;
+	}
+void start(){
+		speed = speed + 100;
+		System.out.println(name+"启动了，加速");
+	}
+	void run(){
+		System.out.println(name+"当前速度"+speed);
+	}
+	void stop(){
+		speed = 0;
+		System.out.println(name+"刹车,速度"+speed);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：创建Bmw</p>
+      <p>创建Bmw，并继承Car类：，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Bmw <span class="sh_keyword">extends</span> Car <span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Bmw extends Car {
+}
+</pre></div></div>
+      <p class="number">步骤六：编写Bmw属性及构造方法</p>
+      <p>属性颜色（color），价格（price），代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Bmw <span class="sh_keyword">extends</span> Car <span class="sh_cbracket">{</span></li><li>  <span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> color<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double price<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Bmw</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> no<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> color<span class="sh_symbol">,</span>double price<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">super</span><span class="sh_symbol">(</span>name<span class="sh_symbol">,</span>no<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>color <span class="sh_symbol">=</span> color<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>price <span class="sh_symbol">=</span> price<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Bmw extends Car {
+  //属性
+	String color;
+	double price;
+	Bmw(String name,String no,String color,double price){
+		super(name,no);
+		this.color = color;
+		this.price = price;
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：定义测试类Demo5及 main方法</p>
+      <p>定义Demo5及main方法，用于创建Bmw对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo5<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bmw bmw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Bmw</span><span class="sh_symbol">(</span><span class="sh_string">"哥的Bmw"</span><span class="sh_symbol">,</span><span class="sh_string">"666666"</span><span class="sh_symbol">,</span><span class="sh_string">"蓝色"</span><span class="sh_symbol">,</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">run</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">stop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo5{
+	public static void main(String[] args){	
+		Bmw bmw = new Bmw("哥的Bmw","666666","蓝色",100);
+		bmw.start();
+		bmw.run();
+		bmw.stop();
+	} 
+}
+</pre></div></div>
+      <h3>5.4 完整代码</h3>
+      <p>本案例中，Car类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Car<span class="sh_cbracket">{</span></li><li><span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//构造方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Car</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> no<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>no <span class="sh_symbol">=</span> no<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_comment">//方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">start</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed <span class="sh_symbol">=</span> speed <span class="sh_symbol">+</span> <span class="sh_number">100</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"启动了，加速"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"当前速度"</span><span class="sh_symbol">+</span>speed<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;void <span class="sh_function">stop</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">+</span><span class="sh_string">"刹车,速度"</span><span class="sh_symbol">+</span>speed<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Car{
+//属性
+	String name;
+	String no;
+	int speed = 0;
+//构造方法
+	Car(String name,String no){
+		this.name = name;
+		this.no = no;
+	}
+//方法
+	void start(){
+		speed = speed + 100;
+		System.out.println(name+"启动了，加速");
+	}
+	void run(){
+		System.out.println(name+"当前速度"+speed);
+	}
+	void stop(){
+		speed = 0;
+		System.out.println(name+"刹车,速度"+speed);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Bmw类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Bmw <span class="sh_keyword">extends</span> Car <span class="sh_cbracket">{</span></li><li>  <span class="sh_comment">//属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> color<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double price<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Bmw</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> no<span class="sh_symbol">,</span><span class="sh_predef_func">String</span> color<span class="sh_symbol">,</span>double price<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">super</span><span class="sh_symbol">(</span>name<span class="sh_symbol">,</span>no<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>color <span class="sh_symbol">=</span> color<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>price <span class="sh_symbol">=</span> price<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Bmw extends Car {
+  //属性
+	String color;
+	double price;
+	Bmw(String name,String no,String color,double price){
+		super(name,no);
+		this.color = color;
+		this.price = price;
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>Demo5类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Demo5<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bmw bmw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Bmw</span><span class="sh_symbol">(</span><span class="sh_string">"哥的Bmw"</span><span class="sh_symbol">,</span><span class="sh_string">"666666"</span><span class="sh_symbol">,</span><span class="sh_string">"蓝色"</span><span class="sh_symbol">,</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">run</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bmw<span class="sh_symbol">.</span><span class="sh_function">stop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Demo5{
+	public static void main(String[] args){	
+		Bmw bmw = new Bmw("哥的Bmw","666666","蓝色",100);
+		bmw.start();
+		bmw.run();
+		bmw.stop();
+	} 
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/JAVA-OOP/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

@@ -1,0 +1,1059 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST SELENIUM DAY07_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY07_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST SELENIUM DAY07_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST SELENIUM DAY07_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST SELENIUM DAY07_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST SELENIUM DAY07</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#case1">ECShop后台商品列表搜索</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#case2">ECShop后台切换到前台查看</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 ECShop后台商品列表搜索</h2>
+      <h3>1.1 问题</h3>
+      <p>启动Firefox，打开ECShop后台，完成如下功能：</p>
+      <p>（1）登录后台；</p>
+      <p>（2）点击“商品列表”、等待5000毫秒；</p>
+      <p>（3）输入关键字"N85"，点击“搜索”，等待5000毫秒；</p>
+      <p>（4）退出登录；</p>
+      <p>（5）关闭浏览器。</p>
+      <h3>1.2 方案</h3>
+      <p>本案例针对ECShop被测系统后台首页，书写代码完成JUnit测试用例。</p>
+      <p>首先，需要创建JUnit 4的测试用例类，创建时同时生成setUp和tearDown方法。	其次，在JUnit测试用例类中创建一个测试方法；在setUp方法中启动Firefox浏览器；在测试方法中书写代码打开ECShop后台首页。</p>
+      <p>然后，需要在自己手工启动的Firefox浏览器中打开ECShop后台首页，对关心的页面元素“用户名”文本框、“密码”文本框、“验证码”文本框、“进入管理中心”按钮，以及登录后进入后台页面中的“商品列表”链接、“关键字”文本框、“搜索”按钮，借助firebug插件查看源码，确定页面元素的定位方式和该页面元素所属于的Frame，同时确定Frame的定位方式。</p>
+      <p>在测试方法中书写代码：</p>
+      <p>（1）打开ECShop后台首页；</p>
+      <p>（2）使用name定位的方法定位“用户名”文本框，输入正确的用户名“admin”；</p>
+      <p>（3）使用name定位的方法定位“密码”文本框，输入正确的密码“admin123”；</p>
+      <p>（4）使用name定位的方法定位“验证码”文本框，输入正确的万能验证码“0”；</p>
+      <p>（5）使用className定位“进入管理中心”按钮，点击该按钮；</p>
+      <p>（6）先通过id定位切换到“商品列表”链接所属于的Frame中，再使用linkText定位“商品列表”链接，点击该链接；</p>
+      <p>（7）先切换回默认主页面，通过id定位切换到“关键字”文本框所属于的Frame中，再使用name定位的方法定位到“关键字”文本框，输入关键字“N85”；</p>
+      <p>（8）使用className定位到“搜索”按钮，点击该按钮；</p>
+      <p>（9）先切换回默认主页面，通过id定位切换到“退出”链接所属于的Frame中，再使用linkText定位“退出”链接，点击该链接；</p>
+      <p>再次，在tearDown方法中调用quit方法来退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新的JUnit测试用例类</p>
+      <p>在Project1下，新建day07的package，在day07的package下，使用右键菜单中的new-&gt;Other-&gt;JUnit Test Case来创建新的测试用例类，点击“Next”，如下图-1所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <p>输入类名Name为TestECShopBgSearch，勾选“setUp”和“tearDown”的两个复选框，点击”Finish“按钮，如下图-2所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image002.png">
+        <p>图 - 2</p>
+      </div>
+      <p>TestECShopBgSearch.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+public class TestECShopBgSearch{
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：完成启动和关闭浏览器</p>
+      <p>书写代码创建新的测试方法，注解为@Test，并且导入org.junit包下的Test类；书写代码准备driver变量，并且分别在setUp和tearDown方法中书写启动和关闭浏览器的步骤；在测试方法中，书写打开ECShop后台首页的地址的步骤。</p>
+      <p>其中，首页页面的url如下：http://localhost/ws/ecshop/upload/admin/index.php</p>
+      <p>注意：Firefox浏览器需要安装在默认路径下。如果Firefox未安装在默认路径下，需要在driver = new FirefoxDriver();的代码前增加一行代码设置系统属性webdriver.firefox.bin的值为Firefox的启动文件位置，示例如下：</p>
+      <p>System.setProperty("webdriver.firefox.bin","D:\\Program Files\\Mozilla Firefox\\firefox.exe");</p>
+      <p>TestECShopBgSearch.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code"><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+#cold_boldimport org.junit.Test;
+#cold_boldimport org.openqa.selenium.WebDriver;
+#cold_boldimport org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+#cold_bold	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+#cold_bold		//启动Firefox
+#cold_bold		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+#cold_bold		//关闭浏览器
+#cold_bold		driver.quit();
+	}
+#cold_bold	@Test
+#cold_bold	public void testa() throws Exception {
+#cold_bold		//打开ECShop后台首页
+#cold_bold		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+#cold_bold	}
+#cold_bold}
+</pre></div></div>
+      <p class="number">步骤三：借助Firebug插件获取登录四个步骤的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop后台首页的网址“http://localhost/ws/ecshop/upload/admin/index.php”来打开ECShop后台首页，分别先后在“用户名”文本框、“密码”文本框、“验证码”文本框、“进入管理中心”按钮上点击右键，选择菜单中的“使用Firebug查看元素”，如下图-3所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image003.png">
+        <p>图 - 3</p>
+      </div>
+      <p>（2）查看Firebug源码，确认定位方式为name定位“用户名”、“密码”、“验证码”，使用className定位“进入管理中心”，如下图-4所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image004.png">
+        <p>图 - 4</p>
+      </div>
+      <p class="number">步骤四：实现登录的四个操作步骤代码</p>
+      <p>在测试方法中，使用name定位的方法定位“用户名”文本框，输入正确的用户名“admin”，使用name定位的方法定位“密码”文本框，输入正确的密码“admin123”，使用name定位的方法定位“验证码”文本框，输入正确的万能验证码“0”，使用className定位“进入管理中心”按钮，点击该按钮，最后再等待5秒，TestECShopBgSearch.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+#cold_boldimport org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+#cold_bold		//输入用户名admin
+#cold_bold		driver.findElement(By.name("username")).sendKeys("admin");
+#cold_bold		//输入密码admin123
+#cold_bold		driver.findElement(By.name("password")).sendKeys("admin123");
+#cold_bold		//输入万能验证码0
+#cold_bold		driver.findElement(By.name("captcha")).sendKeys("0");
+#cold_bold		//点击“进入管理中心”
+#cold_bold		driver.findElement(By.className("button")).click();
+#cold_bold		//等待5秒
+#cold_bold		Thread.sleep(5000);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：借助Firebug插件获取“商品列表”链接的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop后台首页的网址“http://localhost/ws/ecshop/upload/admin/index.php”来打开ECShop后台首页，手工登录进入后台，在“商品列表”链接上点击右键，选择菜单中的“使用Firebug查看元素”，如下图-5所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image005.png">
+        <p>图 - 5</p>
+      </div>
+      <p>（2）查看Firebug源码，确认该链接的定位方式为linkText定位，查看该元素属于一个Frame，而该Frame可以使用id定位来切换，所以复制该元素属于的Frame的id属性值“menu-frame”到剪切板，如下图-6所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image006.png">
+        <p>图 - 6</p>
+      </div>
+      <p class="number">步骤六：实现点击“商品列表”链接的操作步骤代码</p>
+      <p>在测试方法中，需要先使用切换frame的语句driver.switchTo().frame("menu-frame");切换到“商品列表”链接属于的Frame，再使用linkText定位书写点击“商品列表”的操作步骤，TestECShopBgSearch.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+#cold_bold		//切换到menu-frame
+#cold_bold		driver.switchTo().frame("menu-frame");
+#cold_bold		//点击“商品列表”
+#cold_bold		driver.findElement(By.linkText("商品列表")).click();
+#cold_bold		//等待5秒
+#cold_bold		Thread.sleep(5000);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：借助Firebug插件分析商品列表页面中“关键字”文本框的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop后台首页的网址“http://localhost/ws/ecshop/upload/admin/index.php”来打开ECShop后台首页，登录进入后台，点击“商品列表”后，在商品列表页面中“关键字”文本框上点击右键，选择菜单中的“使用Firebug查看元素”，如下图-7所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image007.png">
+        <p>图 - 7</p>
+      </div>
+      <p>（2）查看Firebug源码，查看到该“关键字”文本框和前一步骤中“商品列表”链接不属于同一个Frame，而定位“关键字”文本框方式为name定位，如下图-8所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image008.png">
+        <p>图 - 8</p>
+      </div>
+      <p class="number">步骤八：实现切换Frame后输入“关键字”的代码</p>
+      <p>在测试方法中，因为和前一个点击“商品列表”的步骤不属于同一个Frame，所以代码中需要先使用driver.switchTo().defaultContent();切换回默认主页面，再使用id定位frame切换到该元素所属frame，最后使用name定位“关键字”文本框，输入搜索条件“N85”，TestECShopBgSearch.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+#cold_bold		//切换回默认主页面
+#cold_bold		driver.switchTo().defaultContent();
+#cold_bold		//切换到main-frame
+#cold_bold		driver.switchTo().frame("main-frame");
+#cold_bold		//输入关键字“N85”
+#cold_bold		driver.findElement(By.name("keyword")).sendKeys("N85");
+	}
+}
+</pre></div></div>
+      <p class="number">步骤九：借助Firebug插件获取“搜索”按钮的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop后台首页的网址“http://localhost/ws/ecshop/upload/admin/index.php”来打开ECShop后台首页，登录进入后台，点击“商品列表”后，在商品列表页面中“搜索”按钮上点击右键，选择菜单中的“使用Firebug查看元素”，如下图-9所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image009.png">
+        <p>图 - 9</p>
+      </div>
+      <p>（2）查看Firebug源码，确认该“搜索”按钮元素和上一个步骤”关键字”文本框页面元素属于同一个frame，所以不需要切换frame，而本步骤元素定位方式为className定位，如下图-10所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image010.png">
+        <p>图 - 10</p>
+      </div>
+      <p class="number">步骤十：实现点击“搜索”的代码</p>
+      <p>在测试方法中，使用className定位书写点击“搜索”按钮的步骤，TestECShopBgSearch.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+#cold_bold		//点击“搜索”按钮
+#cold_bold		driver.findElement(By.className("button")).click();
+#cold_bold		//等待5秒
+#cold_bold		Thread.sleep(5000);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十一：借助Firebug插件后台页面“退出”链接的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，在地址栏输入ECShop后台首页的网址“http://localhost/ws/ecshop/upload/admin/index.php”来打开ECShop后台首页，登录进入后台后，在后台页面上方的“退出”链接上点击右键，选择菜单中的“使用Firebug查看元素”，如下图-11所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image011.png">
+        <p>图 - 11</p>
+      </div>
+      <p>（2）查看Firebug源码，查看到该“退出”链接和前一步骤中“搜索”按钮不属于同一个Frame，而定位“退出”链接方式为linkText定位，如下图-12所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image012.png">
+        <p>图 - 12</p>
+      </div>
+      <p class="number">步骤十二：实现切换Frame后点击“退出”的代码</p>
+      <p>在测试方法中，因为和前一个步骤的元素“搜索”不属于同一个Frame，所以代码中需要先使用driver.switchTo().defaultContent();切换回默认主页面，再使用id定位frame切换到该元素所属frame，最后使用linkText定位“退出”链接，点击它，TestECShopBgSearch.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+#cold_bold		//切换回默认主页面
+#cold_bold		driver.switchTo().defaultContent();
+#cold_bold		//切换到header-frame
+#cold_bold		driver.switchTo().frame("header-frame");
+#cold_bold		//点击“退出”
+#cold_bold		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤十三：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中，TestECShopBgSearch类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopBgSearch<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopBgSearch{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 ECShop后台切换到前台查看</h2>
+      <h3>2.1 问题</h3>
+      <p>打开Firefox，启动ECShop后台：</p>
+      <p>（1）登录后，进入“商品列表”，在使用关键字“N85”搜索；</p>
+      <p>（2）点击第一行搜索结果的”操作”列的第一个图片“查看”；</p>
+      <p>（3）切换到ECShop前台新窗口后，断言ECShop前台显示的商品名称为“诺基亚N85”；</p>
+      <p>（4）关闭前台页面；</p>
+      <p>（5）切换回后台，点击“退出”来退出登录；</p>
+      <p>（6）关闭浏览器。</p>
+      <h3>2.2 方案</h3>
+      <p>本案例可以复制上一案例的测试用例类TestECShopBgSearch.java，在此基础上再增加一些步骤。</p>
+      <p>首先，需要先复制上一案例的测试用例类，修改类名。</p>
+      <p>其次，在点击“搜索”之后的位置增加如下的操作步骤：</p>
+      <p>（1）点击“操作”列的“查看”；</p>
+      <p>（2）切换到前台页的新窗口；</p>
+      <p>（3）断言ECShop前台显示的商品名称为“诺基亚N85”；</p>
+      <p>（4）关闭前台页面；</p>
+      <p>（5）切换回后台页面。</p>
+      <p>然后，在tearDown方法中退出浏览器。</p>
+      <p>最后，需要运行整个JUnit测试用例来查看结果。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：复制上一案例的测试用例类</p>
+      <p>在Project1下，在day07的package下，选中上一案例的测试用例类TestECShopBgSearch.java，使用右键菜单中的Copy来复制新的测试用例类，如下图-13所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image013.png">
+        <p>图 - 13</p>
+      </div>
+      <p>在day07的包上，右键菜单中选择Paste，如下图-14所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image014.png">
+        <p>图 - 14</p>
+      </div>
+      <p>在类名冲突的提示框中输入新类名TestECShopViewGoods，点击“OK”，如下图-15所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image015.png">
+        <p>图 - 15</p>
+      </div>
+      <p>TestECShopViewGoods.java的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：实现测试方法中点击”查看”的步骤代码</p>
+      <p>（1）手工启动Firefox浏览器，打开ECShop后台登录首页，先登录，再进入“商品列表”，在商品列表中使用关键字“N85”搜索，在搜索结果的“操作”列的第一个图片“查看”元素上点击右键，选择“使用Firebug查看元素”，如下图-16所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image016.png">
+        <p>图 - 16</p>
+      </div>
+      <p>（2）查看Firebug源码，确认没有直接的属性来进行定位，向上查看源码发现这个元素也属于main-frame,所以和上一步骤”搜索”按钮属于同一个Frame，这样不需要切换Frame就可以直接操作，如下图-17所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image017.png">
+        <p>图 - 17</p>
+      </div>
+      <p>（3）切换到FirePath选项卡，使用“点击查看页面中的元素”来点击网页中的第一个“查看”图片，获得其Xpath表达式，复制到剪切板，如下图-18所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image018.png">
+        <p>图 - 18</p>
+      </div>
+      <p>在原有代码的点击“搜索”按钮的步骤后，使用xpath定位方式实现点击“查看”的步骤，增加等待5秒的步骤，TestECShopViewGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“查看”</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+#cold_bold		//点击“查看”
+#cold_bold		driver.findElement(By.xpath(".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img")).click();
+#cold_bold		//等待5秒
+#cold_bold		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：实现切换到前台窗口的步骤</p>
+      <p>在点击“查看”等待的步骤后，书写代码获得当前窗口和所有窗口句柄，使用循环语句遍历所有窗口，如果不等于当前窗口句柄，就切换，采用这种通过窗口句柄的方式切换到前台登录页面，TestECShopViewGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li class="bold_code"></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Iterator<span class="sh_symbol">;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Set<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“查看”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到前台登录页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> originalWinHandle  <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandle</span><span class="sh_symbol">();</span> <span class="sh_comment">//获得当前窗口（后台页面）句柄</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> allWindows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandles</span><span class="sh_symbol">();</span><span class="sh_comment">//获得所有窗口句柄</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> it <span class="sh_symbol">=</span> allWindows<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span><span class="sh_comment">//遍历时不是当前窗口，就切换</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_predef_func">String</span> currentWindow <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span>currentWindow<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">))</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>currentWindow<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+#cold_bold
+#cold_boldimport java.util.Iterator;
+#cold_boldimport java.util.Set;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//点击“查看”
+		driver.findElement(By.xpath(".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img")).click();
+		//等待5秒
+		Thread.sleep(5000);
+#cold_bold		//切换到前台登录页面
+#cold_bold		String originalWinHandle  = driver.getWindowHandle(); //获得当前窗口（后台页面）句柄
+#cold_bold		Set&lt;String&gt; allWindows = driver.getWindowHandles();//获得所有窗口句柄
+#cold_bold		Iterator&lt;String&gt; it = allWindows.iterator();
+#cold_bold		while (it.hasNext()) {//遍历时不是当前窗口，就切换
+#cold_bold		    String currentWindow = it.next();
+#cold_bold		    if (!currentWindow.equals(originalWinHandle))
+#cold_bold		    	driver.switchTo().window(currentWindow);
+#cold_bold		}
+#cold_bold		
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤四：调查前台页面”商品名称”的定位方式</p>
+      <p>（1）手工启动Firefox浏览器，打开ECShop后台登录首页，先登录，再进入“商品列表”，在商品列表中使用关键字“N85”搜索，在搜索结果的“操作”列点击第一个图片“查看”，在新弹出的ECShop前台页面中，显示商品名称的元素上点击右键，选择“使用Firebug查看元素”，如下图-19所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image019.png">
+        <p>图 - 19</p>
+      </div>
+      <p class="number">（2）因为没有直接定位方式，所以切换到FirePath选项卡，使用“点击查看页面中的元素”，在点击网页中显示商品名称的元素，生成其xpath表达式，复制到剪切板，</p>
+      <p class="number">如下图-20所示：</p>
+      <div class="image">
+        <img src="./TEST SELENIUM DAY07_w_files/image020.png">
+        <p>图 - 20</p>
+      </div>
+      <p class="number">步骤五：实现断言前台页面中商品名称正确的步骤代码</p>
+      <p>在测试方法中，切换到前台页面的步骤后，使用xpath定位到显示商品名称的元素上，使用getText获得其文本，再使用assertEquals断言商品名称等于预期值“诺基亚N85”，TestECShopViewGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">import <span class="sh_keyword">static</span> org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Assert<span class="sh_symbol">.</span>assertEquals<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Iterator<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Set<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“查看”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到前台登录页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> originalWinHandle  <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandle</span><span class="sh_symbol">();</span> <span class="sh_comment">//获得当前窗口（后台页面）句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> allWindows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandles</span><span class="sh_symbol">();</span><span class="sh_comment">//获得所有窗口句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> it <span class="sh_symbol">=</span> allWindows<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span><span class="sh_comment">//遍历时不是当前窗口，就切换</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_predef_func">String</span> currentWindow <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span>currentWindow<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">))</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>currentWindow<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//断言前台页面显示的商品名称正确</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">assertEquals</span><span class="sh_symbol">(</span><span class="sh_string">"诺基亚N85"</span><span class="sh_symbol">,</span>driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_FORMBUY']/div/p[1]"</span><span class="sh_symbol">)).</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+#cold_boldimport static org.junit.Assert.assertEquals;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//点击“查看”
+		driver.findElement(By.xpath(".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到前台登录页面
+		String originalWinHandle  = driver.getWindowHandle(); //获得当前窗口（后台页面）句柄
+		Set&lt;String&gt; allWindows = driver.getWindowHandles();//获得所有窗口句柄
+		Iterator&lt;String&gt; it = allWindows.iterator();
+		while (it.hasNext()) {//遍历时不是当前窗口，就切换
+		    String currentWindow = it.next();
+		    if (!currentWindow.equals(originalWinHandle))
+		    	driver.switchTo().window(currentWindow);
+		}
+#cold_bold		//断言前台页面显示的商品名称正确
+#cold_bold		assertEquals("诺基亚N85",driver.findElement(By.xpath(".//*[@id='ECS_FORMBUY']/div/p[1]")).getText());
+#cold_bold		
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤六：实现关闭前台页面切换回后台页面的步骤代码</p>
+      <p>在测试方法中，在前台页面断言完毕后，使用driver的close方法关闭当前ECShop前台页面，再使用driver.switchTo().window(xxxx);切换回原来保存过句柄的后台页面，TestECShopViewGoods.java代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import <span class="sh_keyword">static</span> org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Assert<span class="sh_symbol">.</span>assertEquals<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Iterator<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Set<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“查看”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到前台登录页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> originalWinHandle  <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandle</span><span class="sh_symbol">();</span> <span class="sh_comment">//获得当前窗口（后台页面）句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> allWindows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandles</span><span class="sh_symbol">();</span><span class="sh_comment">//获得所有窗口句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> it <span class="sh_symbol">=</span> allWindows<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span><span class="sh_comment">//遍历时不是当前窗口，就切换</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_predef_func">String</span> currentWindow <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span>currentWindow<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">))</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>currentWindow<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//断言前台页面显示的商品名称正确</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">assertEquals</span><span class="sh_symbol">(</span><span class="sh_string">"诺基亚N85"</span><span class="sh_symbol">,</span>driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_FORMBUY']/div/p[1]"</span><span class="sh_symbol">)).</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭前台页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回后台页面</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//点击“查看”
+		driver.findElement(By.xpath(".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到前台登录页面
+		String originalWinHandle  = driver.getWindowHandle(); //获得当前窗口（后台页面）句柄
+		Set&lt;String&gt; allWindows = driver.getWindowHandles();//获得所有窗口句柄
+		Iterator&lt;String&gt; it = allWindows.iterator();
+		while (it.hasNext()) {//遍历时不是当前窗口，就切换
+		    String currentWindow = it.next();
+		    if (!currentWindow.equals(originalWinHandle))
+		    	driver.switchTo().window(currentWindow);
+		}
+		//断言前台页面显示的商品名称正确
+		assertEquals("诺基亚N85",driver.findElement(By.xpath(".//*[@id='ECS_FORMBUY']/div/p[1]")).getText());
+#cold_bold		//关闭前台页面
+#cold_bold		driver.close();
+#cold_bold		//切换回后台页面
+#cold_bold		driver.switchTo().window(originalWinHandle);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：运行调试代码</p>
+      <p>在该类上点击右键，选择Run As\JUnit Test来运行JUnit测试用例代码，查看被测系统被启动，并且执行相应的自动化测试步骤。</p>
+      <p>查看JUnit视图中的运行状态条，如果为绿色，代表运行成功，如果为红色，需要查看Failure Trace确认和定位问题。</p>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，TestECShopViewGoods类的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day07<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import <span class="sh_keyword">static</span> org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Assert<span class="sh_symbol">.</span>assertEquals<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Iterator<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Set<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>After<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>By<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>WebDriver<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>openqa<span class="sh_symbol">.</span>selenium<span class="sh_symbol">.</span>firefox<span class="sh_symbol">.</span>FirefoxDriver<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestECShopViewGoods<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;WebDriver driver<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Before</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setUp</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//启动Firefox</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FirefoxDriver</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@After</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">tearDown</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">quit</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testa</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打开ECShop后台首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_string">"http://localhost/ws/ecshop/upload/admin/index.php"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入用户名admin</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入密码admin123</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"password"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"admin123"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入万能验证码0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"captcha"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"0"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“进入管理中心”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到menu-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"menu-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“商品列表”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"商品列表"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到main-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"main-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输入关键字“N85”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">name</span><span class="sh_symbol">(</span><span class="sh_string">"keyword"</span><span class="sh_symbol">)).</span><span class="sh_function">sendKeys</span><span class="sh_symbol">(</span><span class="sh_string">"N85"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“搜索”按钮</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">className</span><span class="sh_symbol">(</span><span class="sh_string">"button"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“查看”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//等待5秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">5000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到前台登录页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> originalWinHandle  <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandle</span><span class="sh_symbol">();</span> <span class="sh_comment">//获得当前窗口（后台页面）句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> allWindows <span class="sh_symbol">=</span> driver<span class="sh_symbol">.</span><span class="sh_function">getWindowHandles</span><span class="sh_symbol">();</span><span class="sh_comment">//获得所有窗口句柄</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> it <span class="sh_symbol">=</span> allWindows<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span><span class="sh_comment">//遍历时不是当前窗口，就切换</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_predef_func">String</span> currentWindow <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span>currentWindow<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">))</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>currentWindow<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//断言前台页面显示的商品名称正确</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">assertEquals</span><span class="sh_symbol">(</span><span class="sh_string">"诺基亚N85"</span><span class="sh_symbol">,</span>driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">xpath</span><span class="sh_symbol">(</span><span class="sh_string">".//*[@id='ECS_FORMBUY']/div/p[1]"</span><span class="sh_symbol">)).</span><span class="sh_function">getText</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭前台页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回后台页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">window</span><span class="sh_symbol">(</span>originalWinHandle<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换回默认主页面</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">defaultContent</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//切换到header-frame</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">switchTo</span><span class="sh_symbol">().</span><span class="sh_function">frame</span><span class="sh_symbol">(</span><span class="sh_string">"header-frame"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//点击“退出”</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver<span class="sh_symbol">.</span><span class="sh_function">findElement</span><span class="sh_symbol">(</span>By<span class="sh_symbol">.</span><span class="sh_function">linkText</span><span class="sh_symbol">(</span><span class="sh_string">"退出"</span><span class="sh_symbol">)).</span><span class="sh_function">click</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day07;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.junit.After;
+import org.junit.Before;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class TestECShopViewGoods{
+	WebDriver driver;
+	@Before
+	public void setUp() throws Exception {
+		//启动Firefox
+		driver = new FirefoxDriver();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		//关闭浏览器
+		driver.quit();
+	}
+	@Test
+	public void testa() throws Exception {
+		//打开ECShop后台首页
+		driver.get("http://localhost/ws/ecshop/upload/admin/index.php");
+		//输入用户名admin
+		driver.findElement(By.name("username")).sendKeys("admin");
+		//输入密码admin123
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		//输入万能验证码0
+		driver.findElement(By.name("captcha")).sendKeys("0");
+		//点击“进入管理中心”
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到menu-frame
+		driver.switchTo().frame("menu-frame");
+		//点击“商品列表”
+		driver.findElement(By.linkText("商品列表")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到main-frame
+		driver.switchTo().frame("main-frame");
+		//输入关键字“N85”
+		driver.findElement(By.name("keyword")).sendKeys("N85");
+		//点击“搜索”按钮
+		driver.findElement(By.className("button")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//点击“查看”
+		driver.findElement(By.xpath(".//*[@id='listDiv']/table[1]/tbody/tr[3]/td[11]/a[1]/img")).click();
+		//等待5秒
+		Thread.sleep(5000);
+		//切换到前台登录页面
+		String originalWinHandle  = driver.getWindowHandle(); //获得当前窗口（后台页面）句柄
+		Set&lt;String&gt; allWindows = driver.getWindowHandles();//获得所有窗口句柄
+		Iterator&lt;String&gt; it = allWindows.iterator();
+		while (it.hasNext()) {//遍历时不是当前窗口，就切换
+		    String currentWindow = it.next();
+		    if (!currentWindow.equals(originalWinHandle))
+		    	driver.switchTo().window(currentWindow);
+		}
+		//断言前台页面显示的商品名称正确
+		assertEquals("诺基亚N85",driver.findElement(By.xpath(".//*[@id='ECS_FORMBUY']/div/p[1]")).getText());
+		//关闭前台页面
+		driver.close();
+		//切换回后台页面
+		driver.switchTo().window(originalWinHandle);
+		//切换回默认主页面
+		driver.switchTo().defaultContent();
+		//切换到header-frame
+		driver.switchTo().frame("header-frame");
+		//点击“退出”
+		driver.findElement(By.linkText("退出")).click();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/SELENIUM/DAY07/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

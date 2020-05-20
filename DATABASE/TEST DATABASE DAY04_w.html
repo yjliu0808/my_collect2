@@ -1,0 +1,383 @@
+
+<!-- saved from url=(0081)http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./TEST DATABASE DAY04_w_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY04_w_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./TEST DATABASE DAY04_w_files/main.js">
+    </script>
+    <link type="text/css" href="./TEST DATABASE DAY04_w_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./TEST DATABASE DAY04_w_files/jquery.snippet.css" rel="Stylesheet">
+  </head>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#page_top_case">Top</a>
+      <h1>TEST DATABASE DAY04</h1>
+      <ol class="index">
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#case1">练习使用主键约束</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#case2">练习使用唯一约束</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#case3">练习使用检查约束</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#case4">练习使用默认值约束</a>
+        </li>
+        <li>
+          <a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#case5">练习使用外键约束</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 练习使用主键约束</h2>
+      <h3>1.1 问题</h3>
+      <p>如何设置主键约束：</p>
+      <p>1）在创建表的同时创建主键；</p>
+      <p>2）创建主键的同时指定主键名称；</p>
+      <p>3）在所有列声明后面设置主键，可以设置复合主键；</p>
+      <p>4）修改表时添加主键；</p>
+      <p>5）删除主键。</p>
+      <h3>1.2 方案</h3>
+      <p>主键约束的作用：主键约束可以保证数据完整性，即防止数据表中的两条记录完全相同。</p>
+      <p class="emphasiz">注意：</p>
+      <p class="emphasiz">一个基本表中只能定义一个主键约束。</p>
+      <p class="emphasiz">对于指定为主键的一列或多个列的组合，其中任何一列都不能出现空值。</p>
+      <p class="emphasiz">可以在创建表的时候，直接通过primary key来指定主键，也可以在表外来创建主键。</p>
+      <p class="emphasiz">在表外也可以指定主键，这个时候需要修改表。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：在创建表的同时创建主键</p>
+      <p>在创建表的同时创建主键，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    create table studentinfo1</li><li>    <span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>       sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>       sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>     <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    create table studentinfo1
+    (
+       sid number(4) primary key,
+       sname varchar2(20),
+       age number(5,0),
+       sex char(2)
+     ) ; 
+</pre></div></div>
+      <p class="number">步骤二：创建主键的同时指定主键名称</p>
+      <p>创建主键的同时指定主键名称，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    create table studentinfo2</li><li>    <span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> constraint pk_sid primary key<span class="sh_symbol">,</span></li><li>       sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>       sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>     <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    create table studentinfo2
+    (
+       sid number(4) constraint pk_sid primary key,
+       sname varchar2(20),
+       age number(5,0),
+       sex char(2)
+     ) ;
+</pre></div></div>
+      <p class="number">步骤三：在所有列声明后面设置主键，可以设置复合主键</p>
+      <p>在所有列声明后面设置主键，可以设置复合主键，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table studentinfo3</li><li> <span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>       sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>       sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>       constraint pk_sid_sname primary <span class="sh_function">key</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">,</span>sname<span class="sh_symbol">)</span></li><li><span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table studentinfo3
+ (
+       sid number(4) not null,
+       sname varchar2(20) not null,
+       age number(5,0) not null,
+       sex char(2),
+       constraint pk_sid_sname primary key(sid,sname)
+) ;
+</pre></div></div>
+      <p class="number">步骤四：修改表时添加主键</p>
+      <p>修改表时添加主键，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    create table studentinfo4</li><li>    <span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>       sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>       sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>     <span class="sh_symbol">);</span></li><li>    alter table studentinfo4</li><li>      add constraint pks primary <span class="sh_function">key</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">,</span>sname<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    create table studentinfo4
+    (
+       sid number(4) not null,
+       sname varchar2(20),
+       age number(5,0),
+       sex char(2)
+     );
+    alter table studentinfo4
+      add constraint pks primary key(sid,sname) ;
+</pre></div></div>
+      <p class="number">步骤五：删除主键</p>
+      <p>删除主键，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    alter table studentinfo3 drop constraint pk_sid_sname <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    alter table studentinfo3 drop constraint pk_sid_sname ;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table studentinfo1</li><li>  <span class="sh_symbol">(</span></li><li>    sid   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>    sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>    age   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>    sex   <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>  <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li>create table studentinfo2</li><li>  <span class="sh_symbol">(</span></li><li>    sid   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> constraint pk_sid primary key<span class="sh_symbol">,</span></li><li>    sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>    age   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>    sex   <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>  <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li>create table studentinfo3</li><li>  <span class="sh_symbol">(</span></li><li>    sid   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>    sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>    age   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>    sex   <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>    constraint pk_sid_sname primary <span class="sh_function">key</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">,</span>sname<span class="sh_symbol">)</span></li><li>  <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li>create table studentinfo4</li><li>  <span class="sh_symbol">(</span></li><li>    sid   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span><span class="sh_symbol">,</span></li><li>    sname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>    age   <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">),</span></li><li>    sex   <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>  <span class="sh_symbol">);</span></li><li>alter table studentinfo4 add constraint pks primary key</li><li><span class="sh_symbol">(</span></li><li>  sid<span class="sh_symbol">,</span>sname</li><li><span class="sh_symbol">);</span></li><li>alter table studentinfo3</li><li>drop constraint pk_sid_sname <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table studentinfo1
+  (
+    sid   number(4) primary key,
+    sname varchar2(20),
+    age   number(5,0),
+    sex   char(2)
+  ) ;
+create table studentinfo2
+  (
+    sid   number(4) constraint pk_sid primary key,
+    sname varchar2(20),
+    age   number(5,0),
+    sex   char(2)
+  ) ;
+create table studentinfo3
+  (
+    sid   number(4) not null,
+    sname varchar2(20) not null,
+    age   number(5,0) not null,
+    sex   char(2),
+    constraint pk_sid_sname primary key(sid,sname)
+  ) ;
+create table studentinfo4
+  (
+    sid   number(4) not null,
+    sname varchar2(20),
+    age   number(5,0),
+    sex   char(2)
+  );
+alter table studentinfo4 add constraint pks primary key
+(
+  sid,sname
+);
+alter table studentinfo3
+drop constraint pk_sid_sname ;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 练习使用唯一约束</h2>
+      <h3>2.1 问题</h3>
+      <p>如何设置唯一约束：</p>
+      <p>1）创建表的同时创唯一约束；</p>
+      <p>2）修改表结构时创建唯一约束；</p>
+      <p>3）设置多个列为一个唯一约束；</p>
+      <p>4）删除唯一约束。</p>
+      <h3>2.2 方案</h3>
+      <p>唯一性约束用于指定一个或者多个列的组合值具有唯一性，以防止在列中输入重复的值。定义了唯一性约束的那些列称为唯一键，系统自动为唯一键建立唯一索引，从而保证了唯一键的唯一性。</p>
+      <p>唯一性约束的主要特点：</p>
+      <p>使用唯一性约束的字段允许为空值；</p>
+      <p>一个表中可以允许有多个唯一性约束；</p>
+      <p>可以把唯一性约束定义在多个字段上；</p>
+      <p>唯一性约束的列不能是主键所在的列 ；</p>
+      <p>在建表的时候，直接通过unique来设置唯一约束。</p>
+      <p>在建表以后，通过修改表结构，来添加唯一约束。</p>
+      <p>也可以通过修改表结构，来设置多个列为一个唯一约束。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建表的同时创唯一约束</p>
+      <p>创建表的同时创唯一约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table worker</li><li><span class="sh_symbol">(</span></li><li>    wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>    wname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> unique</li><li> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table worker
+(
+    wid number(4) primary key,
+    wname varchar2(20) unique
+ ) ; 
+</pre></div></div>
+      <p class="number">步骤二：修改表结构时创建唯一约束</p>
+      <p>修改表结构时创建唯一约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table worker2</li><li><span class="sh_symbol">(</span></li><li>   wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>   wname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>alter table worker2</li><li>      add constraint uq_wname <span class="sh_function">unique</span><span class="sh_symbol">(</span>wname<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table worker2
+(
+   wid number(4) primary key,
+   wname varchar2(20)
+);
+alter table worker2
+      add constraint uq_wname unique(wname) ;
+</pre></div></div>
+      <p class="number">步骤三：设置多个列为一个唯一约束</p>
+      <p>设置多个列为一个唯一约束，可以设置复合主键，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table worker3</li><li><span class="sh_symbol">(</span></li><li>   wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>   name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>   pwd <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>alter table worker3</li><li>add constraint uq_name_pwd </li><li><span class="sh_function">unique</span><span class="sh_symbol">(</span>name<span class="sh_symbol">,</span>pwd<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table worker3
+(
+   wid number(4) primary key,
+   name varchar2(20),
+   pwd varchar2(20)
+);
+alter table worker3
+add constraint uq_name_pwd 
+unique(name,pwd) ;
+</pre></div></div>
+      <p class="number">步骤四：删除唯一约束</p>
+      <p>删除唯一约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   alter table worker3</li><li>    drop constraint uq_name_pwd <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   alter table worker3
+    drop constraint uq_name_pwd ;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table worker</li><li><span class="sh_symbol">(</span></li><li>    wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>    wname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> unique</li><li> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li><li>create table worker2</li><li><span class="sh_symbol">(</span></li><li>   wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>   wname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>alter table worker2</li><li>      add constraint uq_wname <span class="sh_function">unique</span><span class="sh_symbol">(</span>wname<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li>create table worker3</li><li><span class="sh_symbol">(</span></li><li>   wid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>   name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>   pwd <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li>alter table worker3</li><li>add constraint uq_name_pwd </li><li><span class="sh_function">unique</span><span class="sh_symbol">(</span>name<span class="sh_symbol">,</span>pwd<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li>alter table worker3</li><li>drop constraint uq_name_pwd <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table worker
+(
+    wid number(4) primary key,
+    wname varchar2(20) unique
+ ) ; 
+create table worker2
+(
+   wid number(4) primary key,
+   wname varchar2(20)
+);
+alter table worker2
+      add constraint uq_wname unique(wname) ;
+create table worker3
+(
+   wid number(4) primary key,
+   name varchar2(20),
+   pwd varchar2(20)
+);
+alter table worker3
+add constraint uq_name_pwd 
+unique(name,pwd) ;
+alter table worker3
+drop constraint uq_name_pwd ;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 练习使用检查约束</h2>
+      <h3>3.1 问题</h3>
+      <p>如何设置检查约束：</p>
+      <p>1）创建表的时候创建检查约束；</p>
+      <p>2）修改表时添加检查约束；</p>
+      <p>3）删除检查约束。</p>
+      <h3>3.2 方案</h3>
+      <p>检查约束：用于限定某列的值必须满足什么条件，避免用户输入一些非法数据。</p>
+      <p>可以在创建表的时候创建检查约束，也可以在修改表时添加检查约束，也可以删除检查约束。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建表的时候创建检查约束</p>
+      <p>创建表的时候创建检查约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table customer3</li><li><span class="sh_symbol">(</span></li><li>  cid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key <span class="sh_symbol">,</span></li><li>  cname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> unique<span class="sh_symbol">,</span></li><li>  sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_function">check</span><span class="sh_symbol">(</span>sex <span class="sh_keyword">in</span><span class="sh_symbol">(</span><span class="sh_string">'男'</span><span class="sh_symbol">,</span><span class="sh_string">'女'</span><span class="sh_symbol">)),</span></li><li>  age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> <span class="sh_symbol">,</span></li><li>  email <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">)</span> </li><li><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table customer3
+(
+  cid number(4) primary key ,
+  cname varchar2(20) not null unique,
+  sex char(2) check(sex in('男','女')),
+  age number(3) not null ,
+  email varchar2(50) 
+); 
+</pre></div></div>
+      <p class="number">步骤二：修改表时添加检查约束</p>
+      <p>修改表时添加检查约束，在customer3上的email列上添加检查约束，在customer3上的age列上添加检查约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> alter table customer3</li><li>&nbsp;&nbsp;&nbsp;&nbsp;add constraint chk_email <span class="sh_function">check</span> <span class="sh_symbol">(</span>Email like <span class="sh_string">'%@%'</span><span class="sh_symbol">);</span></li><li> alter table customer3</li><li>&nbsp;&nbsp;&nbsp;&nbsp;add constraint chk_age <span class="sh_function">check</span> <span class="sh_symbol">(</span>age between <span class="sh_number">1</span> and <span class="sh_number">100</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> alter table customer3
+	add constraint chk_email check (Email like '%@%');
+ alter table customer3
+	add constraint chk_age check (age between 1 and 100);
+</pre></div></div>
+      <p class="number">步骤三：删除检查约束</p>
+      <p>删除检查约束，删除在customer3上的chk_email约束，删除在customer3上的chk_age约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> alter table customer3</li><li> drop constraint chk_email<span class="sh_symbol">;</span></li><li>alter table customer3</li><li> drop constraint chk_age<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> alter table customer3
+ drop constraint chk_email;
+alter table customer3
+ drop constraint chk_age;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table customer3</li><li><span class="sh_symbol">(</span></li><li>  cid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> primary key <span class="sh_symbol">,</span></li><li>  cname <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> unique<span class="sh_symbol">,</span></li><li>  sex <span class="sh_function">char</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_function">check</span><span class="sh_symbol">(</span>sex <span class="sh_keyword">in</span><span class="sh_symbol">(</span><span class="sh_string">'男'</span><span class="sh_symbol">,</span><span class="sh_string">'女'</span><span class="sh_symbol">)),</span></li><li>  age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> <span class="sh_symbol">,</span></li><li>  email <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">)</span> </li><li><span class="sh_symbol">);</span> </li><li>alter table customer3</li><li>&nbsp;&nbsp;&nbsp;&nbsp;add constraint chk_email <span class="sh_function">check</span> <span class="sh_symbol">(</span>Email like <span class="sh_string">'%@%'</span><span class="sh_symbol">);</span></li><li>alter table customer3</li><li>&nbsp;&nbsp;&nbsp;&nbsp;add constraint chk_age <span class="sh_function">check</span> <span class="sh_symbol">(</span>age between <span class="sh_number">1</span> and <span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>alter table customer3</li><li> drop constraint chk_email<span class="sh_symbol">;</span></li><li>alter table customer3</li><li> drop constraint chk_age<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table customer3
+(
+  cid number(4) primary key ,
+  cname varchar2(20) not null unique,
+  sex char(2) check(sex in('男','女')),
+  age number(3) not null ,
+  email varchar2(50) 
+); 
+alter table customer3
+	add constraint chk_email check (Email like '%@%');
+alter table customer3
+	add constraint chk_age check (age between 1 and 100);
+alter table customer3
+ drop constraint chk_email;
+alter table customer3
+ drop constraint chk_age;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 练习使用默认值约束</h2>
+      <h3>4.1 问题</h3>
+      <p>如何默认值约束：</p>
+      <p>1）创建表时创建默认值约束；</p>
+      <p>2）修改表时添加默认值约束；</p>
+      <p>3）删除默认值约束。</p>
+      <h3>4.2 方案</h3>
+      <p>默认值约束指定在插入操作中如果没有提供输入值时，系统自动指定的值。</p>
+      <p>每个字段只能定义一个默认约束。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建表时创建默认值约束</p>
+      <p>创建表时创建默认值约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table entrybook </li><li><span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>       sname <span class="sh_function">varchar</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>       entrydate date <span class="sh_keyword">default</span> sysdate<span class="sh_symbol">,</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_number">10</span></li><li><span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table entrybook 
+(
+       sid varchar2(10),
+       sname varchar(20),
+       entrydate date default sysdate,
+       age number(5,0) default 10
+) ; 
+</pre></div></div>
+      <p class="number">步骤二：修改表时添加默认值约束</p>
+      <p>修改表时添加默认值约束，使用modify，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> alter table entrybooka </li><li>      modify age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_number">11</span><span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> alter table entrybooka 
+      modify age number(5,0) default 11; 
+</pre></div></div>
+      <p class="number">步骤三：删除默认值约束</p>
+      <p>删除默认值约束，使用modify将其默认值设置成null，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>alter table entrybooka </li><li>      modify age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">alter table entrybooka 
+      modify age number(5,0) default null;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table entrybook </li><li><span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>       sname <span class="sh_function">varchar</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>       entrydate date <span class="sh_keyword">default</span> sysdate<span class="sh_symbol">,</span></li><li>       age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_number">10</span></li><li><span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li><li>alter table entrybooka </li><li>      modify age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_number">11</span><span class="sh_symbol">;</span></li><li>alter table entrybooka </li><li>      modify age <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_keyword">default</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table entrybook 
+(
+       sid varchar2(10),
+       sname varchar(20),
+       entrydate date default sysdate,
+       age number(5,0) default 10
+) ; 
+alter table entrybooka 
+      modify age number(5,0) default 11;
+alter table entrybooka 
+      modify age number(5,0) default null;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 练习使用外键约束</h2>
+      <h3>5.1 问题</h3>
+      <p>如何外键约束：</p>
+      <p>1）创建表时创建外键约束；</p>
+      <p>2）修改表时添加外键约束；</p>
+      <p>3）删除外键约束。</p>
+      <h3>5.2 方案</h3>
+      <p>参照完整性:在两个表之间，一个表中的记录依附于另一个表的记录而存在，称为表之间的参照完整性。</p>
+      <p>外键实际是一个引用，当一个表有自己的主键时，而向其他数据表的引用，则称为外键。</p>
+      <p>可以在建表的时候添加外键，也可以在修改表的时候添加外键。</p>
+      <h3>5.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建表时创建外键约束</p>
+      <p>创建表时创建外键约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table score</li><li><span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> primary key<span class="sh_symbol">,</span></li><li>       english <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>       chinese <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>       constraint fk_sid foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">)</span> references <span class="sh_function">studentinfo1</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">)</span></li><li> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table score
+(
+       sid varchar2(10) not null primary key,
+       english number(10,2),
+       chinese number(10,2),
+       constraint fk_sid foreign key(sid) references studentinfo1(sid)
+ ) ; 
+</pre></div></div>
+      <p class="number">步骤二：修改表时添加外键约束</p>
+      <p>修改表时添加外键约束，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>alter table rental</li><li>add constraint fk1 foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>cid<span class="sh_symbol">)</span> references </li><li><span class="sh_function">customer</span><span class="sh_symbol">(</span>cid<span class="sh_symbol">);</span></li><li>alter table rental</li><li>add constraint fk2 foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>bid<span class="sh_symbol">)</span> references </li><li><span class="sh_function">book</span><span class="sh_symbol">(</span>bid<span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">alter table rental
+add constraint fk1 foreign key(cid) references 
+customer(cid);
+alter table rental
+add constraint fk2 foreign key(bid) references 
+book(bid) ; 
+</pre></div></div>
+      <p class="number">步骤三：删除外键约束</p>
+      <p>删除外键约束，alter table 表名 drop constraint 外键名,SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>alter table rental drop constraint fk2 <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">alter table rental drop constraint fk2 ;
+</pre></div></div>
+      <p class="number">完整SQL语句</p>
+      <p>本案例中，完整SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table score</li><li><span class="sh_symbol">(</span></li><li>       sid <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> not <span class="sh_keyword">null</span> primary key<span class="sh_symbol">,</span></li><li>       english <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>       chinese <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>       constraint fk_sid foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">)</span> references <span class="sh_function">studentinfo1</span><span class="sh_symbol">(</span>sid<span class="sh_symbol">)</span></li><li> <span class="sh_symbol">);</span> </li><li>alter table rental</li><li>add constraint fk1 foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>cid<span class="sh_symbol">)</span> references </li><li><span class="sh_function">customer</span><span class="sh_symbol">(</span>cid<span class="sh_symbol">);</span></li><li>alter table rental</li><li>add constraint fk2 foreign <span class="sh_function">key</span><span class="sh_symbol">(</span>bid<span class="sh_symbol">)</span> references </li><li><span class="sh_function">book</span><span class="sh_symbol">(</span>bid<span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li><li>alter table rental drop constraint fk2 <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table score
+(
+       sid varchar2(10) not null primary key,
+       english number(10,2),
+       chinese number(10,2),
+       constraint fk_sid foreign key(sid) references studentinfo1(sid)
+ ); 
+alter table rental
+add constraint fk1 foreign key(cid) references 
+customer(cid);
+alter table rental
+add constraint fk2 foreign key(bid) references 
+book(bid) ; 
+alter table rental drop constraint fk2 ;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://tts.tmooc.cn/ttsPage/TESTING/TSDTN201801/DATABASE/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>
